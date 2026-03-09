@@ -1,0 +1,86 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Event {
+  id          String   @id @default(cuid())
+  title       String
+  description String?
+  date        DateTime
+  location    String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Service {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  price       Float?
+  duration    Int?     // in minutes
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model ContactMessage {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  message   String
+  createdAt DateTime @default(now())
+}
+
+model SiteSetting {
+  id    String @id @default(cuid())
+  key   String @unique
+  value String
+}
+
+model NavItem {
+  id       String    @id @default(cuid())
+  label    String
+  href     String?
+  targetId String?
+  order    Int       @default(0)
+  parentId String?
+  parent   NavItem?  @relation("NavChildren", fields: [parentId], references: [id])
+  children NavItem[] @relation("NavChildren")
+  megaMenu String?   // Added to store the JSON structure for the mega menu
+}
+
+model JourneyStep {
+  id        String   @id @default(cuid())
+  stepId    String   @unique // e.g., "01"
+  title     String
+  desc      String
+  longDesc  String
+  order     Int      @default(0)
+}
+
+model PricingPlan {
+  id           String   @id @default(cuid())
+  title        String
+  description  String
+  price        String
+  bonusText    String?
+  savingsText  String?
+  isPopular    Boolean  @default(false)
+  buttonText   String
+  order        Int      @default(0)
+}
+
+model GalleryImage {
+  id         String   @id @default(cuid())
+  src        String
+  title      String
+  category   String
+  order      Int      @default(0)
+  createdAt  DateTime @default(now())
+}
