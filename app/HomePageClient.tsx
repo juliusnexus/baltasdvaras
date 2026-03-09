@@ -443,7 +443,7 @@ export default function HomePageClient({
         initial="hidden"
         animate="visible"
         variants={staggerContainer}
-        className="relative min-h-screen flex items-center px-6 md:px-12 lg:px-24 pt-32 pb-20 md:pt-20"
+        className="relative min-h-screen flex items-center justify-center px-6 md:px-12 lg:px-24 pt-32 pb-20 md:pt-20"
       >
         <div className="max-w-7xl w-full grid lg:grid-cols-2 gap-12 lg:gap-20 items-center relative z-10">
           <div className="max-w-2xl text-center lg:text-left">

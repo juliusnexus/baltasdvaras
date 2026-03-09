@@ -6,6 +6,6 @@ export default defineConfig({
     seed: "npx tsx prisma/seed.ts",
   },
   datasource: {
-    url: "postgresql://postgres:postgres@localhost:5432/baltas_dvaras?schema=public",
+    url: process.env.DATABASE_URL!,
   },
 });
