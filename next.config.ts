@@ -1,8 +1,5 @@
 const nextConfig = {
   reactStrictMode: true,
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
   typescript: {
     ignoreBuildErrors: false,
   },
@@ -30,7 +27,9 @@ const nextConfig = {
     ],
   },
   output: 'standalone',
-  turbopack: {},
+  turbopack: {
+    root: '.',
+  },
   webpack: (config: any, {dev}: any) => {
     // HMR is disabled in AI Studio via DISABLE_HMR env var.
     // Do not modifyâfile watching is disabled to prevent flickering during agent edits.

@@ -551,7 +551,7 @@ export default function HomePageClient({
               className="absolute -bottom-4 -right-4 md:-bottom-6 md:-right-6 w-32 h-44 md:w-40 md:h-56 bg-white/50 backdrop-blur-2xl p-2 rounded-2xl md:rounded-3xl shadow-2xl border border-white/40 z-20 flex flex-col"
             >
               <div className="h-1/2 bg-blue-300/60 rounded-t-xl md:rounded-t-2xl" />
-              <div className="h-1/2 bg-pink-200/60 rounded-b-xl md:rounded-b-2xl" />
+              <div className="h-1/2 bg-[#2D2D2D]/60 rounded-b-xl md:rounded-b-2xl" />
               <div className="p-3 md:p-4 text-center">
                 <p className="text-[8px] md:text-[10px] font-bold uppercase tracking-widest opacity-40 italic font-sans">Balansas</p>
               </div>
