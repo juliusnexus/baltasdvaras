@@ -17,12 +17,12 @@ export async function GET() {
     const settings = [
       { key: 'hero_title_1', value: 'Čia gali būti kuo esi.' },
       { key: 'hero_subtitle_1', value: 'Tai atsivėrimas. Tiesa.' },
-      { key: 'hero_title_2', value: 'Čia dėmesys sau.' },
+      { key: 'hero_title_2', value: 'Čia dėmesys tau.' },
       { key: 'hero_subtitle_2', value: 'Tai esmė. Meilė.' },
-      { key: 'hero_title_3', value: 'Čia susitinka Dvasia ir Materija.' },
+      { key: 'hero_title_3', value: 'Čia susitinka dvasia ir materija.' },
       { key: 'hero_subtitle_3', value: 'Tai darna. Evoliucija.' },
       { key: 'hero_badge', value: 'Sielos spalvų transformacija' },
-      { key: 'about_title', value: 'Veidrodis tavo sielai' },
+      { key: 'about_title', value: 'Apie mane' },
       { key: 'about_desc', value: 'Aura-Soma sujungia spalvų, augalų ir kristalų energijas. Tai nėra spėjimas – tai jūsų pasąmonės atspindys per vizualų traukos dėsnį.' },
       { key: 'journey_title', value: 'Transformacijos kelionė' },
       { key: 'journey_subtitle', value: 'Penkios pakopos į tavo tikrąjį Aš' },
@@ -41,11 +41,11 @@ export async function GET() {
 
     // 2. Journey Steps
     const journeySteps = [
-      { stepId: '01', title: 'Diagnostika', desc: 'Sielos veidrodis ir pirminė analizė.', longDesc: 'Šios sesijos metu mes gilinamės į jūsų pasirinktas spalvas, kurios veikia kaip veidrodis jūsų vidiniam pasauliui. Tai pirmas žingsnis suprantant savo esamą būseną ir potencialą.', order: 1 },
-      { stepId: '02', title: 'Šešėliai', desc: 'Blokų ir baimių transformacija.', longDesc: 'Mes tyrinėjame tai, kas paslėpta. Atpažindami savo šešėlius ir blokuojančias emocijas, mes galime jas transformuoti į kūrybinę energiją ir asmeninę galią.', order: 2 },
-      { stepId: '03', title: 'Dabartis', desc: 'Esamų resursų aktyvavimas.', longDesc: 'Susitelkiame į tai, ką turite čia ir dabar. Aktyvuojame jūsų vidinius resursus, kurie padės jums judėti į priekį su pasitikėjimu ir aiškumu.', order: 3 },
-      { stepId: '04', title: 'Vizija', desc: 'Ateities potencialo kūrimas.', longDesc: 'Kuriame jūsų ateities viziją. Spalvų pagalba vizualizuojame jūsų tikslus ir svajones, suteikdami jiems energetinį pagrindą realizacijai.', order: 4 },
-      { stepId: '05', title: 'Integracija', desc: 'Pokyčių užtvirtinimas.', longDesc: 'Paskutinis etapas skirtas visų patirčių sujungimui. Mes užtvirtiname įvykusius pokyčius, kad jie taptų neatsiejama jūsų kasdienybės dalimi.', order: 5 },
+      { stepId: '01', title: 'Analizė', desc: 'Sielos veidrodis ir pirminė analizė.', longDesc: 'Šios sesijos metu mes gilinamės į jūsų pasirinktas spalvas, kurios veikia kaip veidrodis jūsų vidiniam pasauliui. Tai pirmas žingsnis suprantant savo esamą būseną ir potencialą.', order: 1 },
+      { stepId: '02', title: 'Tikslas', desc: 'Blokų ir baimių transformacija.', longDesc: 'Mes tyrinėjame tai, kas paslėpta. Atpažindami savo šešėlius ir blokuojančias emocijas, mes galime jas transformuoti į kūrybinę energiją ir asmeninę galią.', order: 2 },
+      { stepId: '03', title: 'Ritmas', desc: 'Esamų resursų aktyvavimas.', longDesc: 'Susitelkiame į tai, ką turite čia ir dabar. Aktyvuojame jūsų vidinius resursus, kurie padės jums judėti į priekį su pasitikėjimu ir aiškumu.', order: 3 },
+      { stepId: '04', title: 'Metodika', desc: 'Ateities potencialo kūrimas.', longDesc: 'Kuriame jūsų ateities viziją. Spalvų pagalba vizualizuojame jūsų tikslus ir svajones, suteikdami jiems energetinį pagrindą realizacijai.', order: 4 },
+      { stepId: '05', title: 'Planas', desc: 'Pokyčių užtvirtinimas.', longDesc: 'Paskutinis etapas skirtas visų patirčių sujungimui. Mes užtvirtiname įvykusius pokyčius, kad jie taptų neatsiejama jūsų kasdienybės dalimi.', order: 5 },
     ];
 
     for (const step of journeySteps) {
@@ -63,15 +63,15 @@ export async function GET() {
       data: [
         {
           title: 'Viena sesija',
-          description: '90 min. gilaus pokalbio ir analizės',
-          price: '60€',
+          description: '90 min. trukmės intensyvi analizė bei sprendimų paieška',
+          price: 'Investicija: 50 €',
           buttonText: 'Užsakyti',
           order: 1,
         },
         {
           title: 'Pilna kelionė',
           description: '5 nuoseklios sesijos (rekomenduojama)',
-          price: '250€',
+          price: '200€',
           savingsText: 'Sutaupai 50€',
           bonusText: 'Dovana: Aura-Soma produktas',
           isPopular: true,
@@ -179,7 +179,6 @@ export async function GET() {
     });
 
     const eventsNode = await prisma.navItem.create({ data: { label: 'Renginiai', targetId: 'events', order: 4 } });
-    const contactsNode = await prisma.navItem.create({ data: { label: 'Kontaktai', targetId: 'contact', order: 5 } });
 
     console.log('Seeded Basic Navigation Items');
 

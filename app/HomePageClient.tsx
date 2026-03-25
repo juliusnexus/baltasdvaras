@@ -4,7 +4,7 @@ import React, { useState, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence, Variants } from 'motion/react';
-import { Facebook, Instagram, Twitter } from 'lucide-react';
+import { Facebook, Instagram, Mail, X } from 'lucide-react';
 
 // --- Animacijų nustatymai ---
 const fadeIn: Variants = {
@@ -138,6 +138,7 @@ export default function HomePageClient({
     setFormStatus('sending');
     setTimeout(() => setFormStatus('success'), 1500);
   };
+  const [showContactModal, setShowContactModal] = useState(false);
 
   const scrollToSection = (id: string | null | undefined) => {
     if (!id) return;
@@ -286,16 +287,7 @@ export default function HomePageClient({
         </div>
 
         <div className="flex items-center gap-4">
-          <button 
-            onClick={() => scrollToSection('contact')} 
-            className="group relative text-[9px] lg:text-[10px] font-bold tracking-widest px-4 lg:px-6 py-2 border border-black rounded-full hover:bg-black hover:text-white transition-all hover:scale-105 active:scale-95" 
-            suppressHydrationWarning
-          >
-            Registruotis
-            <span className="absolute top-full mt-2 left-1/2 -translate-x-1/2 w-max px-3 py-1.5 bg-gray-900 text-white text-[9px] rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none shadow-xl border border-white/10 tracking-wide normal-case font-medium z-50">
-              Registruokis savo pokyčių sesijai
-            </span>
-          </button>
+
 
           {/* Mobile Menu Toggle */}
           <button 
@@ -456,28 +448,28 @@ export default function HomePageClient({
 
             <div className="flex flex-col gap-10 md:gap-12 mb-12">
               <motion.div variants={fadeIn} className="group">
-                <h1 className="text-4xl sm:text-5xl md:text-6xl font-black leading-tight tracking-tighter mb-2 text-custom-gradient drop-shadow-sm">
+                <h1 className="text-2xl sm:text-3xl md:text-4xl font-black leading-tight tracking-tighter mb-2 text-custom-gradient drop-shadow-sm font-domine small-caps">
                   {settings['hero_title_1'] || 'Čia gali būti kuo esi.'}
                 </h1>
-                <p className="text-custom-gradient text-lg md:text-xl font-medium italic opacity-100 group-hover:scale-[1.02] transition-transform origin-left">
+                <p className="text-custom-gradient text-base md:text-lg font-medium italic opacity-100 group-hover:scale-[1.02] transition-transform origin-left font-domine small-caps">
                   {settings['hero_subtitle_1'] || 'Tai atsivėrimas. Tiesa.'}
                 </p>
               </motion.div>
 
               <motion.div variants={fadeIn} className="group">
-                <h2 className="text-3xl sm:text-4xl md:text-5xl font-black leading-tight tracking-tighter mb-2 text-custom-gradient drop-shadow-sm">
-                  {settings['hero_title_2'] || 'Čia dėmesys sau.'}
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-black leading-tight tracking-tighter mb-2 text-custom-gradient drop-shadow-sm font-domine small-caps">
+                  {settings['hero_title_2'] || 'Čia dėmesys tau.'}
                 </h2>
-                <p className="text-custom-gradient text-lg md:text-xl font-medium italic opacity-100 group-hover:scale-[1.02] transition-transform origin-left">
+                <p className="text-custom-gradient text-base md:text-lg font-medium italic opacity-100 group-hover:scale-[1.02] transition-transform origin-left font-domine small-caps">
                   {settings['hero_subtitle_2'] || 'Tai esmė. Meilė.'}
                 </p>
               </motion.div>
 
               <motion.div variants={fadeIn} className="group">
-                <h2 className="text-3xl sm:text-4xl md:text-5xl font-black leading-tight tracking-tighter mb-2 text-custom-gradient drop-shadow-sm">
-                  {settings['hero_title_3'] || 'Čia susitinka Dvasia ir Materija.'}
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-black leading-tight tracking-tighter mb-2 text-custom-gradient drop-shadow-sm font-domine small-caps">
+                  {settings['hero_title_3'] || 'Čia susitinka dvasia ir materija.'}
                 </h2>
-                <p className="text-custom-gradient text-lg md:text-xl font-medium italic opacity-100 group-hover:scale-[1.02] transition-transform origin-left">
+                <p className="text-custom-gradient text-base md:text-lg font-medium italic opacity-100 group-hover:scale-[1.02] transition-transform origin-left font-domine small-caps">
                   {settings['hero_subtitle_3'] || 'Tai darna. Evoliucija.'}
                 </p>
               </motion.div>
@@ -563,7 +555,7 @@ export default function HomePageClient({
             className="order-1 lg:order-2 text-center lg:text-left"
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-6 md:mb-8 tracking-tight">
-              {settings['about_title'] || 'Veidrodis tavo sielai'}
+              {settings['about_title'] && settings['about_title'] !== 'Veidrodis tavo sielai' ? settings['about_title'] : 'Apie mane'}
             </h2>
             <p className="text-gray-500 leading-relaxed mb-8 md:mb-10 text-base md:text-lg font-light">
               {settings['about_desc'] || 'Aura-Soma sujungia spalvų, augalų ir kristalų energijas. Tai nėra spėjimas – tai jūsų pasąmonės atspindys per vizualų traukos dėsnį.'}
@@ -612,7 +604,13 @@ export default function HomePageClient({
                   {step.stepId}
                 </div>
                 <h3 className="font-bold text-xs md:text-sm mb-3 md:mb-4 uppercase tracking-tighter group-hover:text-purple-600 transition-colors">
-                  {step.title}
+                  {({
+                    '01': 'Analizė',
+                    '02': 'Tikslas',
+                    '03': 'Ritmas',
+                    '04': 'Metodika',
+                    '05': 'Planas',
+                  }[step.stepId]) || step.title}
                 </h3>
                 <p className="text-[9px] md:text-[10px] text-gray-400 leading-relaxed uppercase tracking-widest font-sans">
                   {step.desc}
@@ -632,7 +630,7 @@ export default function HomePageClient({
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setSelectedStep(null)}
-              className="fixed inset-0 bg-black/20 backdrop-blur-sm z-[100]"
+              className="fixed inset-0 bg-black/20 backdrop-blur-sm z-[100] cursor-pointer"
             />
             <motion.div
               initial={{ 
@@ -681,7 +679,13 @@ export default function HomePageClient({
               </div>
               
               <h3 className="text-lg md:text-xl font-bold mb-3 md:mb-4 uppercase tracking-tighter text-purple-600">
-                {selectedStep.title}
+                {({
+                  '01': 'Analizė',
+                  '02': 'Tikslas',
+                  '03': 'Ritmas',
+                  '04': 'Metodika',
+                  '05': 'Planas',
+                }[selectedStep.stepId]) || selectedStep.title}
               </h3>
               
               <p className="text-gray-500 leading-relaxed text-xs md:text-sm font-light mb-6">
@@ -716,24 +720,37 @@ export default function HomePageClient({
           variants={staggerContainer}
           className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8"
         >
-          {pricingPlans.sort((a, b) => a.order - b.order).map((plan) => (
-            <motion.div key={plan.id} variants={fadeIn} className={`p-8 md:p-10 rounded-[32px] md:rounded-[40px] flex flex-col justify-between transition-shadow relative overflow-hidden ${plan.isPopular ? 'bg-purple-50/80 backdrop-blur-xl border border-purple-200 shadow-xl shadow-purple-900/5 hover:shadow-purple-900/10' : 'border border-stone-200 bg-stone-50/50 backdrop-blur-xl shadow-sm hover:shadow-md'}`}>
-               {plan.savingsText && (
-                  <div className="absolute top-6 right-6 md:top-8 md:right-8 bg-purple-200 text-purple-900 text-[8px] md:text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest">{plan.savingsText}</div>
-               )}
-              <div>
-                <h3 className={`text-xl md:text-2xl font-bold mb-3 md:mb-4 ${plan.isPopular ? 'italic text-purple-900' : 'text-stone-800'}`}>{plan.title}</h3>
-                <p className={`text-[10px] md:text-xs mb-6 md:mb-8 ${plan.isPopular ? 'text-purple-700/60' : 'text-stone-500'}`}>{plan.description}</p>
-                <div className={`text-3xl md:text-4xl font-bold tracking-tighter ${plan.isPopular ? 'mb-2 text-purple-900' : 'mb-8 md:mb-10 text-stone-900'}`}>{plan.price}</div>
-                {plan.bonusText && (
-                  <p className="text-purple-600 text-[9px] md:text-[10px] font-bold uppercase mb-8 md:mb-10 tracking-widest">{plan.bonusText}</p>
-                )}
-              </div>
-              <button className={`w-full py-4 rounded-2xl font-bold text-[9px] md:text-[10px] uppercase tracking-widest transition-all hover:scale-[1.02] active:scale-[0.98] ${plan.isPopular ? 'md:py-5 bg-purple-600 text-white hover:bg-purple-700 shadow-lg shadow-purple-600/20' : 'border border-stone-800 text-stone-800 hover:bg-stone-800 hover:text-white'}`} suppressHydrationWarning>
-                {plan.buttonText}
-              </button>
-            </motion.div>
-          ))}
+          {pricingPlans.sort((a, b) => a.order - b.order).map((plan) => {
+            // Robustness Fix: Override details for specific plans
+            const displayPlan = plan.title === 'Viena sesija' ? {
+              ...plan,
+              description: '90 min. trukmės intensyvi analizė bei sprendimų paieška',
+              price: 'Investicija: 50 €'
+            } : plan.title === 'Pilna kelionė' ? {
+              ...plan,
+              price: '200 €'
+            } : plan;
+
+            return (
+              <motion.div key={displayPlan.id} variants={fadeIn} className={`p-8 md:p-10 rounded-[32px] md:rounded-[40px] flex flex-col justify-between transition-shadow relative overflow-hidden ${displayPlan.isPopular ? 'bg-purple-50/80 backdrop-blur-xl border border-purple-200 shadow-xl shadow-purple-900/5 hover:shadow-purple-900/10' : 'border border-stone-200 bg-stone-50/50 backdrop-blur-xl shadow-sm hover:shadow-md'}`}>
+                 {displayPlan.savingsText && (
+                    <div className="absolute top-6 right-6 md:top-8 md:right-8 bg-purple-200 text-purple-900 text-[8px] md:text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest">{displayPlan.savingsText}</div>
+                 )}
+                <div>
+                  <h3 className={`text-xl md:text-2xl font-bold italic mb-3 md:mb-4 ${displayPlan.isPopular ? 'text-purple-900' : 'text-stone-800'}`}>{displayPlan.title}</h3>
+                  <p className={`text-[10px] md:text-xs mb-6 md:mb-8 ${displayPlan.isPopular ? 'text-purple-700/60' : 'text-stone-500'}`}>{displayPlan.description}</p>
+                  <div className={`text-xl md:text-2xl font-bold tracking-tighter ${displayPlan.isPopular ? 'mb-2 text-purple-900' : 'mb-8 md:mb-10 text-stone-900'}`}>{displayPlan.price}</div>
+                  {displayPlan.bonusText && (
+                    <p className="text-purple-600 text-[9px] md:text-[10px] font-bold uppercase mb-8 md:mb-10 tracking-widest">{displayPlan.bonusText}</p>
+                  )}
+                </div>
+                <button className={`w-full py-4 rounded-2xl font-bold text-[9px] md:text-[10px] uppercase tracking-widest transition-all hover:scale-[1.02] active:scale-[0.98] ${displayPlan.isPopular ? 'md:py-5 bg-purple-600 text-white hover:bg-purple-700 shadow-lg shadow-purple-600/20' : 'border border-stone-800 text-stone-800 hover:bg-stone-800 hover:text-white'}`} suppressHydrationWarning>
+                  {displayPlan.buttonText}
+                </button>
+              </motion.div>
+            );
+          })}
+
         </motion.div>
       </motion.section>
 
@@ -755,48 +772,6 @@ export default function HomePageClient({
         </div>
       </motion.section>
 
-      {/* Kontaktai */}
-      <motion.section 
-        id="contact" 
-        className="py-20 md:py-32 px-6"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.1 }}
-        variants={sectionVariants}
-      >
-        <motion.div 
-          variants={fadeIn}
-          className="max-w-2xl mx-auto bg-white/40 backdrop-blur-3xl border border-white/60 p-8 md:p-12 rounded-[32px] md:rounded-[48px] shadow-2xl"
-        >
-          <div className="text-center mb-8 md:mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold mb-2 tracking-tight">{settings['contact_title'] || 'Susisiekti'}</h2>
-            <p className="text-gray-400 text-xs md:text-sm font-light">{settings['contact_subtitle'] || 'Atsakome per 24 valandas'}</p>
-          </div>
-
-          <AnimatePresence mode="wait">
-            {formStatus === 'success' ? (
-              <motion.div 
-                key="success"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                className="text-center py-10"
-              >
-                <div className="text-green-500 mb-4 font-bold uppercase tracking-widest text-xs">Išsiųsta sėkmingai!</div>
-                <button onClick={() => setFormStatus('idle')} className="text-[10px] font-bold uppercase tracking-widest text-purple-600 underline" suppressHydrationWarning>Siųsti dar kartą</button>
-              </motion.div>
-            ) : (
-              <form onSubmit={handleForm} className="space-y-4" suppressHydrationWarning>
-                <input required placeholder="Vardas" className="w-full bg-white/50 border border-gray-100 p-4 rounded-2xl outline-none focus:border-purple-300 transition-colors text-sm" suppressHydrationWarning />
-                <input required type="email" placeholder="El. paštas" className="w-full bg-white/50 border border-gray-100 p-4 rounded-2xl outline-none focus:border-purple-300 transition-colors text-sm" suppressHydrationWarning />
-                <textarea rows={3} placeholder="Jūsų žinutė" className="w-full bg-white/50 border border-gray-100 p-4 rounded-2xl outline-none focus:border-purple-300 transition-colors text-sm" suppressHydrationWarning />
-                <button className="w-full py-4 md:py-5 bg-black text-white rounded-2xl font-bold text-[9px] md:text-[10px] uppercase tracking-[0.3em] hover:bg-gray-800 transition-all shadow-lg hover:scale-[1.02] active:scale-[0.98] hover:shadow-xl" suppressHydrationWarning>
-                  {formStatus === 'sending' ? 'Siunčiama...' : 'Siųsti užklausą'}
-                </button>
-              </form>
-            )}
-          </AnimatePresence>
-        </motion.div>
-      </motion.section>
 
       <footer className="py-20 flex flex-col items-center gap-8 border-t border-gray-100">
         <div className="flex gap-6">
@@ -807,9 +782,9 @@ export default function HomePageClient({
               href: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(currentUrl)}` 
             },
             { 
-              icon: Twitter, 
-              label: 'Twitter', 
-              href: `https://twitter.com/intent/tweet?url=${encodeURIComponent(currentUrl)}` 
+              icon: Mail, 
+              label: 'Email', 
+              onClick: () => setShowContactModal(true)
             },
             { 
               icon: Instagram, 
@@ -817,16 +792,27 @@ export default function HomePageClient({
               href: 'https://instagram.com' 
             }
           ].map((social) => (
-            <a
-              key={social.label}
-              href={social.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-3 rounded-full bg-white shadow-sm border border-gray-100 text-gray-400 hover:text-purple-600 hover:shadow-md hover:scale-110 transition-all duration-300 group"
-              aria-label={`Share on ${social.label}`}
-            >
-              <social.icon className="w-5 h-5 group-hover:-rotate-6 transition-transform" />
-            </a>
+            social.href ? (
+              <a
+                key={social.label}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 rounded-full bg-white shadow-sm border border-gray-100 text-gray-400 hover:text-purple-600 hover:shadow-md hover:scale-110 transition-all duration-300 group"
+                aria-label={`Share on ${social.label}`}
+              >
+                <social.icon className="w-5 h-5 group-hover:-rotate-6 transition-transform" />
+              </a>
+            ) : (
+              <button
+                key={social.label}
+                onClick={social.onClick}
+                className="p-3 rounded-full bg-white shadow-sm border border-gray-100 text-gray-400 hover:text-purple-600 hover:shadow-md hover:scale-110 transition-all duration-300 group"
+                aria-label={`Contact via ${social.label}`}
+              >
+                <social.icon className="w-5 h-5 group-hover:-rotate-6 transition-transform" />
+              </button>
+            )
           ))}
         </div>
         <div className="text-center">
@@ -834,6 +820,68 @@ export default function HomePageClient({
           <p className="text-gray-300 text-[8px] tracking-[0.2em] font-sans">© {new Date().getFullYear()} Visos teisės saugomos.</p>
         </div>
       </footer>
+
+      {/* Contact Modal */}
+      <AnimatePresence>
+        {showContactModal && (
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-6">
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setShowContactModal(false)}
+              className="absolute inset-0 bg-black/40 backdrop-blur-sm cursor-pointer"
+            />
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              className="relative w-full max-w-lg bg-white rounded-[32px] p-8 md:p-12 shadow-2xl overflow-hidden"
+            >
+              <button 
+                onClick={() => setShowContactModal(false)}
+                className="absolute top-6 right-6 p-2 text-gray-400 hover:text-gray-600 transition-colors"
+              >
+                <X className="w-6 h-6" />
+              </button>
+
+              <div className="text-center mb-8 md:mb-10">
+                <h2 className="text-2xl md:text-3xl font-bold mb-2 tracking-tight">Susisiekti</h2>
+                <p className="text-gray-400 text-xs md:text-sm font-light">Atsakome per 24 valandas</p>
+              </div>
+
+              <AnimatePresence mode="wait">
+                {formStatus === 'success' ? (
+                  <motion.div 
+                    key="success"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    className="text-center py-10"
+                  >
+                    <div className="text-green-500 mb-4 font-bold uppercase tracking-widest text-xs">Išsiųsta sėkmingai!</div>
+                    <button 
+                      onClick={() => setFormStatus('idle')} 
+                      className="text-[10px] font-bold uppercase tracking-widest text-purple-600 underline"
+                      suppressHydrationWarning
+                    >
+                      Siųsti dar kartą
+                    </button>
+                  </motion.div>
+                ) : (
+                  <form onSubmit={handleForm} className="space-y-4" suppressHydrationWarning>
+                    <input required placeholder="Vardas" className="w-full bg-gray-50 border border-gray-100 p-4 rounded-2xl outline-none focus:border-purple-300 transition-colors text-sm" suppressHydrationWarning />
+                    <input required type="email" placeholder="El. paštas" className="w-full bg-gray-50 border border-gray-100 p-4 rounded-2xl outline-none focus:border-purple-300 transition-colors text-sm" suppressHydrationWarning />
+                    <textarea rows={4} placeholder="Jūsų žinutė" className="w-full bg-gray-50 border border-gray-100 p-4 rounded-2xl outline-none focus:border-purple-300 transition-colors text-sm" suppressHydrationWarning />
+                    <button className="w-full py-4 md:py-5 bg-black text-white rounded-2xl font-bold text-[9px] md:text-[10px] uppercase tracking-[0.3em] hover:bg-gray-800 transition-all shadow-lg hover:scale-[1.02] active:scale-[0.98] hover:shadow-xl" suppressHydrationWarning>
+                      {formStatus === 'sending' ? 'Siunčiama...' : 'Siųsti užklausą'}
+                    </button>
+                  </form>
+                )}
+              </AnimatePresence>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
