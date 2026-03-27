@@ -555,7 +555,7 @@ export default function HomePageClient({
             className="order-1 lg:order-2 text-center lg:text-left"
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-6 md:mb-8 tracking-tight">
-              {settings['about_title'] && settings['about_title'] !== 'Veidrodis tavo sielai' ? settings['about_title'] : 'Apie mane'}
+              {'Apie mane'}
             </h2>
             <p className="text-gray-500 leading-relaxed mb-8 md:mb-10 text-base md:text-lg font-light">
               {settings['about_desc'] || 'Aura-Soma sujungia spalvų, augalų ir kristalų energijas. Tai nėra spėjimas – tai jūsų pasąmonės atspindys per vizualų traukos dėsnį.'}
