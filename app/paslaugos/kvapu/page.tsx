@@ -26,39 +26,39 @@ const staggerContainer: Variants = {
 const GALLERY_IMAGES = [
   {
     id: 1,
-    src: 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?q=80&w=1000&auto=format&fit=crop',
-    title: 'Equilibrium pasirinkimas',
-    category: 'Procesas'
+    src: '/images/aura-soma/bottle1.png',
+    title: 'Raudona & Mėlyna',
+    category: 'Equilibrium'
   },
   {
     id: 2,
-    src: 'https://images.unsplash.com/photo-1570554886111-c80fcca286e8?q=80&w=1000&auto=format&fit=crop',
-    title: 'Kristalų ir spalvų dermė',
-    category: 'Energija'
+    src: '/images/aura-soma/bottle2.png',
+    title: 'Purpurinė & Geltona',
+    category: 'Equilibrium'
   },
   {
     id: 3,
-    src: 'https://images.unsplash.com/photo-1544161515-4af6b1d46b59?q=80&w=1000&auto=format&fit=crop',
-    title: 'Sielos veidrodis',
-    category: 'Savišvieta'
+    src: '/images/aura-soma/bottle3.png',
+    title: 'Aura-Soma kolekcija',
+    category: 'Produktų grupė'
   },
   {
     id: 4,
-    src: 'https://i.postimg.cc/vDFvv5KK/baltas-dvaras-aromoterapija.jpg',
-    title: 'Aromaterapinė erdvė',
-    category: 'Aplinka'
+    src: '/images/aura-soma/bottle4.png',
+    title: 'Raudona & Juoda',
+    category: 'Equilibrium'
   },
   {
     id: 5,
-    src: 'https://images.unsplash.com/photo-1515377905703-c4788e51af15?q=80&w=1000&auto=format&fit=crop',
-    title: 'Atradimų kelias',
-    category: 'Rezultatas'
+    src: '/images/aura-soma/bottle5.png',
+    title: 'Rožinė & Žalia',
+    category: 'Equilibrium'
   },
   {
     id: 6,
-    src: 'https://images.unsplash.com/photo-1617835527431-2b9cf0488442?q=80&w=1000&auto=format&fit=crop',
-    title: 'Spalvų kalba',
-    category: 'Metodika'
+    src: 'https://i.postimg.cc/vDFvv5KK/baltas-dvaras-aromoterapija.jpg',
+    title: 'Aromaterapinė erdvė',
+    category: 'Aplinka'
   }
 ];
 
@@ -246,11 +246,23 @@ export default function KvapuPage() {
                 <div className="text-3xl font-black text-purple-300 select-none">02</div>
                 <div>
                   <h4 className="font-bold text-gray-800 mb-2">Skaitymas (Interpretacija)</h4>
-                  <div className="grid grid-cols-2 gap-4 text-[10px] uppercase font-bold tracking-widest text-gray-400">
-                    <div className="bg-stone-50 p-3 rounded-lg border border-stone-100">1. Sielos misija</div>
-                    <div className="bg-stone-50 p-3 rounded-lg border border-stone-100">2. Iššūkiai / Dovanos</div>
-                    <div className="bg-stone-50 p-3 rounded-lg border border-stone-100">3. Čia ir dabar</div>
-                    <div className="bg-stone-50 p-3 rounded-lg border border-stone-100">4. Ateities energija</div>
+                  <div className="space-y-3">
+                    <div className="flex items-start gap-3">
+                      <div className="w-6 h-6 rounded-lg bg-stone-100 flex items-center justify-center text-[10px] font-bold text-stone-400 shrink-0 mt-0.5">1</div>
+                      <p className="text-gray-500 text-xs font-light"><span className="font-bold text-gray-700">1-asis buteliukas:</span> jūsų sielos misija ir tikslas – kodėl jūs čia?</p>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <div className="w-6 h-6 rounded-lg bg-stone-100 flex items-center justify-center text-[10px] font-bold text-stone-400 shrink-0 mt-0.5">2</div>
+                      <p className="text-gray-500 text-xs font-light"><span className="font-bold text-gray-700">2-asis buteliukas:</span> jūsų didžiausi iššūkiai ir dovanos, kurios slepiasi už jų.</p>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <div className="w-6 h-6 rounded-lg bg-stone-100 flex items-center justify-center text-[10px] font-bold text-stone-400 shrink-0 mt-0.5">3</div>
+                      <p className="text-gray-500 text-xs font-light"><span className="font-bold text-gray-700">3-asis buteliukas:</span> „čia ir dabar“ – jūsų dabartinė būsena.</p>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <div className="w-6 h-6 rounded-lg bg-stone-100 flex items-center justify-center text-[10px] font-bold text-stone-400 shrink-0 mt-0.5">4</div>
+                      <p className="text-gray-500 text-xs font-light"><span className="font-bold text-gray-700">4-asis buteliukas:</span> ateities energija ir tai, kas ateina į jūsų gyvenimą.</p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -359,7 +371,22 @@ export default function KvapuPage() {
           </motion.div>
         </div>
 
-
+        {/* Final CTA */}
+        <section className="text-center py-20">
+          <h2 className="text-4xl font-bold tracking-tighter mb-8 font-domine">Ženkite žingsnį link savęs</h2>
+          <p className="max-w-2xl mx-auto text-gray-500 font-light mb-12 leading-relaxed italic">
+            Spalvos kalba tiesiai į mūsų pasąmonę. Leiskite joms papasakoti jūsų istoriją.<br/>
+            Ar esi pasiruošęs pamatyti savo tikrąjį potencialą ir poreikius?
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 items-center justify-center">
+            <button className="px-10 py-5 bg-purple-600 text-white rounded-2xl font-black text-[10px] uppercase tracking-[0.2em] shadow-xl shadow-purple-200 hover:bg-purple-700 transition-all hover:scale-105 active:scale-95">
+              REGISTRUOTIS KONSULTACIJAI
+            </button>
+            <button className="px-10 py-5 bg-white text-black border border-gray-200 rounded-2xl font-black text-[10px] uppercase tracking-[0.2em] hover:bg-gray-50 transition-all hover:scale-105 active:scale-95">
+              NARŠYTI PRODUKTUS
+            </button>
+          </div>
+        </section>
       </main>
 
       {/* Lightbox */}
