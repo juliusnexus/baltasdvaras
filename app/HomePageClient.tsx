@@ -560,7 +560,7 @@ export default function HomePageClient({
               <div className="h-1/2 bg-blue-300/60 rounded-t-xl md:rounded-t-2xl" />
               <div className="h-1/2 bg-[#2D2D2D]/60 rounded-b-xl md:rounded-b-2xl" />
               <div className="p-3 md:p-4 text-center">
-                <p className="text-[8px] md:text-[10px] font-bold uppercase tracking-widest opacity-40 italic font-sans">Balansas</p>
+                <p className="text-[8px] md:text-[10px] font-bold uppercase tracking-widest opacity-40 italic font-sans">BALANSAS</p>
               </div>
             </motion.div>
           </motion.div>
