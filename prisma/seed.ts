@@ -59,21 +59,14 @@ async function main() {
   await prisma.pricingPlan.createMany({
     data: [
       {
-        title: 'Viena sesija',
-        description: '90 min. trukmės intensyvi analizė bei sprendimų paieška',
-        price: 'Investicija: 50 €',
+        title: 'Individuali sesija',
+        description: 'Viena nuosekli patirtis Jūsų transformacijai',
+        price: '45 €',
+        savingsText: '',
+        bonusText: 'Penkių lygių sąmoningumo analizė.',
+        isPopular: true,
         buttonText: 'Užsakyti',
         order: 1,
-      },
-      {
-        title: 'Pilna kelionė',
-        description: '5 nuoseklios sesijos (rekomenduojama)',
-        price: '200€',
-        savingsText: 'Sutaupai 50€',
-        bonusText: 'Dovana: Aura-Soma produktas',
-        isPopular: true,
-        buttonText: 'Pradėti transformaciją',
-        order: 2,
       }
     ]
   });

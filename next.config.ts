@@ -28,7 +28,7 @@ const nextConfig = {
   },
   output: 'standalone',
   turbopack: {
-    root: '.',
+    root: process.cwd(),
   },
   webpack: (config: any, {dev}: any) => {
     // HMR is disabled in AI Studio via DISABLE_HMR env var.

@@ -75,11 +75,11 @@ export default function HipnozePage() {
   const shortText = "Hipnozė – tai gilus atsipalaidavimas ir darbas su pasąmone. Tai saugus metodas, padedantis pasiekti vidinius resursus, keisti ribojančius įsitikinimus.";
 
   return (
-    <div className="min-h-screen bg-[#fcfcfc] text-[#1a1a1a] font-sans selection:bg-purple-100 selection:text-purple-900 overflow-x-hidden">
+    <div className="min-h-screen bg-[#fcfcfc] text-brand font-montserrat tracking-wider selection:bg-brand/20 selection:text-brand overflow-x-hidden">
       
       {/* Background Elements */}
       <div className="fixed inset-0 z-0 pointer-events-none opacity-20">
-        <svg viewBox="0 0 800 800" className="w-full h-full stroke-purple-300 fill-none">
+        <svg viewBox="0 0 800 800" className="w-full h-full stroke-brand/30 fill-none">
           <motion.path 
             initial={{ pathLength: 0, opacity: 0 }}
             animate={{ pathLength: 1, opacity: 1 }}
@@ -92,7 +92,7 @@ export default function HipnozePage() {
 
       {/* Navigation Bar */}
       <nav className="fixed w-full z-[60] px-6 lg:px-12 py-4 lg:py-6 flex justify-between items-center bg-white/60 backdrop-blur-xl border-b border-white/20">
-        <Link href="/" className="flex items-center gap-2 text-gray-500 hover:text-purple-600 transition-colors group">
+        <Link href="/" className="flex items-center gap-2 text-gray-500 hover:text-brand transition-colors group">
           <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
           <span className="text-[10px] font-bold tracking-[0.2em]">Grįžti į pradžią</span>
         </Link>
@@ -122,9 +122,9 @@ export default function HipnozePage() {
           >
             <motion.div 
               variants={fadeIn}
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-50 text-custom-gradient text-[9px] font-bold tracking-[0.2em] w-fit"
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand/10 text-brand text-[9px] font-bold tracking-[0.2em] w-fit"
             >
-              Seansai
+              SĄMONĖS TRANSFORMACIJA
             </motion.div>
             <motion.h1 
               variants={fadeIn}
@@ -139,7 +139,7 @@ export default function HipnozePage() {
                   {!isExpanded && (
                     <button 
                       onClick={() => setIsExpanded(true)}
-                      className="ml-2 text-purple-600 font-bold text-sm hover:underline cursor-pointer inline-block"
+                      className="ml-2 text-brand font-bold text-sm hover:underline cursor-pointer inline-block"
                     >
                       skaityti daugiau
                     </button>
@@ -152,7 +152,7 @@ export default function HipnozePage() {
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
                       onClick={() => setIsExpanded(false)}
-                      className="mt-2 text-purple-600 font-bold text-sm hover:underline cursor-pointer block"
+                      className="mt-2 text-brand font-bold text-sm hover:underline cursor-pointer block"
                     >
                       Skaityti mažiau
                     </motion.button>
@@ -167,12 +167,12 @@ export default function HipnozePage() {
                   "Teigiamų elgesio pokyčių skatinimas"
                 ].map((item, i) => (
                   <div key={i} className="flex items-center gap-3 text-gray-500">
-                    <CheckCircle2 className="w-5 h-5 text-purple-400" />
+                    <CheckCircle2 className="w-5 h-5 text-brand/60" />
                     <span className="text-sm md:text-base font-medium">{item}</span>
                   </div>
                 ))}
               </div>
-              <button className="mt-4 px-8 py-4 bg-black text-white rounded-2xl font-bold text-[10px] tracking-widest hover:bg-purple-600 transition-all hover:scale-105 active:scale-95 shadow-xl shadow-black/10">
+              <button className="mt-4 px-8 py-4 bg-black text-white rounded-2xl font-bold text-[10px] tracking-widest hover:bg-brand transition-all hover:scale-105 active:scale-95 shadow-xl shadow-black/10">
                 REGISTRUOTIS SEANSUI
               </button>
             </motion.div>
@@ -191,7 +191,7 @@ export default function HipnozePage() {
               className="object-cover"
               referrerPolicy="no-referrer"
             />
-            <div className="absolute inset-0 bg-gradient-to-tr from-purple-500/10 to-transparent pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-tr from-brand/10 to-transparent pointer-events-none" />
           </motion.div>
         </section>
 
@@ -300,7 +300,7 @@ export default function HipnozePage() {
                 href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-3 rounded-full bg-white shadow-sm border border-gray-100 text-gray-400 hover:text-purple-600 hover:shadow-md hover:scale-110 transition-all duration-300 group"
+                className="p-3 rounded-full bg-white shadow-sm border border-gray-100 text-gray-400 hover:text-brand hover:shadow-md hover:scale-110 transition-all duration-300 group"
                 aria-label={`Share on ${social.label}`}
               >
                 <social.icon className="w-5 h-5" />

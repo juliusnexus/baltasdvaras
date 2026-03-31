@@ -1,11 +1,18 @@
 import type {Metadata} from 'next';
-import { Domine } from 'next/font/google';
+import { Prata, Montserrat } from 'next/font/google';
 import './globals.css'; // Global styles
 
-const domine = Domine({
+const prata = Prata({
+  weight: '400',
   subsets: ['latin'],
   display: 'swap',
-  variable: '--font-domine',
+  variable: '--font-prata',
+});
+
+const montserrat = Montserrat({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-montserrat',
 });
 
 export const metadata: Metadata = {
@@ -15,7 +22,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({children}: {children: React.ReactNode}) {
   return (
-    <html lang="en" suppressHydrationWarning className={domine.variable}>
+    <html lang="en" suppressHydrationWarning className={`${prata.variable} ${montserrat.variable}`}>
       <body suppressHydrationWarning>{children}</body>
     </html>
   );

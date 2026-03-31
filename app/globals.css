@@ -1,11 +1,17 @@
 @import "tailwindcss";
 
 @theme {
-  --font-domine: var(--font-domine);
+  --font-prata: var(--font-prata);
+  --font-montserrat: var(--font-montserrat);
+  --color-brand: #7EB77F;
 }
 
-@utility font-domine {
-  font-family: var(--font-domine);
+@utility font-prata {
+  font-family: var(--font-prata);
+}
+
+@utility font-montserrat {
+  font-family: var(--font-montserrat);
 }
 
 @utility small-caps {
@@ -13,13 +19,23 @@
 }
 
 @utility text-custom-gradient {
-  background-image: linear-gradient(to right, #1f1f1f, #a0a0a0, #1f1f1f, #a0a0a0, #000000);
+  background-image: linear-gradient(to right, #2D4F2E, #7EB77F, #4A6B4B, #7EB77F, #2D4F2E);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@utility text-rose-gradient {
+  background-image: linear-gradient(to right, #4A3B40, #8E576B, #5E3D48, #8E576B, #4A3B40);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 @layer base {
+  html, body {
+    letter-spacing: 0.05em;
+  }
   button, 
   [role="button"],
   a,

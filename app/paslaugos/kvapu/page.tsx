@@ -71,11 +71,11 @@ export default function KvapuPage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#fcfcfc] text-[#1a1a1a] font-sans selection:bg-purple-100 selection:text-purple-900 overflow-x-hidden">
+    <div className="min-h-screen bg-[#fcfcfc] text-brand font-montserrat tracking-wider selection:bg-brand/20 selection:text-brand overflow-x-hidden">
       
       {/* Background Elements */}
       <div className="fixed inset-0 z-0 pointer-events-none opacity-20">
-        <svg viewBox="0 0 800 800" className="w-full h-full stroke-purple-300 fill-none">
+        <svg viewBox="0 0 800 800" className="w-full h-full stroke-brand/40 fill-none">
           <motion.path 
             initial={{ pathLength: 0, opacity: 0 }}
             animate={{ pathLength: 1, opacity: 1 }}
@@ -88,7 +88,7 @@ export default function KvapuPage() {
 
       {/* Navigation Bar */}
       <nav className="fixed w-full z-[60] px-6 lg:px-12 py-4 lg:py-6 flex justify-between items-center bg-white/60 backdrop-blur-xl border-b border-white/20">
-        <Link href="/" className="flex items-center gap-2 text-gray-500 hover:text-purple-600 transition-colors group">
+        <Link href="/" className="flex items-center gap-2 text-gray-500 hover:text-brand transition-colors group">
           <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
           <span className="text-[10px] font-bold tracking-[0.2em]">Grįžti į pradžią</span>
         </Link>
@@ -117,18 +117,18 @@ export default function KvapuPage() {
           >
             <motion.div 
               variants={fadeIn}
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-50 text-custom-gradient text-[9px] font-bold tracking-[0.2em] w-fit"
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand/10 text-brand text-[9px] font-bold tracking-[0.2em] w-fit"
             >
               Kvapų konsultacija. Aura-Soma®
             </motion.div>
             <motion.h1 
               variants={fadeIn}
-              className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-custom-gradient leading-[1.1] font-domine"
+              className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-wider text-custom-gradient leading-[1.1] font-prata"
             >
               Spalvų kalba tavo sielai
             </motion.h1>
             <motion.div variants={fadeIn} className="space-y-6">
-              <blockquote className="border-l-4 border-purple-200 pl-6 italic text-gray-600 text-lg md:text-xl font-light leading-relaxed">
+              <blockquote className="border-l-4 border-brand/20 pl-6 italic text-gray-600 text-lg md:text-xl font-light leading-relaxed">
                 &ldquo;Mes esame spalvos, kurias pasirenkame, ir jos atspindi mūsų tikruosius poreikius.&rdquo;
                 <footer className="mt-2 text-sm font-bold text-gray-400 not-italic">— Vicky Wall, sistemos įkūrėja.</footer>
               </blockquote>
@@ -149,7 +149,7 @@ export default function KvapuPage() {
                     { title: "Kristalai", desc: "Taurieji mineralai" }
                   ].map((item, i) => (
                     <div key={i} className="bg-white/40 backdrop-blur-md p-4 rounded-2xl border border-white/30 shadow-sm">
-                      <h4 className="font-bold text-[10px] uppercase tracking-widest text-purple-600 mb-1">{item.title}</h4>
+                      <h4 className="font-bold text-[10px] uppercase tracking-widest text-brand mb-1">{item.title}</h4>
                       <p className="text-[10px] text-gray-400 uppercase tracking-tighter">{item.desc}</p>
                     </div>
                   ))}
@@ -170,7 +170,7 @@ export default function KvapuPage() {
               fill
               className="object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-tr from-purple-500/10 to-transparent pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-tr from-brand/10 to-transparent pointer-events-none" />
           </motion.div>
         </section>
 
@@ -181,7 +181,7 @@ export default function KvapuPage() {
             whileInView="visible"
             viewport={{ once: true }}
             variants={fadeIn}
-            className="bg-purple-50/50 backdrop-blur-xl rounded-[40px] p-8 md:p-16 border border-purple-100"
+            className="bg-brand/5 backdrop-blur-xl rounded-[40px] p-8 md:p-16 border border-brand/10"
           >
             <h2 className="text-3xl font-bold tracking-tighter mb-8 text-center text-gray-800">Kokią naudą tai teikia?</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -194,8 +194,8 @@ export default function KvapuPage() {
                 { title: "Sąmoningumas", desc: "Gydomas žmogus, stiprinant jo savimonę." }
               ].map((benefit, i) => (
                 <div key={i} className="flex items-start gap-4">
-                  <div className="mt-1 bg-white p-2 rounded-full shadow-sm border border-purple-100">
-                    <CheckCircle2 className="w-5 h-5 text-purple-500" />
+                  <div className="mt-1 bg-white p-2 rounded-full shadow-sm border border-brand/10">
+                    <CheckCircle2 className="w-5 h-5 text-brand" />
                   </div>
                   <div>
                     <h3 className="font-bold text-gray-800 mb-1">{benefit.title}</h3>
@@ -236,14 +236,14 @@ export default function KvapuPage() {
             </p>
             <div className="space-y-8">
               <div className="flex gap-6">
-                <div className="text-3xl font-black text-purple-300 select-none">01</div>
+                <div className="text-3xl font-black text-brand/30 select-none">01</div>
                 <div>
                   <h4 className="font-bold text-gray-800 mb-2">Buteliukų pasirinkimas</h4>
                   <p className="text-gray-500 text-sm font-light">Prieš jus išsirikiuoja daugiau nei 120 buteliukų. Jūs intuityviai išsirenkate keturis, kurie jus labiausiai traukia.</p>
                 </div>
               </div>
               <div className="flex gap-6">
-                <div className="text-3xl font-black text-purple-300 select-none">02</div>
+                <div className="text-3xl font-black text-brand/30 select-none">02</div>
                 <div>
                   <h4 className="font-bold text-gray-800 mb-2">Skaitymas (Interpretacija)</h4>
                   <div className="space-y-3">
@@ -267,7 +267,7 @@ export default function KvapuPage() {
                 </div>
               </div>
               <div className="flex gap-6">
-                <div className="text-3xl font-black text-purple-300 select-none">03</div>
+                <div className="text-3xl font-black text-brand/30 select-none">03</div>
                 <div>
                   <h4 className="font-bold text-gray-800 mb-2">Terapinio produkto parinkimas</h4>
                   <p className="text-gray-500 text-sm font-light">Rekomenduojamas konkretus buteliukas naudojimui namuose, bei kiti pagalbiniai produktai (pomanderiai, kvintesencijos, archangelojai).</p>
@@ -284,9 +284,9 @@ export default function KvapuPage() {
             <div className="overflow-hidden rounded-[32px] border border-gray-100 shadow-xl bg-white/50 backdrop-blur-xl">
               <table className="w-full text-left border-collapse">
                 <thead>
-                  <tr className="bg-purple-50/50">
-                    <th className="p-6 md:p-10 text-[10px] uppercase tracking-widest font-black text-purple-900 border-b border-purple-100">Ką sprendžia?</th>
-                    <th className="p-6 md:p-10 text-[10px] uppercase tracking-widest font-black text-purple-900 border-b border-purple-100">Kuo padeda?</th>
+                  <tr className="bg-brand/5">
+                    <th className="p-6 md:p-10 text-[10px] uppercase tracking-widest font-black text-brand border-b border-brand/10">Ką sprendžia?</th>
+                    <th className="p-6 md:p-10 text-[10px] uppercase tracking-widest font-black text-brand border-b border-brand/10">Kuo padeda?</th>
                   </tr>
                 </thead>
                 <tbody className="text-gray-600 font-light text-sm md:text-base">
@@ -323,12 +323,12 @@ export default function KvapuPage() {
               <motion.div 
                 key={i}
                 whileHover={{ y: -10 }}
-                className={`p-10 rounded-[32px] border flex flex-col items-center text-center transition-all ${plan.popular ? 'bg-purple-600 text-white border-purple-600 shadow-2xl shadow-purple-500/20' : 'bg-white border-gray-100 shadow-xl'}`}
+                className={`p-10 rounded-[32px] border flex flex-col items-center text-center transition-all ${plan.popular ? 'bg-brand text-white border-brand shadow-2xl shadow-brand/20' : 'bg-white border-gray-100 shadow-xl'}`}
               >
-                <div className={`text-[10px] font-black uppercase tracking-widest mb-4 ${plan.popular ? 'text-purple-200' : 'text-purple-600'}`}>Investicija</div>
-                <div className="text-4xl font-black mb-2">{plan.price}</div>
-                <div className={`text-xs mb-8 ${plan.popular ? 'text-purple-100' : 'text-gray-400'}`}>{plan.time} — {plan.desc}</div>
-                <button className={`mt-auto w-full py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all ${plan.popular ? 'bg-white text-purple-600 hover:bg-purple-100' : 'bg-black text-white hover:bg-purple-600'}`}>
+                <div className={`text-[10px] font-black uppercase tracking-widest mb-4 ${plan.popular ? 'text-brand/20' : 'text-brand'}`}>Investicija</div>
+                <div className="text-3xl font-black mb-1">{plan.price}</div>
+                <div className={`text-xs mb-8 ${plan.popular ? 'text-white/80' : 'text-gray-400'}`}>{plan.time} — {plan.desc}</div>
+                <button className={`mt-auto w-full py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all ${plan.popular ? 'bg-white text-brand hover:bg-brand/10' : 'bg-black text-white hover:bg-brand'}`}>
                   Užsakyti
                 </button>
               </motion.div>
@@ -373,13 +373,13 @@ export default function KvapuPage() {
 
         {/* Final CTA */}
         <section className="text-center py-20">
-          <h2 className="text-4xl font-bold tracking-tighter mb-8 font-domine">Ženkite žingsnį link savęs</h2>
+          <h2 className="text-4xl font-bold tracking-wider mb-8 font-prata">Ženkite žingsnį link savęs</h2>
           <p className="max-w-2xl mx-auto text-gray-500 font-light mb-12 leading-relaxed italic">
             Spalvos kalba tiesiai į mūsų pasąmonę. Leiskite joms papasakoti jūsų istoriją.<br/>
             Ar esi pasiruošęs pamatyti savo tikrąjį potencialą ir poreikius?
           </p>
           <div className="flex flex-col sm:flex-row gap-4 items-center justify-center">
-            <button className="px-10 py-5 bg-purple-600 text-white rounded-2xl font-black text-[10px] uppercase tracking-[0.2em] shadow-xl shadow-purple-200 hover:bg-purple-700 transition-all hover:scale-105 active:scale-95">
+            <button className="px-10 py-5 bg-brand text-white rounded-2xl font-black text-[10px] uppercase tracking-[0.2em] shadow-xl shadow-brand/20 hover:bg-brand/90 transition-all hover:scale-105 active:scale-95">
               REGISTRUOTIS KONSULTACIJAI
             </button>
             <button className="px-10 py-5 bg-white text-black border border-gray-200 rounded-2xl font-black text-[10px] uppercase tracking-[0.2em] hover:bg-gray-50 transition-all hover:scale-105 active:scale-95">
@@ -439,7 +439,7 @@ export default function KvapuPage() {
               <a
                 key={social.label}
                 href={social.href}
-                className="p-3 rounded-full bg-white shadow-sm border border-gray-100 text-gray-400 hover:text-purple-600 hover:shadow-md hover:scale-110 transition-all duration-300"
+                className="p-3 rounded-full bg-white shadow-sm border border-gray-100 text-gray-400 hover:text-brand hover:shadow-md hover:scale-110 transition-all duration-300"
                 aria-label={social.label}
               >
                 <social.icon className="w-5 h-5" />

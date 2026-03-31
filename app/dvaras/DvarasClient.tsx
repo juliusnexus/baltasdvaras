@@ -34,11 +34,11 @@ export default function DvarasClient({ images }: { images: GalleryImage[] }) {
   const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
 
   return (
-    <div className="min-h-screen bg-[#fcfcfc] text-[#1a1a1a] font-sans selection:bg-purple-100 selection:text-purple-900 overflow-x-hidden">
+    <div className="min-h-screen bg-[#fcfcfc] text-brand font-montserrat tracking-wider selection:bg-brand/20 selection:text-brand overflow-x-hidden">
       
       {/* Background Elements */}
       <div className="fixed inset-0 z-0 pointer-events-none opacity-20">
-        <svg viewBox="0 0 800 800" className="w-full h-full stroke-purple-300 fill-none">
+        <svg viewBox="0 0 800 800" className="w-full h-full stroke-brand/40 fill-none">
           <motion.path 
             initial={{ pathLength: 0, opacity: 0 }}
             animate={{ pathLength: 1, opacity: 1 }}
@@ -51,7 +51,7 @@ export default function DvarasClient({ images }: { images: GalleryImage[] }) {
 
       {/* Navigation Bar */}
       <nav className="fixed w-full z-[60] px-6 lg:px-12 py-4 lg:py-6 flex justify-between items-center bg-white/60 backdrop-blur-xl border-b border-white/20">
-        <Link href="/" className="flex items-center gap-2 text-gray-500 hover:text-purple-600 transition-colors group">
+        <Link href="/" className="flex items-center gap-2 text-gray-500 hover:text-brand transition-colors group">
           <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
           <span className="text-[10px] font-bold tracking-[0.2em]">Grįžti į pradžią</span>
         </Link>
@@ -79,14 +79,15 @@ export default function DvarasClient({ images }: { images: GalleryImage[] }) {
           className="text-center mb-16 md:mb-24"
         >
           <motion.div 
-            variants={fadeIn}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-50 text-custom-gradient text-[9px] font-bold tracking-[0.2em] mb-6"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand/10 text-brand text-[9px] font-bold tracking-[0.2em] w-fit mb-6"
           >
-            Galerija
+            VIZIJA IR ISTORIJA
           </motion.div>
           <motion.h1 
             variants={fadeIn}
-            className="text-4xl md:text-6xl font-bold tracking-tighter mb-6 text-custom-gradient"
+            className="text-4xl md:text-6xl font-bold tracking-wider mb-6 text-custom-gradient font-prata"
           >
             Dvaras
           </motion.h1>

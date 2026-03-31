@@ -133,10 +133,32 @@ export default function HomePageClient({
     setSelectedStep(step);
   };
 
-  const handleForm = (e: React.FormEvent) => {
+  const handleForm = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setFormStatus('sending');
-    setTimeout(() => setFormStatus('success'), 1500);
+    
+    const formData = new FormData(e.currentTarget);
+    const data = {
+      name: formData.get('name'),
+      email: formData.get('email'),
+      message: formData.get('message')
+    };
+
+    try {
+      const resp = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      
+      if (resp.ok) {
+        setFormStatus('success');
+      } else {
+        setFormStatus('error');
+      }
+    } catch (err) {
+      setFormStatus('error');
+    }
   };
   const [showContactModal, setShowContactModal] = useState(false);
 
@@ -149,11 +171,11 @@ export default function HomePageClient({
   };
 
   return (
-    <div className="min-h-screen bg-[#fcfcfc] text-[#1a1a1a] font-sans selection:bg-purple-100 selection:text-purple-900 overflow-x-hidden">
+    <div className="min-h-screen bg-[#fcfcfc] text-brand font-montserrat tracking-wider selection:bg-brand/20 selection:text-brand overflow-x-hidden">
       
       {/* Skaitmeninės Linijos Fone */}
       <div className="fixed inset-0 z-0 pointer-events-none opacity-30">
-        <svg viewBox="0 0 800 800" className="w-full h-full stroke-purple-300 fill-none">
+        <svg viewBox="0 0 100 100" className="w-full h-full stroke-brand/30 fill-none opacity-20">
           <motion.path 
             initial={{ pathLength: 0, opacity: 0 }}
             animate={{ pathLength: 1, opacity: 1 }}
@@ -195,13 +217,13 @@ export default function HomePageClient({
               onMouseLeave={handleMouseLeave}
             >
               {item.href ? (
-                <Link href={item.href} className="hover:text-purple-600 transition-colors flex items-center gap-1 py-4">
+                <Link href={item.href} className="hover:text-brand transition-colors flex items-center gap-1 py-4">
                   {item.label}
                 </Link>
               ) : (
                 <button 
                   onClick={() => scrollToSection(item.targetId)} 
-                  className="hover:text-purple-600 transition-colors flex items-center gap-1 py-4"
+                  className="hover:text-brand transition-colors flex items-center gap-1 py-4"
                   suppressHydrationWarning
                 >
                   {item.label}
@@ -230,14 +252,14 @@ export default function HomePageClient({
                       {child.href && (!child.children || child.children.length === 0) ? (
                         <Link 
                           href={child.href}
-                          className="text-left hover:text-purple-600 transition-colors text-[9px] tracking-widest block"
+                          className="text-left hover:text-brand transition-colors text-[9px] tracking-widest block"
                         >
                           {child.label}
                         </Link>
                       ) : (
                         <button 
                           onClick={() => !child.children && scrollToSection(child.targetId)}
-                          className="w-full text-left hover:text-purple-600 transition-colors text-[9px] tracking-widest flex items-center justify-between"
+                          className="w-full text-left hover:text-brand transition-colors text-[9px] tracking-widest flex items-center justify-between"
                           suppressHydrationWarning
                         >
                           {child.label}
@@ -260,7 +282,7 @@ export default function HomePageClient({
                                 <Link 
                                   key={grandchild.id}
                                   href={grandchild.href}
-                                  className="text-left hover:text-purple-600 transition-colors text-[9px] tracking-widest block"
+                                  className="text-left hover:text-brand transition-colors text-[9px] tracking-widest block"
                                 >
                                   {grandchild.label}
                                 </Link>
@@ -268,7 +290,7 @@ export default function HomePageClient({
                                 <button 
                                   key={grandchild.id}
                                   onClick={() => scrollToSection(grandchild.targetId)}
-                                  className="text-left hover:text-purple-600 transition-colors text-[9px] tracking-widest block w-full"
+                                  className="text-left hover:text-brand transition-colors text-[9px] tracking-widest block w-full"
                                   suppressHydrationWarning
                                 >
                                   {grandchild.label}
@@ -292,7 +314,7 @@ export default function HomePageClient({
           {/* Mobile Menu Toggle */}
           <button 
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="lg:hidden p-2 text-gray-500 hover:text-purple-600 transition-colors"
+            className="lg:hidden p-2 text-gray-500 hover:text-brand transition-colors"
             suppressHydrationWarning
           >
             {isMenuOpen ? (
@@ -318,7 +340,7 @@ export default function HomePageClient({
                     <Link
                       href={item.href}
                       onClick={() => setIsMenuOpen(false)}
-                      className="text-[10px] font-bold tracking-[0.2em] text-gray-500 hover:text-purple-600 text-left"
+                      className="text-[10px] font-bold tracking-[0.2em] text-gray-500 hover:text-brand text-left"
                     >
                       {item.label}
                     </Link>
@@ -332,7 +354,7 @@ export default function HomePageClient({
                           setIsMenuOpen(false);
                         }
                       }} 
-                      className="text-[10px] font-bold tracking-[0.2em] text-gray-500 hover:text-purple-600 text-left flex items-center justify-between"
+                      className="text-[10px] font-bold tracking-[0.2em] text-gray-500 hover:text-brand text-left flex items-center justify-between"
                       suppressHydrationWarning
                     >
                       {item.label}
@@ -351,7 +373,7 @@ export default function HomePageClient({
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: 'auto', opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
-                        className="overflow-hidden flex flex-col gap-4 pl-4 border-l border-purple-100"
+                        className="overflow-hidden flex flex-col gap-4 pl-4 border-l border-brand/10"
                       >
                         {item.children.map((child) => (
                           <div key={child.id} className="flex flex-col gap-4">
@@ -392,7 +414,7 @@ export default function HomePageClient({
                                   initial={{ height: 0, opacity: 0 }}
                                   animate={{ height: 'auto', opacity: 1 }}
                                   exit={{ height: 0, opacity: 0 }}
-                                  className="overflow-hidden flex flex-col gap-4 pl-4 border-l border-purple-100"
+                                  className="overflow-hidden flex flex-col gap-4 pl-4 border-l border-brand/10"
                                 >
                                   {child.children.map(grandchild => (
                                     grandchild.href ? (
@@ -441,35 +463,35 @@ export default function HomePageClient({
           <div className="max-w-2xl text-center lg:text-left">
             <motion.div 
               variants={fadeIn}
-              className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-purple-100/80 text-purple-900 text-[10px] font-black tracking-[0.3em] mb-8 md:mb-10 shadow-sm border border-purple-200"
+              className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-brand/10 text-brand text-[10px] font-bold tracking-[0.3em] mb-8 md:mb-10 shadow-sm border border-brand/20"
             >
               {settings['hero_badge'] || 'Sielos spalvų transformacija'}
             </motion.div>
 
             <div className="flex flex-col gap-10 md:gap-12 mb-12">
               <motion.div variants={fadeIn} className="group">
-                <h1 className="text-2xl sm:text-3xl md:text-4xl font-black leading-tight tracking-tighter mb-2 text-custom-gradient drop-shadow-sm font-domine small-caps">
+                <h1 className="text-2xl sm:text-3xl md:text-4xl font-black leading-tight tracking-wider mb-2 text-rose-gradient drop-shadow-sm font-prata small-caps">
                   {settings['hero_title_1'] || 'Čia gali būti kuo esi.'}
                 </h1>
-                <p className="text-custom-gradient text-base md:text-lg font-medium italic opacity-100 group-hover:scale-[1.02] transition-transform origin-left font-domine small-caps">
+                <p className="text-rose-gradient text-base md:text-lg font-medium italic opacity-100 group-hover:scale-[1.02] transition-transform origin-left font-montserrat tracking-wider small-caps">
                   {settings['hero_subtitle_1'] || 'Tai atsivėrimas. Tiesa.'}
                 </p>
               </motion.div>
 
               <motion.div variants={fadeIn} className="group">
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-black leading-tight tracking-tighter mb-2 text-custom-gradient drop-shadow-sm font-domine small-caps">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-black leading-tight tracking-wider mb-2 text-rose-gradient drop-shadow-sm font-prata small-caps">
                   {settings['hero_title_2'] || 'Čia dėmesys tau.'}
                 </h2>
-                <p className="text-custom-gradient text-base md:text-lg font-medium italic opacity-100 group-hover:scale-[1.02] transition-transform origin-left font-domine small-caps">
+                <p className="text-rose-gradient text-base md:text-lg font-medium italic opacity-100 group-hover:scale-[1.02] transition-transform origin-left font-montserrat tracking-wider small-caps">
                   {settings['hero_subtitle_2'] || 'Tai esmė. Meilė.'}
                 </p>
               </motion.div>
 
               <motion.div variants={fadeIn} className="group">
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-black leading-tight tracking-tighter mb-2 text-custom-gradient drop-shadow-sm font-domine small-caps">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-black leading-tight tracking-wider mb-2 text-rose-gradient drop-shadow-sm font-prata small-caps">
                   {settings['hero_title_3'] || 'Čia susitinka dvasia ir materija.'}
                 </h2>
-                <p className="text-custom-gradient text-base md:text-lg font-medium italic opacity-100 group-hover:scale-[1.02] transition-transform origin-left font-domine small-caps">
+                <p className="text-rose-gradient text-base md:text-lg font-medium italic opacity-100 group-hover:scale-[1.02] transition-transform origin-left font-montserrat tracking-wider small-caps">
                   {settings['hero_subtitle_3'] || 'Tai darna. Evoliucija.'}
                 </p>
               </motion.div>
@@ -479,17 +501,10 @@ export default function HomePageClient({
               variants={fadeIn}
               className="flex flex-col sm:flex-row gap-4 items-center justify-center lg:justify-start"
             >
-              <button 
-                onClick={() => scrollToSection('about')}
-                className="w-full sm:w-auto px-10 py-4 md:py-5 rounded-2xl font-bold text-xs uppercase tracking-widest border border-gray-200 hover:border-purple-300 hover:bg-white transition-all shadow-sm hover:scale-105 active:scale-95 hover:shadow-md"
-                suppressHydrationWarning
-              >
-                <span className="text-custom-gradient">Sužinoti daugiau</span>
-              </button>
 
               <button 
                 onClick={() => scrollToSection('journey')}
-                className="w-full sm:w-auto bg-purple-600 text-white px-10 py-4 md:py-5 rounded-2xl font-bold text-xs uppercase tracking-widest shadow-xl shadow-purple-200 hover:bg-purple-700 transition-all hover:scale-105 active:scale-95 hover:shadow-purple-500/30"
+                className="w-full sm:w-auto bg-brand text-white px-10 py-4 md:py-5 rounded-2xl font-bold text-xs uppercase tracking-widest shadow-xl shadow-brand/20 hover:bg-brand/90 transition-all hover:scale-105 active:scale-95 hover:shadow-brand/30"
                 suppressHydrationWarning
               >
                 <span className="text-white">Pradėti kelionę</span>
@@ -563,7 +578,7 @@ export default function HomePageClient({
             <div className="grid grid-cols-2 gap-3 md:gap-4 max-w-md mx-auto lg:mx-0">
               {['Augalai', 'Kristalai', 'Spalvos', 'Šviesa'].map((item) => (
                 <div key={item} className="bg-white/40 backdrop-blur-md p-4 md:p-6 rounded-2xl border border-white/30">
-                  <h4 className="font-bold text-[9px] md:text-[10px] uppercase tracking-widest text-purple-600 mb-1">{item}</h4>
+                  <h4 className="font-bold text-[9px] md:text-[10px] uppercase tracking-widest text-brand mb-1">{item}</h4>
                   <p className="text-[8px] md:text-[9px] text-gray-400 uppercase tracking-tighter">Grynoji energija</p>
                 </div>
               ))}
@@ -575,7 +590,7 @@ export default function HomePageClient({
       {/* 5 Sesijų Planas */}
       <motion.section 
         id="journey" 
-        className="py-20 md:py-32 bg-purple-50/20 px-6"
+        className="py-20 md:py-32 bg-brand/5 px-6"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.1 }}
@@ -600,10 +615,10 @@ export default function HomePageClient({
                 className="bg-white/40 backdrop-blur-xl p-6 md:p-8 rounded-[24px] md:rounded-[32px] border border-white/50 text-center flex flex-col items-center group shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer"
                 suppressHydrationWarning
               >
-                <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-white flex items-center justify-center text-xs font-bold mb-4 md:mb-6 shadow-sm group-hover:bg-purple-600 group-hover:text-white transition-colors">
+                <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-white flex items-center justify-center text-xs font-bold mb-4 md:mb-6 shadow-sm group-hover:bg-brand group-hover:text-white transition-colors">
                   {step.stepId}
                 </div>
-                <h3 className="font-bold text-xs md:text-sm mb-3 md:mb-4 uppercase tracking-tighter group-hover:text-purple-600 transition-colors">
+                <h3 className="font-bold text-xs md:text-sm mb-3 md:mb-4 uppercase tracking-tighter group-hover:text-brand transition-colors">
                   {({
                     '01': 'Analizė',
                     '02': 'Tikslas',
@@ -674,11 +689,11 @@ export default function HomePageClient({
                 </svg>
               </button>
               
-              <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-purple-600 text-white flex items-center justify-center text-xs md:text-sm font-bold mb-4 md:mb-6 shadow-lg shadow-purple-200">
+              <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-brand text-white flex items-center justify-center text-xs md:text-sm font-bold mb-4 md:mb-6 shadow-lg shadow-brand/20">
                 {selectedStep.stepId}
               </div>
               
-              <h3 className="text-lg md:text-xl font-bold mb-3 md:mb-4 uppercase tracking-tighter text-purple-600">
+              <h3 className="text-lg md:text-xl font-bold mb-3 md:mb-4 uppercase tracking-tighter text-brand">
                 {({
                   '01': 'Analizė',
                   '02': 'Tikslas',
@@ -692,16 +707,6 @@ export default function HomePageClient({
                 {selectedStep.longDesc}
               </p>
               
-              <button 
-                onClick={() => {
-                  setSelectedStep(null);
-                  scrollToSection('contact');
-                }}
-                className="mt-2 px-8 py-3 bg-black text-white rounded-2xl font-bold text-[9px] md:text-[10px] uppercase tracking-widest hover:bg-purple-600 transition-all"
-                suppressHydrationWarning
-              >
-                Sužinoti daugiau
-              </button>
             </motion.div>
           </>
         )}
@@ -718,33 +723,36 @@ export default function HomePageClient({
       >
         <motion.div 
           variants={staggerContainer}
-          className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8"
+          className="max-w-md mx-auto flex flex-col gap-6"
         >
-          {pricingPlans.sort((a, b) => a.order - b.order).map((plan) => {
+          {pricingPlans
+            .filter(plan => plan.title !== 'Viena sesija')
+            .sort((a, b) => a.order - b.order)
+            .map((plan) => {
             // Robustness Fix: Override details for specific plans
-            const displayPlan = plan.title === 'Viena sesija' ? {
+            const displayPlan = plan.title === 'Pilna kelionė' ? {
               ...plan,
-              description: '90 min. trukmės intensyvi analizė bei sprendimų paieška',
-              price: 'Investicija: 50 €'
-            } : plan.title === 'Pilna kelionė' ? {
-              ...plan,
-              price: '200 €'
+              title: 'Individuali sesija',
+              description: 'Viena nuosekli patirtis Jūsų transformacijai',
+              price: '45 €',
+              bonusText: 'Penkių lygių sąmoningumo analizė.',
+              savingsText: null, // Remove "Sutaupai 50 eur" badge
             } : plan;
 
             return (
-              <motion.div key={displayPlan.id} variants={fadeIn} className={`p-8 md:p-10 rounded-[32px] md:rounded-[40px] flex flex-col justify-between transition-shadow relative overflow-hidden ${displayPlan.isPopular ? 'bg-purple-50/80 backdrop-blur-xl border border-purple-200 shadow-xl shadow-purple-900/5 hover:shadow-purple-900/10' : 'border border-stone-200 bg-stone-50/50 backdrop-blur-xl shadow-sm hover:shadow-md'}`}>
+              <motion.div key={displayPlan.id} variants={fadeIn} className={`p-8 md:p-10 rounded-[32px] md:rounded-[40px] flex flex-col justify-between transition-shadow relative overflow-hidden ${true ? 'bg-brand/5 backdrop-blur-xl border border-brand/20 shadow-xl shadow-brand/5 hover:shadow-brand/10' : 'border border-stone-200 bg-stone-50/50 backdrop-blur-xl shadow-sm hover:shadow-md'}`}>
                  {displayPlan.savingsText && (
-                    <div className="absolute top-6 right-6 md:top-8 md:right-8 bg-purple-200 text-purple-900 text-[8px] md:text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest">{displayPlan.savingsText}</div>
+                    <div className="absolute top-6 right-6 md:top-8 md:right-8 bg-brand/20 text-brand text-[8px] md:text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest">{displayPlan.savingsText}</div>
                  )}
                 <div>
-                  <h3 className={`text-xl md:text-2xl font-bold italic mb-3 md:mb-4 ${displayPlan.isPopular ? 'text-purple-900' : 'text-stone-800'}`}>{displayPlan.title}</h3>
-                  <p className={`text-[10px] md:text-xs mb-6 md:mb-8 ${displayPlan.isPopular ? 'text-purple-700/60' : 'text-stone-500'}`}>{displayPlan.description}</p>
-                  <div className={`text-xl md:text-2xl font-bold tracking-tighter ${displayPlan.isPopular ? 'mb-2 text-purple-900' : 'mb-8 md:mb-10 text-stone-900'}`}>{displayPlan.price}</div>
+                  <h3 className={`text-xl md:text-2xl font-bold italic mb-3 md:mb-4 text-brand`}>{displayPlan.title}</h3>
+                  <p className={`text-[10px] md:text-xs mb-6 md:mb-8 text-[#4A6B4B]`}>{displayPlan.description}</p>
+                  <div className={`text-xl md:text-2xl font-bold tracking-tighter mb-2 text-brand`}>{displayPlan.price}</div>
                   {displayPlan.bonusText && (
-                    <p className="text-purple-600 text-[9px] md:text-[10px] font-bold uppercase mb-8 md:mb-10 tracking-widest">{displayPlan.bonusText}</p>
+                    <p className="text-[#4A6B4B] text-[9px] md:text-[10px] font-bold uppercase mb-8 md:mb-10 tracking-widest">{displayPlan.bonusText}</p>
                   )}
                 </div>
-                <button className={`w-full py-4 rounded-2xl font-bold text-[9px] md:text-[10px] uppercase tracking-widest transition-all hover:scale-[1.02] active:scale-[0.98] ${displayPlan.isPopular ? 'md:py-5 bg-purple-600 text-white hover:bg-purple-700 shadow-lg shadow-purple-600/20' : 'border border-stone-800 text-stone-800 hover:bg-stone-800 hover:text-white'}`} suppressHydrationWarning>
+                <button className={`w-full py-4 rounded-2xl font-bold text-[9px] md:text-[10px] uppercase tracking-widest transition-all hover:scale-[1.02] active:scale-[0.98] md:py-5 bg-brand text-white hover:bg-brand/90 shadow-lg shadow-brand/20`} suppressHydrationWarning>
                   {displayPlan.buttonText}
                 </button>
               </motion.div>
@@ -766,8 +774,8 @@ export default function HomePageClient({
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-8 tracking-tight">Artimiausi Renginiai</h2>
           <p className="text-gray-500 mb-12 font-light">Sekite mūsų naujienas ir prisijunkite prie bendruomenės susitikimų.</p>
-          <div className="bg-purple-50/50 p-8 rounded-[32px] border border-purple-100">
-            <p className="text-purple-600 font-bold uppercase tracking-widest text-xs">Šiuo metu planuojamų renginių nėra</p>
+          <div className="bg-brand/5 p-8 rounded-[32px] border border-brand/10">
+            <p className="text-brand font-bold uppercase tracking-widest text-xs">Šiuo metu planuojamų renginių nėra</p>
           </div>
         </div>
       </motion.section>
@@ -798,7 +806,7 @@ export default function HomePageClient({
                 href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-3 rounded-full bg-white shadow-sm border border-gray-100 text-gray-400 hover:text-purple-600 hover:shadow-md hover:scale-110 transition-all duration-300 group"
+                className="p-3 rounded-full bg-white shadow-sm border border-gray-100 text-gray-400 hover:text-brand hover:shadow-md hover:scale-110 transition-all duration-300 group"
                 aria-label={`Share on ${social.label}`}
               >
                 <social.icon className="w-5 h-5 group-hover:-rotate-6 transition-transform" />
@@ -807,7 +815,7 @@ export default function HomePageClient({
               <button
                 key={social.label}
                 onClick={social.onClick}
-                className="p-3 rounded-full bg-white shadow-sm border border-gray-100 text-gray-400 hover:text-purple-600 hover:shadow-md hover:scale-110 transition-all duration-300 group"
+                className="p-3 rounded-full bg-white shadow-sm border border-gray-100 text-gray-400 hover:text-brand hover:shadow-md hover:scale-110 transition-all duration-300 group"
                 aria-label={`Contact via ${social.label}`}
               >
                 <social.icon className="w-5 h-5 group-hover:-rotate-6 transition-transform" />
@@ -861,7 +869,7 @@ export default function HomePageClient({
                     <div className="text-green-500 mb-4 font-bold uppercase tracking-widest text-xs">Išsiųsta sėkmingai!</div>
                     <button 
                       onClick={() => setFormStatus('idle')} 
-                      className="text-[10px] font-bold uppercase tracking-widest text-purple-600 underline"
+                      className="text-[10px] font-bold uppercase tracking-widest text-brand underline"
                       suppressHydrationWarning
                     >
                       Siųsti dar kartą
@@ -869,9 +877,14 @@ export default function HomePageClient({
                   </motion.div>
                 ) : (
                   <form onSubmit={handleForm} className="space-y-4" suppressHydrationWarning>
-                    <input required placeholder="Vardas" className="w-full bg-gray-50 border border-gray-100 p-4 rounded-2xl outline-none focus:border-purple-300 transition-colors text-sm" suppressHydrationWarning />
-                    <input required type="email" placeholder="El. paštas" className="w-full bg-gray-50 border border-gray-100 p-4 rounded-2xl outline-none focus:border-purple-300 transition-colors text-sm" suppressHydrationWarning />
-                    <textarea rows={4} placeholder="Jūsų žinutė" className="w-full bg-gray-50 border border-gray-100 p-4 rounded-2xl outline-none focus:border-purple-300 transition-colors text-sm" suppressHydrationWarning />
+                    <input name="name" required placeholder="Vardas" className="w-full bg-gray-50 border border-gray-100 p-4 rounded-2xl outline-none focus:border-brand/40 transition-colors text-sm" suppressHydrationWarning />
+                    <input name="email" required type="email" placeholder="El. paštas" className="w-full bg-gray-50 border border-gray-100 p-4 rounded-2xl outline-none focus:border-brand/40 transition-colors text-sm" suppressHydrationWarning />
+                    <textarea name="message" rows={4} placeholder="Jūsų žinutė" className="w-full bg-gray-50 border border-gray-100 p-4 rounded-2xl outline-none focus:border-brand/40 transition-colors text-sm" suppressHydrationWarning />
+                    
+                    {formStatus === 'error' && (
+                      <p className="text-red-500 text-[10px] font-bold uppercase tracking-widest text-center mt-2">Klaida siunčiant. Bandykite dar kartą.</p>
+                    )}
+
                     <button className="w-full py-4 md:py-5 bg-black text-white rounded-2xl font-bold text-[9px] md:text-[10px] uppercase tracking-[0.3em] hover:bg-gray-800 transition-all shadow-lg hover:scale-[1.02] active:scale-[0.98] hover:shadow-xl" suppressHydrationWarning>
                       {formStatus === 'sending' ? 'Siunčiama...' : 'Siųsti užklausą'}
                     </button>
