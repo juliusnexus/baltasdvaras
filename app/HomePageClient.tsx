@@ -543,7 +543,7 @@ export default function HomePageClient({
           >
             <div className="bg-white/40 backdrop-blur-xl p-3 md:p-4 rounded-[32px] md:rounded-[40px] shadow-2xl border border-white/20 overflow-hidden">
               <Image 
-                src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=1000" 
+                src={settings.about_image || "/images/aura-soma/about-me.jpg"} 
                 alt="Aura-Soma Esencija" 
                 width={1000}
                 height={500}

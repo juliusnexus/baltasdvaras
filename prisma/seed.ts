@@ -21,6 +21,7 @@ async function main() {
     { key: 'hero_badge', value: 'Sielos spalvų transformacija' },
     { key: 'about_title', value: 'Apie mane' },
     { key: 'about_desc', value: 'Aura-Soma sujungia spalvų, augalų ir kristalų energijas. Tai nėra spėjimas – tai jūsų pasąmonės atspindys per vizualų traukos dėsnį.' },
+    { key: 'about_image', value: '/images/aura-soma/about-me.jpg' },
     { key: 'journey_title', value: 'Transformacijos kelionė' },
     { key: 'journey_subtitle', value: 'Penkios pakopos į tavo tikrąjį Aš' },
     { key: 'contact_title', value: 'Susisiekti' },
