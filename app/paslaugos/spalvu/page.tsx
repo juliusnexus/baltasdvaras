@@ -62,7 +62,7 @@ const GALLERY_IMAGES = [
   }
 ];
 
-export default function KvapuPage() {
+export default function SpalvuPage() {
   const [selectedImage, setSelectedImage] = useState<typeof GALLERY_IMAGES[0] | null>(null);
 
 
@@ -115,34 +115,34 @@ export default function KvapuPage() {
               variants={fadeIn}
               className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand/10 text-brand text-[9px] font-bold tracking-[0.2em] w-fit"
             >
-              Kvapų konsultacija. Aura-Soma®
+              Spalvų konsultacija. Aura-Soma®
             </motion.div>
             <motion.h1 
               variants={fadeIn}
               className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-wider text-custom-gradient leading-[1.1] font-prata"
             >
-              Kvapų galia tavo sielai
+              Spalvų kalba tavo sielai
             </motion.h1>
             <motion.div variants={fadeIn} className="space-y-6">
               <blockquote className="border-l-4 border-brand/20 pl-6 italic text-gray-600 text-lg md:text-xl font-light leading-relaxed">
-                &ldquo;Mes esame kvapai ir spalvos, kurias pasirenkame, ir jos atspindi mūsų tikruosius poreikius.&rdquo;
+                &ldquo;Mes esame spalvos, kurias pasirenkame, ir jos atspindi mūsų tikruosius poreikius.&rdquo;
                 <footer className="mt-2 text-sm font-bold text-gray-400 not-italic">— Vicky Wall, sistemos įkūrėja.</footer>
               </blockquote>
               
               <p className="text-gray-600 text-base md:text-lg font-light leading-relaxed">
-                Autentiška „Aura-Soma“ kvapų terapija papildo spalvų sistemą giliais eteriniais aliejais ir augalų energija. Pomanderiai ir kvintesencijos padeda apsaugoti bei subalansuoti jūsų aurą, suteikdami emocinį palaikymą ir aiškumą.
+                „Aura-Soma“ – tai unikali, liberali savęs pažinimo sistema, jungianti spalvų, augalų ir kristalų energijas. Tai ne tik gražūs dvispalviai buteliukai; tai veidrodis, padedantis suprasti save, suvokti savo gyvenimo kryptį ir atstatyti vidinę pusiausvyrą.
               </p>
 
               <div className="space-y-4">
-                <h3 className="text-xl font-bold text-gray-800">Aromatų sinergija</h3>
+                <h3 className="text-xl font-bold text-gray-800">Kas yra Aura-Soma?</h3>
                 <p className="text-gray-600 font-light">
-                  Kiekvienas kvapas turi specifinę vibraciją, kuri veikia tiesiogiai per uoslę, harmonizuodama mūsų būseną. Tai kviečia į susitikimą su savimi per jusles.
+                  Tai holistinė terapija, kurios pagrindą sudaro „Equilibrium“ (pusiausvyros) aliejai. Kiekviename buteliuke telpa dvi dalys: viršutinė (aliejinė) ir apatinė (vandeninė). Jose susitinka spalvų energija, augalų ekstraktai bei skystieji kristalai.
                 </p>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
                   {[
-                    { title: "Kvapai", desc: "Eterinė apsauga" },
-                    { title: "Augalai", desc: "Gydomoji galia" },
-                    { title: "Energija", desc: "Vibracinis balansas" }
+                    { title: "Spalvos", desc: "Vibracinė galia" },
+                    { title: "Augalai", desc: "Eteriniai aliejai" },
+                    { title: "Kristalai", desc: "Taurieji mineralai" }
                   ].map((item, i) => (
                     <div key={i} className="bg-white/40 backdrop-blur-md p-4 rounded-2xl border border-white/30 shadow-sm">
                       <h4 className="font-bold text-[10px] uppercase tracking-widest text-brand mb-1">{item.title}</h4>
@@ -161,8 +161,8 @@ export default function KvapuPage() {
             className="relative aspect-[4/5] lg:aspect-square rounded-[40px] overflow-hidden shadow-2xl border border-white/50"
           >
             <Image 
-              src="https://images.unsplash.com/photo-1544161515-4af6b1d46b59?q=80&w=1000&auto=format&fit=crop"
-              alt="Aura-Soma kvapai"
+              src="https://images.unsplash.com/photo-1613977257363-707ba9348227?q=80&w=1000&auto=format&fit=crop"
+              alt="Aura-Soma buteliukai"
               fill
               className="object-cover"
             />

@@ -20,10 +20,18 @@ async function main() {
     { key: 'hero_subtitle_3', value: 'Tai darna. Evoliucija.' },
     { key: 'hero_badge', value: 'Sielos spalvų transformacija' },
     { key: 'about_title', value: 'Apie mane' },
-    { key: 'about_desc', value: 'Aura-Soma sujungia spalvų, augalų ir kristalų energijas. Tai nėra spėjimas – tai jūsų pasąmonės atspindys per vizualų traukos dėsnį.' },
+    { key: 'about_desc', value: `Remiuosi dviem esminiais poliais: kritiniu mąstymu ir praktiniu sprendimų pritaikymu.
+Mano manymu, kiekviena problema, yra tik dar neišspręstas uždavinys, reikalaujantis gilaus
+situacijos vertinimo ir priežastinio ryšio aptikimo, o sprendimas, yra išmintinga išvada ir
+vykęs planas, pritaikomas būtent jūsų realybei.
+Teorija be praktikos, tai sąnaudos be grąžos ir nerealizuotas potencialas. Dirbdami
+kartu, sutelksime dėmesį į tai, kas iš tiesų generuoja progresą. Vertinu tiesų ir nuoširdų
+bendravimą. Leiskite padėti jums pamatyti tai, kas slepiasi šešėlyje ir paversti tai jūsų
+sėkme.
+Išsilavinimas – socialinio darbo medicinoje bakalauras, psichosocialinis konsultavimas VDU.` },
     { key: 'about_image', value: '/images/aura-soma/about-me.jpg' },
     { key: 'journey_title', value: 'Transformacijos kelionė' },
-    { key: 'journey_subtitle', value: 'Penkios pakopos į tavo tikrąjį Aš' },
+    { key: 'journey_subtitle', value: 'Šešios pakopos į tavo tikrąjį Aš' },
     { key: 'contact_title', value: 'Susisiekti' },
     { key: 'contact_subtitle', value: 'Atsakome per 24 valandas' },
   ];
@@ -43,7 +51,8 @@ async function main() {
     { stepId: '02', title: 'Tikslas', desc: 'Blokų ir baimių transformacija.', longDesc: 'Mes tyrinėjame tai, kas paslėpta. Atpažindami savo šešėlius ir blokuojančias emocijas, mes galime jas transformuoti į kūrybinę energiją ir asmeninę galią.', order: 2 },
     { stepId: '03', title: 'Ritmas', desc: 'Esamų resursų aktyvavimas.', longDesc: 'Susitelkiame į tai, ką turite čia ir dabar. Aktyvuojame jūsų vidinius resursus, kurie padės jums judėti į priekį su pasitikėjimu ir aiškumu.', order: 3 },
     { stepId: '04', title: 'Metodika', desc: 'Ateities potencialo kūrimas.', longDesc: 'Kuriame jūsų ateities viziją. Spalvų pagalba vizualizuojame jūsų tikslus ir svajones, suteikdami jiems energetinį pagrindą realizacijai.', order: 4 },
-    { stepId: '05', title: 'Planas', desc: 'Pokyčių užtvirtinimas.', longDesc: 'Paskutinis etapas skirtas visų patirčių sujungimui. Mes užtvirtiname įvykusius pokyčius, kad jie taptų neatsiejama jūsų kasdienybės dalimi.', order: 5 },
+    { stepId: '05', title: 'Planas', desc: 'Pokyčių užtvirtinimas.', longDesc: 'Šis etapas skirtas visų patirčių sujungimui. Mes užtvirtiname įvykusius pokyčius, kad jie taptų neatsiejama jūsų kasdienybės dalimi.', order: 5 },
+    { stepId: '06', title: 'Evoliucija', desc: 'Begalinio augimo ratas.', longDesc: 'Paskutinis žingsnis tampa pirmuoju naujame lygmenyje. Mes integruojame patirtis taip, kad jos taptų nuolatinio evoliucinio proceso varikliu jūsų gyvenime.', order: 6 },
   ];
 
   for (const step of journeySteps) {
@@ -60,9 +69,9 @@ async function main() {
   await prisma.pricingPlan.createMany({
     data: [
       {
-        title: 'Individuali sesija',
-        description: 'Viena nuosekli patirtis Jūsų transformacijai',
-        price: '45 €',
+        title: '"Psichosocialinė asmens konsultacija"',
+        description: '60 min. trukmės intensyvi analizė bei sprendimų paieška',
+        price: '40 €',
         savingsText: '',
         bonusText: 'Penkių lygių sąmoningumo analizė.',
         isPopular: true,

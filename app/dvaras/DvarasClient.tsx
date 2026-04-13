@@ -176,17 +176,6 @@ export default function DvarasClient({ images }: { images: GalleryImage[] }) {
         )}
       </AnimatePresence>
 
-      {/* Footer (Simplified) */}
-      <footer className="bg-white border-t border-gray-100 py-12 px-6 lg:px-12 text-center">
-        <div className="max-w-7xl mx-auto flex flex-col items-center gap-6">
-          <div className="text-lg font-bold tracking-tighter flex items-center gap-2 text-gray-400">
-            Baltas Dvaras
-          </div>
-          <p className="text-gray-400 text-[10px] tracking-widest">
-            © {new Date().getFullYear()} Visos teisės saugomos. Sielos spalvų transformacija.
-          </p>
-        </div>
-      </footer>
     </div>
   );
 }

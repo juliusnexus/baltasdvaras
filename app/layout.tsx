@@ -20,10 +20,15 @@ export const metadata: Metadata = {
   description: 'My Google AI Studio App',
 };
 
+import Footer from './_components/Footer';
+
 export default function RootLayout({children}: {children: React.ReactNode}) {
   return (
     <html lang="en" suppressHydrationWarning className={`${prata.variable} ${montserrat.variable}`}>
-      <body suppressHydrationWarning>{children}</body>
+      <body suppressHydrationWarning>
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }

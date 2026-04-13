@@ -4,7 +4,7 @@ import React, { useState, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence, Variants } from 'motion/react';
-import { Facebook, Instagram, Mail, X } from 'lucide-react';
+import { Facebook, Instagram } from 'lucide-react';
 
 // --- Animacijų nustatymai ---
 const fadeIn: Variants = {
@@ -78,7 +78,7 @@ export default function HomePageClient({
   pricingPlans: PricingPlan[]; 
   navItems: NavItem[] 
 }) {
-  const [formStatus, setFormStatus] = useState('idle');
+
   const [selectedStep, setSelectedStep] = useState<JourneyStep | null>(null);
   const [popupPos, setPopupPos] = useState<any>(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -133,34 +133,7 @@ export default function HomePageClient({
     setSelectedStep(step);
   };
 
-  const handleForm = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setFormStatus('sending');
-    
-    const formData = new FormData(e.currentTarget);
-    const data = {
-      name: formData.get('name'),
-      email: formData.get('email'),
-      message: formData.get('message')
-    };
 
-    try {
-      const resp = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
-      });
-      
-      if (resp.ok) {
-        setFormStatus('success');
-      } else {
-        setFormStatus('error');
-      }
-    } catch (err) {
-      setFormStatus('error');
-    }
-  };
-  const [showContactModal, setShowContactModal] = useState(false);
 
   const scrollToSection = (id: string | null | undefined) => {
     if (!id) return;
@@ -461,37 +434,32 @@ export default function HomePageClient({
       >
         <div className="max-w-7xl w-full grid lg:grid-cols-2 gap-12 lg:gap-20 items-center relative z-10">
           <div className="max-w-2xl text-center lg:text-left">
-            <motion.div 
-              variants={fadeIn}
-              className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-brand/10 text-brand text-[10px] font-bold tracking-[0.3em] mb-8 md:mb-10 shadow-sm border border-brand/20"
-            >
-              {settings['hero_badge'] || 'Sielos spalvų transformacija'}
-            </motion.div>
+
 
             <div className="flex flex-col gap-10 md:gap-12 mb-12">
               <motion.div variants={fadeIn} className="group">
-                <h1 className="text-2xl sm:text-3xl md:text-4xl font-black leading-tight tracking-wider mb-2 text-rose-gradient drop-shadow-sm font-prata small-caps">
+                <h1 className="text-2xl sm:text-3xl md:text-4xl font-black leading-normal tracking-wider mb-2 text-rose-gradient drop-shadow-sm font-prata small-caps pt-2">
                   {settings['hero_title_1'] || 'Čia gali būti kuo esi.'}
                 </h1>
-                <p className="text-rose-gradient text-base md:text-lg font-medium italic opacity-100 group-hover:scale-[1.02] transition-transform origin-left font-montserrat tracking-wider small-caps">
+                <p className="text-rose-gradient text-xl md:text-2xl font-black leading-normal opacity-100 group-hover:scale-[1.02] transition-transform origin-left font-prata tracking-wider small-caps pt-1">
                   {settings['hero_subtitle_1'] || 'Tai atsivėrimas. Tiesa.'}
                 </p>
               </motion.div>
 
               <motion.div variants={fadeIn} className="group">
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-black leading-tight tracking-wider mb-2 text-rose-gradient drop-shadow-sm font-prata small-caps">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-black leading-normal tracking-wider mb-2 text-rose-gradient drop-shadow-sm font-prata small-caps pt-2">
                   {settings['hero_title_2'] || 'Čia dėmesys tau.'}
                 </h2>
-                <p className="text-rose-gradient text-base md:text-lg font-medium italic opacity-100 group-hover:scale-[1.02] transition-transform origin-left font-montserrat tracking-wider small-caps">
+                <p className="text-rose-gradient text-xl md:text-2xl font-black leading-normal opacity-100 group-hover:scale-[1.02] transition-transform origin-left font-prata tracking-wider small-caps pt-1">
                   {settings['hero_subtitle_2'] || 'Tai esmė. Meilė.'}
                 </p>
               </motion.div>
 
               <motion.div variants={fadeIn} className="group">
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-black leading-tight tracking-wider mb-2 text-rose-gradient drop-shadow-sm font-prata small-caps">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-black leading-normal tracking-wider mb-2 text-rose-gradient drop-shadow-sm font-prata small-caps pt-2">
                   {settings['hero_title_3'] || 'Čia susitinka dvasia ir materija.'}
                 </h2>
-                <p className="text-rose-gradient text-base md:text-lg font-medium italic opacity-100 group-hover:scale-[1.02] transition-transform origin-left font-montserrat tracking-wider small-caps">
+                <p className="text-rose-gradient text-xl md:text-2xl font-black leading-normal opacity-100 group-hover:scale-[1.02] transition-transform origin-left font-prata tracking-wider small-caps pt-1">
                   {settings['hero_subtitle_3'] || 'Tai darna. Evoliucija.'}
                 </p>
               </motion.div>
@@ -551,37 +519,44 @@ export default function HomePageClient({
                 referrerPolicy="no-referrer"
               />
             </div>
-            {/* Floating Glass Element */}
-            <motion.div 
-              animate={{ y: [0, -20, 0], rotate: [2, -2, 2] }}
-              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -bottom-4 -right-4 md:-bottom-6 md:-right-6 w-32 h-44 md:w-40 md:h-56 bg-white/50 backdrop-blur-2xl p-2 rounded-2xl md:rounded-3xl shadow-2xl border border-white/40 z-20 flex flex-col"
-            >
-              <div className="h-1/2 bg-blue-300/60 rounded-t-xl md:rounded-t-2xl" />
-              <div className="h-1/2 bg-[#2D2D2D]/60 rounded-b-xl md:rounded-b-2xl" />
-              <div className="p-3 md:p-4 text-center">
-                <p className="text-[10px] md:text-[12px] font-bold uppercase tracking-widest opacity-80 italic font-sans">BALANSAS</p>
-              </div>
-            </motion.div>
           </motion.div>
 
           <motion.div
             variants={staggerContainer}
-            className="order-1 lg:order-2 text-center lg:text-left"
+            className="order-1 lg:order-2 text-left"
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-6 md:mb-8 tracking-tight">
               {'Apie mane'}
             </h2>
-            <p className="text-gray-500 leading-relaxed mb-8 md:mb-10 text-base md:text-lg font-light">
-              {settings['about_desc'] || 'Aura-Soma sujungia spalvų, augalų ir kristalų energijas. Tai nėra spėjimas – tai jūsų pasąmonės atspindys per vizualų traukos dėsnį.'}
-            </p>
-            <div className="grid grid-cols-2 gap-3 md:gap-4 max-w-md mx-auto lg:mx-0">
-              {['Augalai', 'Kristalai', 'Spalvos', 'Šviesa'].map((item) => (
-                <div key={item} className="bg-white/40 backdrop-blur-md p-4 md:p-6 rounded-2xl border border-white/30">
-                  <h4 className="font-bold text-[9px] md:text-[10px] uppercase tracking-widest text-brand mb-1">{item}</h4>
-                  <p className="text-[8px] md:text-[9px] text-gray-400 uppercase tracking-tighter">Grynoji energija</p>
+            <div className="space-y-6 md:space-y-8">
+              <p className="text-brand font-bold text-lg md:text-xl leading-tight">
+                Remiuosi dviem esminiais poliais: kritiniu mąstymu ir praktiniu sprendimų pritaikymu.
+              </p>
+              
+              <div className="space-y-4">
+                <p className="text-gray-500 leading-relaxed text-base md:text-lg font-light">
+                  Mano manymu, kiekviena problema yra tik dar neišspręstas uždavinys, reikalaujantis gilaus
+                  situacijos vertinimo ir priežastinio ryšio aptikimo, o sprendimas yra išmintinga išvada ir
+                  vykęs planas, pritaikomas būtent jūsų realybei.
+                </p>
+                <p className="text-gray-500 leading-relaxed text-base md:text-lg font-light">
+                  Teorija be praktikos, tai sąnaudos be grąžos ir nerealizuotas potencialas. Dirbdami
+                  kartu, sutelksime dėmesį į tai, kas iš tiesų generuoja progresą. Vertinu tiesų ir nuoširdų
+                  bendravimą. Leiskite padėti jums pamatyti tai, kas slepiasi šešėlyje ir paversti tai jūsų
+                  sėkme.
+                </p>
+              </div>
+
+              <div className="pt-6 border-t border-brand/5">
+                <div className="inline-flex items-start md:items-center gap-3 px-4 py-3 bg-brand/[0.03] rounded-2xl border border-brand/5 text-left">
+                  <div className="mt-1 md:mt-0 text-brand opacity-60">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                  </div>
+                  <p className="text-[10px] md:text-[11px] font-bold text-gray-400 uppercase tracking-widest leading-relaxed">
+                    Išsilavinimas – socialinio darbo medicinoje bakalauras, psichosocialinis konsultavimas VDU.
+                  </p>
                 </div>
-              ))}
+              </div>
             </div>
           </motion.div>
         </div>
@@ -599,12 +574,12 @@ export default function HomePageClient({
         <div className="max-w-7xl mx-auto">
           <motion.div variants={fadeIn} className="text-center mb-12 md:mb-20">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 tracking-tight">{settings['journey_title'] || 'Transformacijos kelionė'}</h2>
-            <p className="text-gray-400 text-[9px] md:text-[10px] font-bold uppercase tracking-[0.3em]">{settings['journey_subtitle'] || 'Penkios pakopos į tavo tikrąjį Aš'}</p>
+            <p className="text-gray-400 text-[9px] md:text-[10px] font-bold uppercase tracking-[0.3em]">{settings['journey_subtitle'] || 'Šešios pakopos į tavo tikrąjį Aš'}</p>
           </motion.div>
 
           <motion.div 
             variants={staggerContainer}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 md:gap-6"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-4 md:gap-6"
           >
             {journeySteps.sort((a, b) => a.order - b.order).map((step, idx) => (
               <motion.div 
@@ -625,6 +600,7 @@ export default function HomePageClient({
                     '03': 'Ritmas',
                     '04': 'Metodika',
                     '05': 'Planas',
+                    '06': 'Evoliucija',
                   }[step.stepId]) || step.title}
                 </h3>
                 <p className="text-[9px] md:text-[10px] text-gray-400 leading-relaxed uppercase tracking-widest font-sans">
@@ -700,6 +676,7 @@ export default function HomePageClient({
                   '03': 'Ritmas',
                   '04': 'Metodika',
                   '05': 'Planas',
+                  '06': 'Evoliucija',
                 }[selectedStep.stepId]) || selectedStep.title}
               </h3>
               
@@ -725,16 +702,17 @@ export default function HomePageClient({
           variants={staggerContainer}
           className="max-w-md mx-auto flex flex-col gap-6"
         >
-          {pricingPlans
+           {pricingPlans
             .filter(plan => plan.title !== 'Viena sesija')
             .sort((a, b) => a.order - b.order)
+            .slice(0, 1)
             .map((plan) => {
             // Robustness Fix: Override details for specific plans
             const displayPlan = plan.title === 'Pilna kelionė' ? {
               ...plan,
-              title: 'Individuali sesija',
-              description: 'Viena nuosekli patirtis Jūsų transformacijai',
-              price: '45 €',
+              title: '"Psichosocialinė asmens konsultacija"',
+              description: '60 min. trukmės intensyvi analizė bei sprendimų paieška',
+              price: '40 €',
               bonusText: 'Penkių lygių sąmoningumo analizė.',
               savingsText: null, // Remove "Sutaupai 50 eur" badge
             } : plan;
@@ -779,122 +757,6 @@ export default function HomePageClient({
           </div>
         </div>
       </motion.section>
-
-
-      <footer className="py-20 flex flex-col items-center gap-8 border-t border-gray-100">
-        <div className="flex gap-6">
-          {[
-            { 
-              icon: Facebook, 
-              label: 'Facebook', 
-              href: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(currentUrl)}` 
-            },
-            { 
-              icon: Mail, 
-              label: 'Email', 
-              onClick: () => setShowContactModal(true)
-            },
-            { 
-              icon: Instagram, 
-              label: 'Instagram', 
-              href: 'https://instagram.com' 
-            }
-          ].map((social) => (
-            social.href ? (
-              <a
-                key={social.label}
-                href={social.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-3 rounded-full bg-white shadow-sm border border-gray-100 text-gray-400 hover:text-brand hover:shadow-md hover:scale-110 transition-all duration-300 group"
-                aria-label={`Share on ${social.label}`}
-              >
-                <social.icon className="w-5 h-5 group-hover:-rotate-6 transition-transform" />
-              </a>
-            ) : (
-              <button
-                key={social.label}
-                onClick={social.onClick}
-                className="p-3 rounded-full bg-white shadow-sm border border-gray-100 text-gray-400 hover:text-brand hover:shadow-md hover:scale-110 transition-all duration-300 group"
-                aria-label={`Contact via ${social.label}`}
-              >
-                <social.icon className="w-5 h-5 group-hover:-rotate-6 transition-transform" />
-              </button>
-            )
-          ))}
-        </div>
-        <div className="text-center">
-          <p className="text-gray-400 text-[10px] tracking-widest uppercase mb-2">Baltas Dvaras</p>
-          <p className="text-gray-300 text-[8px] tracking-[0.2em] font-sans">© {new Date().getFullYear()} Visos teisės saugomos.</p>
-        </div>
-      </footer>
-
-      {/* Contact Modal */}
-      <AnimatePresence>
-        {showContactModal && (
-          <div className="fixed inset-0 z-[100] flex items-center justify-center p-6">
-            <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setShowContactModal(false)}
-              className="absolute inset-0 bg-black/40 backdrop-blur-sm cursor-pointer"
-            />
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.9, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              className="relative w-full max-w-lg bg-white rounded-[32px] p-8 md:p-12 shadow-2xl overflow-hidden"
-            >
-              <button 
-                onClick={() => setShowContactModal(false)}
-                className="absolute top-6 right-6 p-2 text-gray-400 hover:text-gray-600 transition-colors"
-              >
-                <X className="w-6 h-6" />
-              </button>
-
-              <div className="text-center mb-8 md:mb-10">
-                <h2 className="text-2xl md:text-3xl font-bold mb-2 tracking-tight">Susisiekti</h2>
-                <p className="text-gray-400 text-xs md:text-sm font-light">Atsakome per 24 valandas</p>
-              </div>
-
-              <AnimatePresence mode="wait">
-                {formStatus === 'success' ? (
-                  <motion.div 
-                    key="success"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    className="text-center py-10"
-                  >
-                    <div className="text-green-500 mb-4 font-bold uppercase tracking-widest text-xs">Išsiųsta sėkmingai!</div>
-                    <button 
-                      onClick={() => setFormStatus('idle')} 
-                      className="text-[10px] font-bold uppercase tracking-widest text-brand underline"
-                      suppressHydrationWarning
-                    >
-                      Siųsti dar kartą
-                    </button>
-                  </motion.div>
-                ) : (
-                  <form onSubmit={handleForm} className="space-y-4" suppressHydrationWarning>
-                    <input name="name" required placeholder="Vardas" className="w-full bg-gray-50 border border-gray-100 p-4 rounded-2xl outline-none focus:border-brand/40 transition-colors text-sm" suppressHydrationWarning />
-                    <input name="email" required type="email" placeholder="El. paštas" className="w-full bg-gray-50 border border-gray-100 p-4 rounded-2xl outline-none focus:border-brand/40 transition-colors text-sm" suppressHydrationWarning />
-                    <textarea name="message" rows={4} placeholder="Jūsų žinutė" className="w-full bg-gray-50 border border-gray-100 p-4 rounded-2xl outline-none focus:border-brand/40 transition-colors text-sm" suppressHydrationWarning />
-                    
-                    {formStatus === 'error' && (
-                      <p className="text-red-500 text-[10px] font-bold uppercase tracking-widest text-center mt-2">Klaida siunčiant. Bandykite dar kartą.</p>
-                    )}
-
-                    <button className="w-full py-4 md:py-5 bg-black text-white rounded-2xl font-bold text-[9px] md:text-[10px] uppercase tracking-[0.3em] hover:bg-gray-800 transition-all shadow-lg hover:scale-[1.02] active:scale-[0.98] hover:shadow-xl" suppressHydrationWarning>
-                      {formStatus === 'sending' ? 'Siunčiama...' : 'Siųsti užklausą'}
-                    </button>
-                  </form>
-                )}
-              </AnimatePresence>
-            </motion.div>
-          </div>
-        )}
-      </AnimatePresence>
     </div>
   );
 }

@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence, Variants } from 'motion/react';
-import { ArrowLeft, Maximize2, X, CheckCircle2, Facebook, Instagram, Twitter } from 'lucide-react';
+import { ArrowLeft, Maximize2, X, CheckCircle2 } from 'lucide-react';
 
 const fadeIn: Variants = {
   hidden: { opacity: 0, y: 20 },
@@ -65,11 +65,7 @@ const GALLERY_IMAGES = [
 export default function PsichosomatinisPage() {
   const [selectedImage, setSelectedImage] = useState<typeof GALLERY_IMAGES[0] | null>(null);
   const [isExpanded, setIsExpanded] = useState(false);
-  const [currentUrl, setCurrentUrl] = useState('');
 
-  React.useEffect(() => {
-    setCurrentUrl(window.location.href);
-  }, []);
 
   const fullText = "Psichosomatika tyrinėja ryšį tarp sielos ir kūno. Tai procesas, kurio metu mokomės suprasti, kaip mūsų emocijos, mintys ir išgyvenimai atsispindi fiziniame kūne. Atrandant šias sąsajas, galime rasti gilesnes priežastis savo savijautai ir pradėti gijimo procesą ne tik emociškai, bet ir fiziškai. Šis metodas padeda atpažinti kūno siunčiamus signalus kaip galimybę augti ir keistis, suteikiant įrankius valdyti stresą ir atkurti vidinę pusiausvyrą.";
   const shortText = "Psichosomatika tyrinėja ryšį tarp sielos ir kūno. Tai procesas, kurio metu mokomės suprasti, kaip mūsų emocijos, mintys ir išgyvenimai atsispindi fiziniame kūne.";
@@ -274,49 +270,7 @@ export default function PsichosomatinisPage() {
         )}
       </AnimatePresence>
 
-      {/* Footer */}
-      <footer className="bg-white border-t border-gray-100 py-12 px-6 lg:px-12 text-center">
-        <div className="max-w-7xl mx-auto flex flex-col items-center gap-8">
-          <div className="flex gap-6">
-            {[
-              { 
-                icon: Facebook, 
-                label: 'Facebook', 
-                href: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(currentUrl)}` 
-              },
-              { 
-                icon: Twitter, 
-                label: 'Twitter', 
-                href: `https://twitter.com/intent/tweet?url=${encodeURIComponent(currentUrl)}` 
-              },
-              { 
-                icon: Instagram, 
-                label: 'Instagram', 
-                href: 'https://instagram.com' 
-              }
-            ].map((social) => (
-              <a
-                key={social.label}
-                href={social.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-3 rounded-full bg-white shadow-sm border border-gray-100 text-gray-400 hover:text-brand hover:shadow-md hover:scale-110 transition-all duration-300 group"
-                aria-label={`Share on ${social.label}`}
-              >
-                <social.icon className="w-5 h-5" />
-              </a>
-            ))}
-          </div>
-          <div className="flex flex-col items-center gap-2">
-            <div className="text-lg font-bold tracking-tighter flex items-center gap-2 text-gray-400">
-              Baltas Dvaras
-            </div>
-            <p className="text-gray-400 text-[10px] tracking-widest">
-              © 2026 Visos teisės saugomos. Sielos spalvų transformacija.
-            </p>
-          </div>
-        </div>
-      </footer>
+
     </div>
   );
 }
