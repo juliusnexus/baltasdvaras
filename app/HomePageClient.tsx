@@ -552,7 +552,7 @@ export default function HomePageClient({
                   <div className="mt-1 md:mt-0 text-brand opacity-60">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
                   </div>
-                  <p className="text-[10px] md:text-[11px] font-bold text-gray-400 uppercase tracking-widest leading-relaxed">
+                  <p className="text-[10px] md:text-[11px] font-bold text-gray-400 uppercase tracking-widest leading-relaxed text-justify">
                     Išsilavinimas – socialinio darbo medicinoje bakalauras, psichosocialinis konsultavimas VDU.
                   </p>
                 </div>
