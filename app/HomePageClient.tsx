@@ -438,28 +438,28 @@ export default function HomePageClient({
 
             <div className="flex flex-col gap-10 md:gap-12 mb-12">
               <motion.div variants={fadeIn} className="group">
-                <h1 className="text-2xl sm:text-3xl md:text-4xl font-black leading-normal tracking-wider mb-2 text-rose-gradient drop-shadow-sm font-prata small-caps pt-2">
+                <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold leading-normal tracking-wider mb-2 text-stone-800 drop-shadow-sm font-times pt-2">
                   {settings['hero_title_1'] || 'Čia gali būti kuo esi.'}
                 </h1>
-                <p className="text-rose-gradient text-xl md:text-2xl font-black leading-normal opacity-100 group-hover:scale-[1.02] transition-transform origin-left font-prata tracking-wider small-caps pt-1">
+                <p className="text-stone-800 text-xl md:text-2xl font-bold leading-normal opacity-100 group-hover:scale-[1.02] transition-transform origin-left font-times tracking-wider pt-1">
                   {settings['hero_subtitle_1'] || 'Tai atsivėrimas. Tiesa.'}
                 </p>
               </motion.div>
 
               <motion.div variants={fadeIn} className="group">
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-black leading-normal tracking-wider mb-2 text-rose-gradient drop-shadow-sm font-prata small-caps pt-2">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold leading-normal tracking-wider mb-2 text-stone-800 drop-shadow-sm font-times pt-2">
                   {settings['hero_title_2'] || 'Čia dėmesys tau.'}
                 </h2>
-                <p className="text-rose-gradient text-xl md:text-2xl font-black leading-normal opacity-100 group-hover:scale-[1.02] transition-transform origin-left font-prata tracking-wider small-caps pt-1">
+                <p className="text-stone-800 text-xl md:text-2xl font-bold leading-normal opacity-100 group-hover:scale-[1.02] transition-transform origin-left font-times tracking-wider pt-1">
                   {settings['hero_subtitle_2'] || 'Tai esmė. Meilė.'}
                 </p>
               </motion.div>
 
               <motion.div variants={fadeIn} className="group">
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-black leading-normal tracking-wider mb-2 text-rose-gradient drop-shadow-sm font-prata small-caps pt-2">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold leading-normal tracking-wider mb-2 text-stone-800 drop-shadow-sm font-times pt-2">
                   {settings['hero_title_3'] || 'Čia susitinka dvasia ir materija.'}
                 </h2>
-                <p className="text-rose-gradient text-xl md:text-2xl font-black leading-normal opacity-100 group-hover:scale-[1.02] transition-transform origin-left font-prata tracking-wider small-caps pt-1">
+                <p className="text-stone-800 text-xl md:text-2xl font-bold leading-normal opacity-100 group-hover:scale-[1.02] transition-transform origin-left font-times tracking-wider pt-1">
                   {settings['hero_subtitle_3'] || 'Tai darna. Evoliucija.'}
                 </p>
               </motion.div>
