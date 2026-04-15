@@ -4,6 +4,7 @@
   --font-prata: var(--font-prata);
   --font-montserrat: var(--font-montserrat);
   --color-brand: #7EB77F;
+  --color-hero-text: lab(65.9269% -0.832707 -8.17474);
 }
 
 @utility font-prata {
@@ -16,6 +17,10 @@
 
 @utility font-times {
   font-family: "Times New Roman", Times, serif;
+}
+
+@utility text-hero {
+  color: var(--color-hero-text);
 }
 
 @utility small-caps {
