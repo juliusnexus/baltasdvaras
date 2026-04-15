@@ -574,7 +574,7 @@ export default function HomePageClient({
         <div className="max-w-7xl mx-auto">
           <motion.div variants={fadeIn} className="text-center mb-12 md:mb-20">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 tracking-tight">{settings['journey_title'] || 'Transformacijos kelionė'}</h2>
-            <p className="text-gray-400 text-[9px] md:text-[10px] font-bold uppercase tracking-[0.3em]">{settings['journey_subtitle'] || 'Šešios pakopos į tavo tikrąjį Aš'}</p>
+            <p className="text-gray-400 text-[9px] md:text-[10px] font-bold uppercase tracking-[0.3em]">{settings['journey_subtitle'] || 'Šešios pakopos į tavo naująjį Aš'}</p>
           </motion.div>
 
           <motion.div 

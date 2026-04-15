@@ -31,7 +31,7 @@ sėkme.
 Išsilavinimas – socialinio darbo medicinoje bakalauras, psichosocialinis konsultavimas VDU.` },
     { key: 'about_image', value: '/images/aura-soma/about-me.jpg' },
     { key: 'journey_title', value: 'Transformacijos kelionė' },
-    { key: 'journey_subtitle', value: 'Šešios pakopos į tavo tikrąjį Aš' },
+    { key: 'journey_subtitle', value: 'Šešios pakopos į tavo naująjį Aš' },
     { key: 'contact_title', value: 'Susisiekti' },
     { key: 'contact_subtitle', value: 'Atsakome per 24 valandas' },
   ];
