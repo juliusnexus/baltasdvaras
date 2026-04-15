@@ -529,7 +529,7 @@ export default function HomePageClient({
               {'Apie mane'}
             </h2>
             <div className="space-y-6 md:space-y-8">
-              <p className="text-brand font-bold text-lg md:text-xl leading-tight">
+              <p className="text-brand font-bold text-lg md:text-xl leading-tight text-justify">
                 Remiuosi dviem esminiais poliais: kritiniu mąstymu ir praktiniu sprendimų pritaikymu.
               </p>
               
