@@ -33,7 +33,7 @@ bendravimą. Leiskite padėti jums pamatyti tai, kas slepiasi šešėlyje ir pav
 sėkme.
 Išsilavinimas – socialinio darbo medicinoje bakalauras, psichosocialinis konsultavimas VDU.` },
       { key: 'journey_title', value: 'Transformacijos kelionė' },
-      { key: 'journey_subtitle', value: 'Šešios pakopos į tavo tikrąjį Aš' },
+      { key: 'journey_subtitle', value: 'Šešios pakopos į tavo naująjį Aš' },
       { key: 'contact_title', value: 'Susisiekti' },
       { key: 'contact_subtitle', value: 'Atsakome per 24 valandas' },
     ];
