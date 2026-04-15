@@ -32,7 +32,7 @@ kartu, sutelksime dėmesį į tai, kas iš tiesų generuoja progresą. Vertinu t
 bendravimą. Leiskite padėti jums pamatyti tai, kas slepiasi šešėlyje ir paversti tai jūsų
 sėkme.
 Išsilavinimas – socialinio darbo medicinoje bakalauras, psichosocialinis konsultavimas VDU.` },
-      { key: 'journey_title', value: 'Transformacijos kelionė' },
+      { key: 'journey_title', value: 'Pokyčio kelionė' },
       { key: 'journey_subtitle', value: 'Šešios pakopos į tavo naująjį Aš' },
       { key: 'contact_title', value: 'Susisiekti' },
       { key: 'contact_subtitle', value: 'Atsakome per 24 valandas' },
