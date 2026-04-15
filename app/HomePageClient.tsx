@@ -534,12 +534,12 @@ export default function HomePageClient({
               </p>
               
               <div className="space-y-4">
-                <p className="text-gray-500 leading-relaxed text-base md:text-lg font-light">
+                <p className="text-gray-500 leading-relaxed text-base md:text-lg font-light text-justify">
                   Mano manymu, kiekviena problema yra tik dar neišspręstas uždavinys, reikalaujantis gilaus
                   situacijos vertinimo ir priežastinio ryšio aptikimo, o sprendimas yra išmintinga išvada ir
                   vykęs planas, pritaikomas būtent jūsų realybei.
                 </p>
-                <p className="text-gray-500 leading-relaxed text-base md:text-lg font-light">
+                <p className="text-gray-500 leading-relaxed text-base md:text-lg font-light text-justify">
                   Teorija be praktikos, tai sąnaudos be grąžos ir nerealizuotas potencialas. Dirbdami
                   kartu, sutelksime dėmesį į tai, kas iš tiesų generuoja progresą. Vertinu tiesų ir nuoširdų
                   bendravimą. Leiskite padėti jums pamatyti tai, kas slepiasi šešėlyje ir paversti tai jūsų
@@ -596,11 +596,11 @@ export default function HomePageClient({
                 <h3 className="font-bold text-xs md:text-sm mb-3 md:mb-4 uppercase tracking-tighter group-hover:text-brand transition-colors">
                   {({
                     '01': 'Analizė',
-                    '02': 'Tikslas',
-                    '03': 'Ritmas',
-                    '04': 'Metodika',
-                    '05': 'Planas',
-                    '06': 'Evoliucija',
+                    '02': 'Šešėlis',
+                    '03': 'Resursai',
+                    '04': 'Tikslas',
+                    '05': 'Metodika',
+                    '06': 'Refleksija',
                   }[step.stepId]) || step.title}
                 </h3>
                 <p className="text-[9px] md:text-[10px] text-gray-400 leading-relaxed uppercase tracking-widest font-sans">
@@ -672,11 +672,11 @@ export default function HomePageClient({
               <h3 className="text-lg md:text-xl font-bold mb-3 md:mb-4 uppercase tracking-tighter text-brand">
                 {({
                   '01': 'Analizė',
-                  '02': 'Tikslas',
-                  '03': 'Ritmas',
-                  '04': 'Metodika',
-                  '05': 'Planas',
-                  '06': 'Evoliucija',
+                  '02': 'Šešėlis',
+                  '03': 'Resursai',
+                  '04': 'Tikslas',
+                  '05': 'Metodika',
+                  '06': 'Refleksija',
                 }[selectedStep.stepId]) || selectedStep.title}
               </h3>
               

@@ -47,12 +47,48 @@ Išsilavinimas – socialinio darbo medicinoje bakalauras, psichosocialinis kons
 
   // 2. Journey Steps
   const journeySteps = [
-    { stepId: '01', title: 'Analizė', desc: 'Sielos veidrodis ir pirminė analizė.', longDesc: 'Šios sesijos metu mes gilinamės į jūsų pasirinktas spalvas, kurios veikia kaip veidrodis jūsų vidiniam pasauliui. Tai pirmas žingsnis suprantant savo esamą būseną ir potencialą.', order: 1 },
-    { stepId: '02', title: 'Tikslas', desc: 'Blokų ir baimių transformacija.', longDesc: 'Mes tyrinėjame tai, kas paslėpta. Atpažindami savo šešėlius ir blokuojančias emocijas, mes galime jas transformuoti į kūrybinę energiją ir asmeninę galią.', order: 2 },
-    { stepId: '03', title: 'Ritmas', desc: 'Esamų resursų aktyvavimas.', longDesc: 'Susitelkiame į tai, ką turite čia ir dabar. Aktyvuojame jūsų vidinius resursus, kurie padės jums judėti į priekį su pasitikėjimu ir aiškumu.', order: 3 },
-    { stepId: '04', title: 'Metodika', desc: 'Ateities potencialo kūrimas.', longDesc: 'Kuriame jūsų ateities viziją. Spalvų pagalba vizualizuojame jūsų tikslus ir svajones, suteikdami jiems energetinį pagrindą realizacijai.', order: 4 },
-    { stepId: '05', title: 'Planas', desc: 'Pokyčių užtvirtinimas.', longDesc: 'Šis etapas skirtas visų patirčių sujungimui. Mes užtvirtiname įvykusius pokyčius, kad jie taptų neatsiejama jūsų kasdienybės dalimi.', order: 5 },
-    { stepId: '06', title: 'Evoliucija', desc: 'Begalinio augimo ratas.', longDesc: 'Paskutinis žingsnis tampa pirmuoju naujame lygmenyje. Mes integruojame patirtis taip, kad jos taptų nuolatinio evoliucinio proceso varikliu jūsų gyvenime.', order: 6 },
+    { 
+      stepId: '01', 
+      title: 'Analizė', 
+      desc: 'Atliekame giluminę jūsų esamos situacijos analizę.', 
+      longDesc: 'Atliekame giluminę jūsų esamos situacijos analizę. Identifikuojame simptomus ir priežastis.', 
+      order: 1 
+    },
+    { 
+      stepId: '02', 
+      title: 'Šešėlis', 
+      desc: 'Identifikuojame jūsų vidinius blokus ir neefektyvius procesus.', 
+      longDesc: 'Identifikuojame jūsų vidinius blokus ir neefektyvius procesus ir paruošiame transformacijai.', 
+      order: 2 
+    },
+    { 
+      stepId: '03', 
+      title: 'Resursai', 
+      desc: 'Suinventorizuojame jūsų vidinius ir išorinius resursus.', 
+      longDesc: 'Suinventorizuojame jūsų vidinius ir išorinius resursus, kad jie pradėtų dirbti jūsų naudai.', 
+      order: 3 
+    },
+    { 
+      stepId: '04', 
+      title: 'Tikslas', 
+      desc: 'Išgryniname jūsų artimiausią siekiamą gyvenimo kryptį.', 
+      longDesc: 'Išgryniname jūsų artimiausią siekiamą gyvenimo kryptį ir sukonkretiname trokštamą siekį.', 
+      order: 4 
+    },
+    { 
+      stepId: '05', 
+      title: 'Metodika', 
+      desc: 'Sukuriame konkrečią metodiką ir veiksmų planą.', 
+      longDesc: 'Sukuriame konkrečią metodiką ir veiksmų planą, pritaikytą jūsų specifinei situacijai.', 
+      order: 5 
+    },
+    { 
+      stepId: '06', 
+      title: 'Refleksija', 
+      desc: 'Stebite savo reakcijas į kasdienius pokyčius.', 
+      longDesc: 'Stebite savo reakcijas į kasdienius pokyčius ir fiksuojate rezultatus. Palaikau jus viso proceso metu.', 
+      order: 6 
+    },
   ];
 
   for (const step of journeySteps) {
