@@ -308,29 +308,6 @@ export default function SpalvuPage() {
           </div>
         </section>
 
-        {/* Pricing Cards */}
-        <section className="mb-24 lg:mb-32">
-          <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              { time: "1 val.", price: "40 €", desc: "Trumpa pažintis ir pirminė analizė" },
-              { time: "1,5 val.", price: "50 €", desc: "Išsami konsultacija su produktų parinkimu", popular: true },
-              { time: "2 val.", price: "60 €", desc: "Gili loginė-energetinė sesija" }
-            ].map((plan, i) => (
-              <motion.div 
-                key={i}
-                whileHover={{ y: -10 }}
-                className={`p-10 rounded-[32px] border flex flex-col items-center text-center transition-all ${plan.popular ? 'bg-brand text-white border-brand shadow-2xl shadow-brand/20' : 'bg-white border-gray-100 shadow-xl'}`}
-              >
-                <div className={`text-[10px] font-black uppercase tracking-widest mb-4 ${plan.popular ? 'text-brand/20' : 'text-brand'}`}>Investicija</div>
-                <div className="text-3xl font-black mb-1">{plan.price}</div>
-                <div className={`text-xs mb-8 ${plan.popular ? 'text-white/80' : 'text-gray-400'}`}>{plan.time} — {plan.desc}</div>
-                <button className={`mt-auto w-full py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all ${plan.popular ? 'bg-white text-brand hover:bg-brand/10' : 'bg-black text-white hover:bg-brand'}`}>
-                  Užsakyti
-                </button>
-              </motion.div>
-            ))}
-          </div>
-        </section>
 
         {/* Gallery */}
         <div className="mb-16">

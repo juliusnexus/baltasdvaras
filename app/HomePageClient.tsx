@@ -728,7 +728,7 @@ export default function HomePageClient({
               title: '"Psichosocialinė asmens konsultacija"',
               description: currentOption.description,
               price: currentOption.price,
-              bonusText: 'Penkių lygių sąmoningumo analizė.',
+              bonusText: null,
               savingsText: null, // Remove "Sutaupai 50 eur" badge
             } : plan;
 
@@ -763,9 +763,6 @@ export default function HomePageClient({
 
                   <p className={`text-[10px] md:text-xs mb-6 md:mb-8 text-[#4A6B4B]`}>{displayPlan.description}</p>
                   <div className={`text-xl md:text-2xl font-bold tracking-tighter mb-2 text-brand`}>Investicija: {cleanPrice}</div>
-                  {displayPlan.bonusText && (
-                    <p className="text-[#4A6B4B] text-[9px] md:text-[10px] font-bold uppercase mb-8 md:mb-10 tracking-widest">{displayPlan.bonusText}</p>
-                  )}
                 </div>
                 <button className={`w-full py-4 rounded-2xl font-bold text-[9px] md:text-[10px] uppercase tracking-widest transition-all hover:scale-[1.02] active:scale-[0.98] md:py-5 bg-brand text-white hover:bg-brand/90 shadow-lg shadow-brand/20`} suppressHydrationWarning>
                   {displayPlan.buttonText}
