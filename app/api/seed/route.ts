@@ -127,7 +127,7 @@ Išsilavinimas – socialinio darbo medicinoje bakalauras, psichosocialinis kons
 
     await prisma.navItem.createMany({
       data: [
-        { label: 'Psichosocialinė', href: '/paslaugos/psichosocialine', parentId: individualiosNode.id, order: 1 },
+        { label: 'Psichosocialinė asmens', href: '/paslaugos/psichosocialine', parentId: individualiosNode.id, order: 1 },
         { label: 'Spalvų', href: '/paslaugos/spalvu', parentId: individualiosNode.id, order: 2 },
         { label: 'Kvapų', href: '/paslaugos/kvapu', parentId: individualiosNode.id, order: 3 },
         { label: 'Taro', href: '/paslaugos/taro', parentId: individualiosNode.id, order: 4 },

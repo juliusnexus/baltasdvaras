@@ -126,7 +126,7 @@ export default function PsichosocialinePage() {
               variants={fadeIn}
               className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-custom-gradient leading-[0.9]"
             >
-              Psichosocialinė konsultacija
+              Psichosocialinė asmens konsultacija
             </motion.h1>
             <motion.div variants={fadeIn} className="space-y-6">
               <div className="relative">
@@ -182,7 +182,7 @@ export default function PsichosocialinePage() {
           >
             <Image 
               src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?q=80&w=1000&auto=format&fit=crop"
-              alt="Psichosocialinė konsultacija"
+              alt="Psichosocialinė asmens konsultacija"
               fill
               className="object-cover"
               referrerPolicy="no-referrer"
