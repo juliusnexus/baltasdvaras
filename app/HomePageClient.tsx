@@ -133,6 +133,16 @@ export default function HomePageClient({
     setSelectedStep(step);
   };
 
+  const [selectedDurationId, setSelectedDurationId] = useState('60min');
+
+  const DURATION_OPTIONS = [
+    { id: '60min', label: '60 min.', price: '40 €', description: '60 min. trukmės intensyvi analizė bei sprendimų paieška' },
+    { id: '1val30min', label: '1 val. 30 min.', price: '60 €', description: '90 min. trukmės išsami analizė bei sprendimų paieška' },
+    { id: '2val', label: '2 val.', price: '70 €', description: '120 min. trukmės giluminė analizė bei sprendimų paieška' }
+  ];
+
+  const currentOption = DURATION_OPTIONS.find(opt => opt.id === selectedDurationId) || DURATION_OPTIONS[0];
+
 
 
   const scrollToSection = (id: string | null | undefined) => {
@@ -482,15 +492,19 @@ export default function HomePageClient({
 
           <motion.div 
             variants={fadeIn}
-            className="relative h-[400px] md:h-[500px] lg:h-[600px] w-full rounded-[32px] md:rounded-[40px] overflow-hidden shadow-2xl border border-white/50"
+            className="relative w-full"
           >
-            <Image 
-              src="https://i.postimg.cc/vDFvv5KK/baltas-dvaras-aromoterapija.jpg" 
-              alt="Baltas Dvaras" 
-              fill
-              className="object-cover"
-              referrerPolicy="no-referrer"
-            />
+            <div className="bg-white/40 backdrop-blur-xl p-3 md:p-4 rounded-[32px] md:rounded-[40px] shadow-2xl border border-white/20 overflow-hidden">
+              <div className="relative h-[400px] md:h-[500px] lg:h-[600px] w-full">
+                <Image 
+                  src="https://i.postimg.cc/vDFvv5KK/baltas-dvaras-aromoterapija.jpg" 
+                  alt="Baltas Dvaras" 
+                  fill
+                  className="object-cover rounded-[24px] md:rounded-[32px]"
+                  referrerPolicy="no-referrer"
+                />
+              </div>
+            </div>
           </motion.div>
         </div>
       </motion.section>
@@ -708,14 +722,18 @@ export default function HomePageClient({
             .slice(0, 1)
             .map((plan) => {
             // Robustness Fix: Override details for specific plans
-            const displayPlan = plan.title === 'Pilna kelionė' ? {
+            const isConsultation = plan.title === 'Pilna kelionė' || plan.title === '"Psichosocialinė asmens konsultacija"';
+            const displayPlan = isConsultation ? {
               ...plan,
               title: '"Psichosocialinė asmens konsultacija"',
-              description: '60 min. trukmės intensyvi analizė bei sprendimų paieška',
-              price: '40 €',
+              description: currentOption.description,
+              price: currentOption.price,
               bonusText: 'Penkių lygių sąmoningumo analizė.',
               savingsText: null, // Remove "Sutaupai 50 eur" badge
             } : plan;
+
+            // Strip "Investicija: " if it already exists in the string to avoid doubling it in the UI
+            const cleanPrice = displayPlan.price.replace(/^Investicija:\s*/, '');
 
             return (
               <motion.div key={displayPlan.id} variants={fadeIn} className={`p-8 md:p-10 rounded-[32px] md:rounded-[40px] flex flex-col justify-between transition-shadow relative overflow-hidden ${true ? 'bg-brand/5 backdrop-blur-xl border border-brand/20 shadow-xl shadow-brand/5 hover:shadow-brand/10' : 'border border-stone-200 bg-stone-50/50 backdrop-blur-xl shadow-sm hover:shadow-md'}`}>
@@ -724,8 +742,27 @@ export default function HomePageClient({
                  )}
                 <div>
                   <h3 className={`text-xl md:text-2xl font-bold italic mb-3 md:mb-4 text-brand`}>{displayPlan.title}</h3>
+                  
+                  {isConsultation && (
+                    <div className="flex flex-wrap gap-2 mb-6">
+                      {DURATION_OPTIONS.map((opt) => (
+                        <button
+                          key={opt.id}
+                          onClick={() => setSelectedDurationId(opt.id)}
+                          className={`px-3 py-1.5 rounded-full text-[9px] font-bold uppercase tracking-widest transition-all ${
+                            selectedDurationId === opt.id 
+                              ? 'bg-brand text-white shadow-lg shadow-brand/20' 
+                              : 'bg-white/50 text-brand/60 hover:bg-white border border-brand/10'
+                          }`}
+                        >
+                          {opt.label}
+                        </button>
+                      ))}
+                    </div>
+                  )}
+
                   <p className={`text-[10px] md:text-xs mb-6 md:mb-8 text-[#4A6B4B]`}>{displayPlan.description}</p>
-                  <div className={`text-xl md:text-2xl font-bold tracking-tighter mb-2 text-brand`}>{displayPlan.price}</div>
+                  <div className={`text-xl md:text-2xl font-bold tracking-tighter mb-2 text-brand`}>Investicija: {cleanPrice}</div>
                   {displayPlan.bonusText && (
                     <p className="text-[#4A6B4B] text-[9px] md:text-[10px] font-bold uppercase mb-8 md:mb-10 tracking-widest">{displayPlan.bonusText}</p>
                   )}
