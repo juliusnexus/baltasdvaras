@@ -132,6 +132,7 @@ Išsilavinimas – socialinio darbo medicinoje bakalauras, psichosocialinis kons
         { label: 'Kvapų', href: '/paslaugos/kvapu', parentId: individualiosNode.id, order: 3 },
         { label: 'Taro', href: '/paslaugos/taro', parentId: individualiosNode.id, order: 4 },
         { label: 'Astro', href: '/paslaugos/astro', parentId: individualiosNode.id, order: 5 },
+        { label: 'Porų konsultacija', href: '/paslaugos/poru', parentId: individualiosNode.id, order: 6 },
       ]
     });
 
