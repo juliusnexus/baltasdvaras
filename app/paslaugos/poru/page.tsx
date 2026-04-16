@@ -62,13 +62,13 @@ const GALLERY_IMAGES = [
   }
 ];
 
-export default function PoruKonsultacijaPage() {
+export default function PsichosocialinePoruPage() {
   const [selectedImage, setSelectedImage] = useState<typeof GALLERY_IMAGES[0] | null>(null);
   const [isExpanded, setIsExpanded] = useState(false);
 
 
-  const fullText = "Porų konsultacija – tai saugi ir profesionali erdvė, skirta jūsų ryšiui stiprinti, konfliktams spręsti ir gilesniam vienas kito supratimui ugdyti. Mes kartu tyrinėjame jūsų bendravimo modelius, mokomės išgirsti ne tik žodžius, bet ir už jų slypinčius poreikius bei emocijas. Šis procesas padeda atkurti pasitikėjimą, intymumą ir rasti naujus kelius į darnų sugyvenimą. Konsultacijų metu kuriame aplinką, kurioje abu partneriai jaučiasi išgirsti ir vertinami, žingsnis po žingsnio kartu judant link stipresnės ir sąmoningesnės sąjungos.";
-  const shortText = "Porų konsultacija – tai saugi ir profesionali erdvė, skirta jūsų ryšiui stiprinti, konfliktams spręsti ir gilesniam vienas kito supratimui ugdyti.";
+  const fullText = "Psichosocialinė porų konsultacija – tai saugi ir profesionali erdvė, skirta jūsų ryšiui stiprinti, konfliktams spręsti ir gilesniam vienas kito supratimui ugdyti. Mes kartu tyrinėjame jūsų bendravimo modelius, mokomės išgirsti ne tik žodžius, bet ir už jų slypinčius poreikius bei emocijas. Šis procesas padeda atkurti pasitikėjimą, intymumą ir rasti naujus kelius į darnų sugyvenimą. Konsultacijų metu kuriame aplinką, kurioje abu partneriai jaučiasi išgirsti ir vertinami, žingsnis po žingsnio kartu judant link stipresnės ir sąmoningesnės sąjungos.";
+  const shortText = "Psichosocialinė porų konsultacija – tai saugi ir profesionali erdvė, skirta jūsų ryšiui stiprinti, konfliktams spręsti ir gilesniam vienas kito supratimui ugdyti.";
 
   return (
     <div className="min-h-screen bg-[#fcfcfc] text-brand font-montserrat tracking-wider selection:bg-brand/20 selection:text-brand overflow-x-hidden">
@@ -126,7 +126,7 @@ export default function PoruKonsultacijaPage() {
               variants={fadeIn}
               className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-custom-gradient leading-[0.9]"
             >
-              Porų konsultacija
+              Psichosocialinė porų
             </motion.h1>
             <motion.div variants={fadeIn} className="space-y-6">
               <div className="relative">
