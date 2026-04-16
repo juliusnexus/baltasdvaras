@@ -34,10 +34,10 @@ export default async function Page() {
     where: { parentId: null },
     include: {
       children: {
-        orderBy: { order: 'asc' },
+        orderBy: { label: 'asc' },
         include: {
           children: {
-            orderBy: { order: 'asc' }
+            orderBy: { label: 'asc' }
           }
         }
       }
