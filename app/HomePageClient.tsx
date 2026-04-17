@@ -133,15 +133,23 @@ export default function HomePageClient({
     setSelectedStep(step);
   };
 
-  const [selectedDurationId, setSelectedDurationId] = useState('60min');
+  const [selectedIndividualDurationId, setSelectedIndividualDurationId] = useState('60min');
+  const [selectedCouplesDurationId, setSelectedCouplesDurationId] = useState('60min');
 
-  const DURATION_OPTIONS = [
-    { id: '60min', label: '60 min.', price: '40 €', description: '60 min. trukmės intensyvi analizė bei sprendimų paieška' },
+  const INDIVIDUAL_DURATION_OPTIONS = [
+    { id: '60min', label: '60 min.', price: '40 €', description: '60 min. trukmės analizė bei sprendimų paieška' },
     { id: '1val30min', label: '1 val. 30 min.', price: '60 €', description: '90 min. trukmės išsami analizė bei sprendimų paieška' },
     { id: '2val', label: '2 val.', price: '70 €', description: '120 min. trukmės giluminė analizė bei sprendimų paieška' }
   ];
 
-  const currentOption = DURATION_OPTIONS.find(opt => opt.id === selectedDurationId) || DURATION_OPTIONS[0];
+  const COUPLES_DURATION_OPTIONS = [
+    { id: '60min', label: '60 min.', price: '40 €', description: '60 min. trukmės analizė bei sprendimų paieška poroms' },
+    { id: '1val30min', label: '1 val. 30 min.', price: '60 €', description: '90 min. trukmės išsami analizė bei sprendimų paieška poroms' },
+    { id: '2val', label: '2 val.', price: '70 €', description: '120 min. trukmės giluminė analizė bei sprendimų paieška poroms' }
+  ];
+
+  const currentIndividualOption = INDIVIDUAL_DURATION_OPTIONS.find(opt => opt.id === selectedIndividualDurationId) || INDIVIDUAL_DURATION_OPTIONS[0];
+  const currentCouplesOption = COUPLES_DURATION_OPTIONS.find(opt => opt.id === selectedCouplesDurationId) || COUPLES_DURATION_OPTIONS[0];
 
 
 
@@ -703,7 +711,6 @@ export default function HomePageClient({
         )}
       </AnimatePresence>
 
-      {/* Kainos */}
       <motion.section 
         id="pricing" 
         className="py-20 md:py-32 px-6"
@@ -714,22 +721,29 @@ export default function HomePageClient({
       >
         <motion.div 
           variants={staggerContainer}
-          className="max-w-md mx-auto flex flex-col gap-6"
+          className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
            {pricingPlans
-            .filter(plan => plan.title !== 'Viena sesija')
+            .filter(plan => plan.title !== 'Viena sesija' && plan.title !== 'Pilna kelionė')
             .sort((a, b) => a.order - b.order)
-            .slice(0, 1)
             .map((plan) => {
             // Robustness Fix: Override details for specific plans
-            const isConsultation = plan.title === 'Pilna kelionė' || plan.title === '"Psichosocialinė asmens konsultacija"';
-            const displayPlan = isConsultation ? {
+            const isIndividual = plan.title === '"Psichosocialinė asmens konsultacija"';
+            const isCouples = plan.title === '"Psichosocialinė porų konsultacija"';
+            const isTaro = plan.title === '"Asmeninė taro konsultacija"';
+            
+            const currentOpt = isIndividual ? currentIndividualOption : isCouples ? currentCouplesOption : null;
+            const durOptions = isIndividual ? INDIVIDUAL_DURATION_OPTIONS : isCouples ? COUPLES_DURATION_OPTIONS : [];
+            const activeDurId = isIndividual ? selectedIndividualDurationId : isCouples ? selectedCouplesDurationId : '';
+            const setDurId = isIndividual ? setSelectedIndividualDurationId : isCouples ? setSelectedCouplesDurationId : () => {};
+
+            // For Taro, we use the values directly from the database plan since there's no duration selection
+            const displayPlan = (isIndividual || isCouples) && currentOpt ? {
               ...plan,
-              title: '"Psichosocialinė asmens konsultacija"',
-              description: currentOption.description,
-              price: currentOption.price,
+              description: currentOpt.description,
+              price: currentOpt.price,
               bonusText: null,
-              savingsText: null, // Remove "Sutaupai 50 eur" badge
+              savingsText: null,
             } : plan;
 
             // Strip "Investicija: " if it already exists in the string to avoid doubling it in the UI
@@ -743,14 +757,14 @@ export default function HomePageClient({
                 <div>
                   <h3 className={`text-xl md:text-2xl font-bold italic mb-3 md:mb-4 text-brand`}>{displayPlan.title}</h3>
                   
-                  {isConsultation && (
+                  {(isIndividual || isCouples) && (
                     <div className="flex flex-wrap gap-2 mb-6">
-                      {DURATION_OPTIONS.map((opt) => (
+                      {durOptions.map((opt) => (
                         <button
                           key={opt.id}
-                          onClick={() => setSelectedDurationId(opt.id)}
+                          onClick={() => setDurId(opt.id)}
                           className={`px-3 py-1.5 rounded-full text-[9px] font-bold uppercase tracking-widest transition-all ${
-                            selectedDurationId === opt.id 
+                            activeDurId === opt.id 
                               ? 'bg-brand text-white shadow-lg shadow-brand/20' 
                               : 'bg-white/50 text-brand/60 hover:bg-white border border-brand/10'
                           }`}
