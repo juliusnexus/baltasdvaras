@@ -79,7 +79,7 @@ Išsilavinimas – socialinio darbo medicinoje bakalauras, psichosocialinis kons
         },
         {
           title: '"Psichosocialinė porų konsultacija"',
-          description: '60 min. trukmės analizė ir sprendimų paieška poroms',
+          description: '60 min. trukmės analizė ir sprendimų paieška',
           price: 'Investicija: 40 €',
           buttonText: 'Užsakyti',
           order: 2,
