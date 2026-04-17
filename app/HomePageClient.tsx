@@ -137,15 +137,15 @@ export default function HomePageClient({
   const [selectedCouplesDurationId, setSelectedCouplesDurationId] = useState('60min');
 
   const INDIVIDUAL_DURATION_OPTIONS = [
-    { id: '60min', label: '60 min.', price: '40 €', description: '60 min. trukmės analizė bei sprendimų paieška' },
-    { id: '1val30min', label: '1 val. 30 min.', price: '60 €', description: '90 min. trukmės išsami analizė bei sprendimų paieška' },
-    { id: '2val', label: '2 val.', price: '70 €', description: '120 min. trukmės giluminė analizė bei sprendimų paieška' }
+    { id: '60min', label: '60 min.', price: '40 €', description: '60 min. trukmės analizė ir sprendimų paieška' },
+    { id: '1val30min', label: '1 val. 30 min.', price: '60 €', description: '90 min. trukmės išsami analizė ir sprendimų paieška' },
+    { id: '2val', label: '2 val.', price: '70 €', description: '120 min. trukmės giluminė analizė ir sprendimų paieška' }
   ];
 
   const COUPLES_DURATION_OPTIONS = [
-    { id: '60min', label: '60 min.', price: '40 €', description: '60 min. trukmės analizė bei sprendimų paieška poroms' },
-    { id: '1val30min', label: '1 val. 30 min.', price: '60 €', description: '90 min. trukmės išsami analizė bei sprendimų paieška poroms' },
-    { id: '2val', label: '2 val.', price: '70 €', description: '120 min. trukmės giluminė analizė bei sprendimų paieška poroms' }
+    { id: '60min', label: '60 min.', price: '40 €', description: '60 min. trukmės analizė ir sprendimų paieška poroms' },
+    { id: '1val30min', label: '1 val. 30 min.', price: '60 €', description: '90 min. trukmės išsami analizė ir sprendimų paieška poroms' },
+    { id: '2val', label: '2 val.', price: '70 €', description: '120 min. trukmės giluminė analizė ir sprendimų paieška poroms' }
   ];
 
   const currentIndividualOption = INDIVIDUAL_DURATION_OPTIONS.find(opt => opt.id === selectedIndividualDurationId) || INDIVIDUAL_DURATION_OPTIONS[0];

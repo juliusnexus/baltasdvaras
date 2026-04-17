@@ -106,7 +106,7 @@ Išsilavinimas – socialinio darbo medicinoje bakalauras, psichosocialinis kons
     data: [
       {
         title: '"Psichosocialinė asmens konsultacija"',
-        description: '60 min. trukmės analizė bei sprendimų paieška',
+        description: '60 min. trukmės analizė ir sprendimų paieška',
         price: '40 €',
         savingsText: '',
         bonusText: 'Penkių lygių sąmoningumo analizė.',
@@ -116,7 +116,7 @@ Išsilavinimas – socialinio darbo medicinoje bakalauras, psichosocialinis kons
       },
       {
         title: '"Psichosocialinė porų konsultacija"',
-        description: '60 min. trukmės analizė bei sprendimų paieška poroms',
+        description: '60 min. trukmės analizė ir sprendimų paieška poroms',
         price: '40 €',
         savingsText: '',
         bonusText: 'Santykių dinamikos transformacija.',
@@ -126,7 +126,7 @@ Išsilavinimas – socialinio darbo medicinoje bakalauras, psichosocialinis kons
       },
       {
         title: '"Asmeninė taro konsultacija"',
-        description: '60min. trukmės analizė bei sprendimų paieška',
+        description: '60min. trukmės analizė ir sprendimų paieška',
         price: '40 €',
         savingsText: '',
         bonusText: 'Archetpinė įžvalga.',
