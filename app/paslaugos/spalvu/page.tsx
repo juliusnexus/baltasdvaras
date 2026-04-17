@@ -129,13 +129,13 @@ export default function SpalvuPage() {
                 <footer className="mt-2 text-sm font-bold text-gray-400 not-italic">— Vicky Wall, sistemos įkūrėja.</footer>
               </blockquote>
               
-              <p className="text-gray-600 text-base md:text-lg font-light leading-relaxed">
+              <p className="text-gray-600 text-base md:text-lg font-light leading-relaxed text-justify">
                 „Aura-Soma“ – tai unikali, liberali savęs pažinimo sistema, jungianti spalvų, augalų ir kristalų energijas. Tai ne tik gražūs dvispalviai buteliukai; tai veidrodis, padedantis suprasti save, suvokti savo gyvenimo kryptį ir atstatyti vidinę pusiausvyrą.
               </p>
 
               <div className="space-y-4">
                 <h3 className="text-xl font-bold text-gray-800">Kas yra Aura-Soma?</h3>
-                <p className="text-gray-600 font-light">
+                <p className="text-gray-600 font-light text-justify">
                   Tai holistinė terapija, kurios pagrindą sudaro „Equilibrium“ (pusiausvyros) aliejai. Kiekviename buteliuke telpa dvi dalys: viršutinė (aliejinė) ir apatinė (vandeninė). Jose susitinka spalvų energija, augalų ekstraktai bei skystieji kristalai.
                 </p>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
@@ -227,7 +227,7 @@ export default function SpalvuPage() {
             className="flex flex-col gap-8"
           >
             <h2 className="text-3xl md:text-4xl font-bold tracking-tighter text-gray-800">Kaip vyksta konsultacija?</h2>
-            <p className="text-gray-500 font-light leading-relaxed">
+            <p className="text-gray-500 font-light leading-relaxed text-justify">
               Tai sakralus procesas, kuriame jūs esate pagrindinis dalyvis. Konsultantas tik padeda perskaityti spalvų siunčiamą žinutę.
             </p>
             <div className="space-y-8">
@@ -347,7 +347,7 @@ export default function SpalvuPage() {
         {/* Final CTA */}
         <section className="text-center py-20">
           <h2 className="text-4xl font-bold tracking-wider mb-8 font-prata">Ženkite žingsnį link savęs</h2>
-          <p className="max-w-2xl mx-auto text-gray-500 font-light mb-12 leading-relaxed italic">
+          <p className="max-w-2xl mx-auto text-gray-500 font-light mb-12 leading-relaxed italic text-justify">
             Spalvos kalba tiesiai į mūsų pasąmonę. Leiskite joms papasakoti jūsų istoriją.<br/>
             Ar esi pasiruošęs pamatyti savo tikrąjį potencialą ir poreikius?
           </p>
