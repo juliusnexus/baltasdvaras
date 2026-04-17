@@ -161,7 +161,7 @@ export default function SpalvuPage() {
             className="relative aspect-[4/5] lg:aspect-square rounded-[40px] overflow-hidden shadow-2xl border border-white/50"
           >
             <Image 
-              src="https://images.unsplash.com/photo-1613977257363-707ba9348227?q=80&w=1000&auto=format&fit=crop"
+              src="/images/aura-soma/titulinis.jpg"
               alt="Aura-Soma buteliukai"
               fill
               className="object-cover"
