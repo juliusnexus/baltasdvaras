@@ -215,7 +215,7 @@ export default function SpalvuPage() {
           >
             <div className="relative w-full h-full">
               <Image 
-                src="https://images.unsplash.com/photo-1544161515-4af6b1d46b59?q=80&w=1000&auto=format&fit=crop"
+                src="/images/aura-soma/kaip vyksta konsultacija.JPG"
                 alt="Konsultacijos aplinka"
                 fill
                 className="object-cover rounded-[24px] md:rounded-[32px]"
