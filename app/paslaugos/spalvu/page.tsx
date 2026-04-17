@@ -26,39 +26,45 @@ const staggerContainer: Variants = {
 const GALLERY_IMAGES = [
   {
     id: 1,
-    src: '/images/aura-soma/bottle1.png',
-    title: 'Raudona & Mėlyna',
-    category: 'Equilibrium'
+    src: '/images/aura-soma/1.jpg',
+    title: 'Aura-Soma Equilibrium',
+    category: 'Spalvų energija'
   },
   {
     id: 2,
-    src: '/images/aura-soma/bottle2.png',
-    title: 'Purpurinė & Geltona',
-    category: 'Equilibrium'
+    src: '/images/aura-soma/2.jpg',
+    title: 'Dvasinis balansas',
+    category: 'Sielos veidrodis'
   },
   {
     id: 3,
-    src: '/images/aura-soma/bottle3.png',
+    src: '/images/aura-soma/3.jpg',
+    title: 'Apsaugos pomanderis',
+    category: 'Aura apsauga'
+  },
+  {
+    id: 4,
+    src: '/images/aura-soma/4.jpg',
+    title: 'Harmonijos buteliukas',
+    category: 'Emocinis gijimas'
+  },
+  {
+    id: 5,
+    src: '/images/aura-soma/5.jpg',
     title: 'Aura-Soma kolekcija',
     category: 'Produktų grupė'
   },
   {
-    id: 4,
-    src: '/images/aura-soma/bottle4.png',
-    title: 'Raudona & Juoda',
-    category: 'Equilibrium'
-  },
-  {
-    id: 5,
-    src: '/images/aura-soma/bottle5.png',
-    title: 'Rožinė & Žalia',
-    category: 'Equilibrium'
-  },
-  {
     id: 6,
-    src: 'https://i.postimg.cc/vDFvv5KK/baltas-dvaras-aromoterapija.jpg',
-    title: 'Aromaterapinė erdvė',
-    category: 'Aplinka'
+    src: '/images/aura-soma/6.jpg',
+    title: 'Vidinė šviesa',
+    category: 'Sąmoningumas'
+  },
+  {
+    id: 7,
+    src: '/images/aura-soma/7.jpg',
+    title: 'Transformacijos esencija',
+    category: 'Evoliucija'
   }
 ];
 
