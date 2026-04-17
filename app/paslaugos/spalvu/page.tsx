@@ -158,15 +158,17 @@ export default function SpalvuPage() {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-            className="relative aspect-[4/5] lg:aspect-square rounded-[40px] overflow-hidden shadow-2xl border border-white/50"
+            className="bg-white/40 backdrop-blur-xl p-3 md:p-4 rounded-[32px] md:rounded-[40px] shadow-2xl border border-white/20 overflow-hidden relative aspect-[4/5] lg:aspect-square"
           >
-            <Image 
-              src="/images/aura-soma/titulinis.jpg"
-              alt="Aura-Soma buteliukai"
-              fill
-              className="object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-tr from-brand/10 to-transparent pointer-events-none" />
+            <div className="relative w-full h-full">
+              <Image 
+                src="/images/aura-soma/titulinis.jpg"
+                alt="Aura-Soma buteliukai"
+                fill
+                className="object-cover rounded-[24px] md:rounded-[32px]"
+              />
+              <div className="absolute inset-0 bg-gradient-to-tr from-brand/10 to-transparent pointer-events-none rounded-[24px] md:rounded-[32px]" />
+            </div>
           </motion.div>
         </section>
 
@@ -209,14 +211,16 @@ export default function SpalvuPage() {
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="relative aspect-[4/5] rounded-[40px] overflow-hidden shadow-2xl border border-white/50"
+            className="bg-white/40 backdrop-blur-xl p-3 md:p-4 rounded-[32px] md:rounded-[40px] shadow-2xl border border-white/20 overflow-hidden relative aspect-[4/5]"
           >
-            <Image 
-              src="https://images.unsplash.com/photo-1544161515-4af6b1d46b59?q=80&w=1000&auto=format&fit=crop"
-              alt="Konsultacijos aplinka"
-              fill
-              className="object-cover"
-            />
+            <div className="relative w-full h-full">
+              <Image 
+                src="https://images.unsplash.com/photo-1544161515-4af6b1d46b59?q=80&w=1000&auto=format&fit=crop"
+                alt="Konsultacijos aplinka"
+                fill
+                className="object-cover rounded-[24px] md:rounded-[32px]"
+              />
+            </div>
           </motion.div>
           
           <motion.div
