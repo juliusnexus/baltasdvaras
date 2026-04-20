@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence, Variants } from 'motion/react';
-import { ArrowLeft, Maximize2, X, CheckCircle2 } from 'lucide-react';
+import { ArrowLeft, Clock, CheckCircle2, AlertCircle, Sparkles, User, Users } from 'lucide-react';
 
 const fadeIn: Variants = {
   hidden: { opacity: 0, y: 20 },
@@ -23,55 +23,21 @@ const staggerContainer: Variants = {
   }
 };
 
-const GALLERY_IMAGES = [
-  {
-    id: 1,
-    src: '/images/aura-soma/bottle1.png',
-    title: 'Raudona & Mėlyna',
-    category: 'Equilibrium'
-  },
-  {
-    id: 2,
-    src: '/images/aura-soma/bottle2.png',
-    title: 'Purpurinė & Geltona',
-    category: 'Equilibrium'
-  },
-  {
-    id: 3,
-    src: '/images/aura-soma/bottle3.png',
-    title: 'Aura-Soma kolekcija',
-    category: 'Produktų grupė'
-  },
-  {
-    id: 4,
-    src: '/images/aura-soma/bottle4.png',
-    title: 'Raudona & Juoda',
-    category: 'Equilibrium'
-  },
-  {
-    id: 5,
-    src: '/images/aura-soma/bottle5.png',
-    title: 'Rožinė & Žalia',
-    category: 'Equilibrium'
-  },
-  {
-    id: 6,
-    src: 'https://i.postimg.cc/vDFvv5KK/baltas-dvaras-aromoterapija.jpg',
-    title: 'Aromaterapinė erdvė',
-    category: 'Aplinka'
-  }
+const PRICING_OPTIONS = [
+  { id: '1h', label: '1 valanda', price: '40 €', durationSymbol: '1h' },
+  { id: '1.5h', label: '1,5 valandos', price: '50 €', durationSymbol: '1.5h' },
+  { id: '2h', label: '2 valandos', price: '60 €', durationSymbol: '2h' },
 ];
 
 export default function KvapuPage() {
-  const [selectedImage, setSelectedImage] = useState<typeof GALLERY_IMAGES[0] | null>(null);
-
+  const [selectedDuration, setSelectedDuration] = useState(PRICING_OPTIONS[1]); // Default 1.5h
 
   return (
     <div className="min-h-screen bg-[#fcfcfc] text-brand font-montserrat tracking-wider selection:bg-brand/20 selection:text-brand overflow-x-hidden">
       
       {/* Background Elements */}
       <div className="fixed inset-0 z-0 pointer-events-none opacity-20">
-        <svg viewBox="0 0 800 800" className="w-full h-full stroke-brand/40 fill-none">
+        <svg viewBox="0 0 800 800" className="w-full h-full stroke-brand/30 fill-none">
           <motion.path 
             initial={{ pathLength: 0, opacity: 0 }}
             animate={{ pathLength: 1, opacity: 1 }}
@@ -95,6 +61,7 @@ export default function KvapuPage() {
             width={32} 
             height={32} 
             className="w-8 h-8 lg:w-10 lg:h-10 object-contain"
+            referrerPolicy="no-referrer"
           />
           Baltas Dvaras
         </div>
@@ -103,7 +70,7 @@ export default function KvapuPage() {
 
       <main className="relative z-10 pt-32 pb-24 px-6 lg:px-12 max-w-7xl mx-auto">
         
-        {/* Intro Section */}
+        {/* Hero Section */}
         <section className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center mb-24 lg:mb-32">
           <motion.div 
             initial="hidden"
@@ -113,43 +80,25 @@ export default function KvapuPage() {
           >
             <motion.div 
               variants={fadeIn}
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand/10 text-brand text-[9px] font-bold tracking-[0.2em] w-fit"
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand/10 text-brand text-[9px] font-bold tracking-[0.2em] w-fit uppercase"
             >
-              Kvapų konsultacija. Aura-Soma®
+              Kvapų konsultacija
             </motion.div>
             <motion.h1 
               variants={fadeIn}
-              className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-wider text-custom-gradient leading-[1.1] font-prata"
+              className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-custom-gradient leading-[1.0] font-prata"
             >
-              Kvapų galia tavo sielai
+              Kelionė į pasąmonę per uoslę
             </motion.h1>
             <motion.div variants={fadeIn} className="space-y-6">
               <blockquote className="border-l-4 border-brand/20 pl-6 italic text-gray-600 text-lg md:text-xl font-light leading-relaxed">
-                &ldquo;Mes esame kvapai ir spalvos, kurias pasirenkame, ir jos atspindi mūsų tikruosius poreikius.&rdquo;
-                <footer className="mt-2 text-sm font-bold text-gray-400 not-italic">— Vicky Wall, sistemos įkūrėja.</footer>
+                &ldquo;Kvapo įtaiga stipresnė už žodžius, reginius, jausmus ir valią. Kvapo įtaigai neįmanoma atsispirti, jis patenka į mus kaip oras į plaučius, jis užlieja mus, tiesiog užtvindo ir niekas negali nuo jo apsiginti.&rdquo;
+                <footer className="mt-2 text-sm font-bold text-gray-400 not-italic">— Patrick Süskind</footer>
               </blockquote>
-              
-              <p className="text-gray-600 text-base md:text-lg font-light leading-relaxed">
-                Autentiška „Aura-Soma“ kvapų terapija papildo spalvų sistemą giliais eteriniais aliejais ir augalų energija. Pomanderiai ir kvintesencijos padeda apsaugoti bei subalansuoti jūsų aurą, suteikdami emocinį palaikymą ir aiškumą.
-              </p>
-
-              <div className="space-y-4">
-                <h3 className="text-xl font-bold text-gray-800">Aromatų sinergija</h3>
-                <p className="text-gray-600 font-light">
-                  Kiekvienas kvapas turi specifinę vibraciją, kuri veikia tiesiogiai per uoslę, harmonizuodama mūsų būseną. Tai kviečia į susitikimą su savimi per jusles.
+              <div className="text-gray-600 text-base md:text-lg font-light leading-relaxed text-justify space-y-4">
+                <p>
+                  Ar žinojote, kad kvapas yra trumpiausias kelias į jūsų emocijas? Kol protas kuria loginius paaiškinimus, jūsų uoslė jau žino tiesą. Mes esame simbiozėje su augalais, todėl eterinių aliejų molekulės mūsų ląstelėms yra savos ir atpažįstamos.
                 </p>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
-                  {[
-                    { title: "Kvapai", desc: "Eterinė apsauga" },
-                    { title: "Augalai", desc: "Gydomoji galia" },
-                    { title: "Energija", desc: "Vibracinis balansas" }
-                  ].map((item, i) => (
-                    <div key={i} className="bg-white/40 backdrop-blur-md p-4 rounded-2xl border border-white/30 shadow-sm">
-                      <h4 className="font-bold text-[10px] uppercase tracking-widest text-brand mb-1">{item.title}</h4>
-                      <p className="text-[10px] text-gray-400 uppercase tracking-tighter">{item.desc}</p>
-                    </div>
-                  ))}
-                </div>
               </div>
             </motion.div>
           </motion.div>
@@ -158,19 +107,76 @@ export default function KvapuPage() {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-            className="relative aspect-[4/5] lg:aspect-square rounded-[40px] overflow-hidden shadow-2xl border border-white/50"
+            className="bg-white/40 backdrop-blur-xl p-3 md:p-4 rounded-[32px] md:rounded-[40px] shadow-2xl border border-white/20 overflow-hidden relative aspect-[4/5] lg:aspect-square"
           >
-            <Image 
-              src="https://images.unsplash.com/photo-1544161515-4af6b1d46b59?q=80&w=1000&auto=format&fit=crop"
-              alt="Aura-Soma kvapai"
-              fill
-              className="object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-tr from-brand/10 to-transparent pointer-events-none" />
+            <div className="relative w-full h-full">
+              <Image 
+                src="/images/aura-soma/kvapu konsultacija baltas dvaras.jpg"
+                alt="Kvapų konsultacija Baltas Dvaras"
+                fill
+                className="object-cover rounded-[24px] md:rounded-[32px]"
+                referrerPolicy="no-referrer"
+              />
+              <div className="absolute inset-0 bg-gradient-to-tr from-brand/10 to-transparent pointer-events-none rounded-[24px] md:rounded-[32px]" />
+            </div>
           </motion.div>
         </section>
 
-        {/* Benefits Section */}
+        {/* How it works */}
+        <section className="mb-24 lg:mb-32">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <motion.div 
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="order-2 lg:order-1 bg-white/40 backdrop-blur-xl p-3 md:p-4 rounded-[32px] md:rounded-[40px] shadow-2xl border border-white/20 overflow-hidden relative aspect-[4/5]"
+            >
+              <div className="relative w-full h-full">
+                <Image 
+                  src="https://images.unsplash.com/photo-1544161515-4af6b1d46b59?q=80&w=1000&auto=format&fit=crop"
+                  alt="Kvapų testavimo procesas"
+                  fill
+                  className="object-cover rounded-[24px] md:rounded-[32px]"
+                  referrerPolicy="no-referrer"
+                />
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={staggerContainer}
+              className="order-1 lg:order-2 flex flex-col gap-8"
+            >
+              <h2 className="text-3xl md:text-4xl font-bold tracking-tighter text-gray-800 font-prata">Kaip tai veikia?</h2>
+              <div className="text-gray-600 font-light leading-relaxed text-justify space-y-4">
+                <p>
+                  Įkvėpus kvapą, molekulės akimirksniu pasiekia limbinę smegenų sistemą – mūsų jausmų, atminties ir instinktų centrą. Tai sužadina pogumburį, kuris reguliuoja viską: nuo jūsų energijos lygio iki seksualinio potraukio.
+                </p>
+                <p className="font-medium text-brand/80">
+                  Faktas: Net 95 % fizinių negalavimų turi psichosomatinę šaknį. Kvapų vibracijos padeda „atrakinti“ užspaustas emocijas ir grąžinti organizmą į darnią visumą.
+                </p>
+              </div>
+              <div className="space-y-4 pt-4 border-t border-brand/5">
+                <h3 className="font-bold text-gray-800">Kodėl verta rinktis?</h3>
+                {[
+                  "Gilus vidinės būsenos analizavimas",
+                  "Psichoemocinės būsenos atskleidimas",
+                  "Individuali 60 dienų korekcijos programa",
+                  "Asmeniniai sielos kvepalai (pagal pageidavimą)"
+                ].map((item, i) => (
+                  <div key={i} className="flex items-center gap-3 text-gray-500">
+                    <CheckCircle2 className="w-5 h-5 text-brand/60" />
+                    <span className="text-sm font-medium">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Process Section */}
         <section className="mb-24 lg:mb-32">
           <motion.div
             initial="hidden"
@@ -179,224 +185,184 @@ export default function KvapuPage() {
             variants={fadeIn}
             className="bg-brand/5 backdrop-blur-xl rounded-[40px] p-8 md:p-16 border border-brand/10"
           >
-            <h2 className="text-3xl font-bold tracking-tighter mb-8 text-center text-gray-800">Kokią naudą tai teikia?</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[
-                { title: "Vidinė ramybė", desc: "Sumažinsite stresą ir įtampą." },
-                { title: "Intuicija", desc: "Pradėsite geriau girdėti savo vidinį balsą." },
-                { title: "Talentai", desc: "Suprasite savo stiprybes, kurios buvo užslėptos." },
-                { title: "Emocinis paleidimas", desc: "Švelniai paleisite nuoskaudas ar baimes." },
-                { title: "Energija", desc: "Atstatysite gyvybines jėgas po išsekimo." },
-                { title: "Sąmoningumas", desc: "Gydomas žmogus, stiprinant jo savimonę." }
-              ].map((benefit, i) => (
-                <div key={i} className="flex items-start gap-4">
-                  <div className="mt-1 bg-white p-2 rounded-full shadow-sm border border-brand/10">
-                    <CheckCircle2 className="w-5 h-5 text-brand" />
-                  </div>
+            <h2 className="text-3xl font-bold tracking-tighter mb-12 text-center text-gray-800 font-prata">Kaip vyksta kvapų testavimas?</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
+              <div className="flex flex-col gap-6">
+                <div className="flex gap-6">
+                  <div className="w-12 h-12 rounded-2xl bg-white flex items-center justify-center shadow-sm border border-brand/5 shrink-0 font-bold text-brand">1</div>
                   <div>
-                    <h3 className="font-bold text-gray-800 mb-1">{benefit.title}</h3>
-                    <p className="text-gray-500 text-sm font-light leading-relaxed">{benefit.desc}</p>
+                    <h4 className="font-bold text-gray-800 mb-2">Procesas</h4>
+                    <p className="text-gray-500 text-sm font-light leading-relaxed text-justify">Jūs pratestuojate 50 aukščiausios kokybės eterinių aliejų. Kiekvieną jų vertinate intuityviai: patinka, neutralu arba nepatinka.</p>
                   </div>
                 </div>
-              ))}
+                <div className="flex gap-6">
+                  <div className="w-12 h-12 rounded-2xl bg-white flex items-center justify-center shadow-sm border border-brand/5 shrink-0 font-bold text-brand">2</div>
+                  <div>
+                    <h4 className="font-bold text-gray-800 mb-2">Analizė</h4>
+                    <p className="text-gray-500 text-sm font-light leading-relaxed text-justify">Jūsų reakcijos atskleidžia tikrąją psichoemocinę būseną, stiprybes, baimes ir tai, kas šiuo metu vyksta jūsų gyvenimo tėkmėje.</p>
+                  </div>
+                </div>
+              </div>
+              <div className="flex flex-col gap-6">
+                <div className="flex gap-6">
+                  <div className="w-12 h-12 rounded-2xl bg-white flex items-center justify-center shadow-sm border border-brand/5 shrink-0 font-bold text-brand">3</div>
+                  <div>
+                    <h4 className="font-bold text-gray-800 mb-2">Programa</h4>
+                    <p className="text-gray-500 text-sm font-light leading-relaxed text-justify">Iš jūsų išsirinktų favoritų sudaroma individuali 60 dienų korekcijos programa.</p>
+                  </div>
+                </div>
+                <div className="flex gap-6">
+                  <div className="w-12 h-12 rounded-2xl bg-white flex items-center justify-center shadow-sm border border-brand/5 shrink-0 font-bold text-brand">4</div>
+                  <div>
+                    <h4 className="font-bold text-gray-800 mb-2">Savistaba</h4>
+                    <p className="text-gray-500 text-sm font-light leading-relaxed text-justify">Gausite specialią metodiką pokyčiams fiksuoti. Po kurso aptariame pasiektus rezultatus. Esant pageidavimui, sukuriame jūsų sielos kvepalus.</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </motion.div>
         </section>
 
-        {/* Consultation Process */}
-        <section className="mb-24 lg:mb-32 grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-           <motion.div 
+        {/* Who is it for? */}
+        <section className="mb-24 lg:mb-32">
+          <h2 className="text-3xl font-bold tracking-tighter mb-12 text-center text-gray-800 font-prata">Kam tai skirta?</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="bg-white p-10 rounded-[32px] border border-gray-100 shadow-xl shadow-brand/5 hover:translate-y-[-8px] transition-all duration-500"
+            >
+              <div className="mb-6 w-14 h-14 rounded-2xl bg-brand/10 flex items-center justify-center text-brand">
+                <User className="w-7 h-7" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-800 mb-6">Asmeninė konsultacija</h3>
+              <ul className="space-y-4 text-gray-500 font-light text-sm text-justify">
+                <li className="flex gap-3"><Sparkles className="w-4 h-4 text-brand/40 shrink-0 mt-0.5" /> <span>Savo asmenybės tipą, poreikius ir paslėptą potencialą.</span></li>
+                <li className="flex gap-3"><Sparkles className="w-4 h-4 text-brand/40 shrink-0 mt-0.5" /> <span>Vidinius įstrigimus, kompleksus ar iššūkius, kuriuos jau esate pasiruošę paleisti.</span></li>
+                <li className="flex gap-3"><Sparkles className="w-4 h-4 text-brand/40 shrink-0 mt-0.5" /> <span>Dabartinį energijos vektorių – kur link sukasi jūsų gyvenimas?</span></li>
+              </ul>
+            </motion.div>
+
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="bg-white p-10 rounded-[32px] border border-gray-100 shadow-xl shadow-brand/5 hover:translate-y-[-8px] transition-all duration-500"
+            >
+              <div className="mb-6 w-14 h-14 rounded-2xl bg-brand/10 flex items-center justify-center text-brand">
+                <Users className="w-7 h-7" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-800 mb-6">Porų konsultacija</h3>
+              <ul className="space-y-4 text-gray-500 font-light text-sm text-justify">
+                <li className="flex gap-3"><Sparkles className="w-4 h-4 text-brand/40 shrink-0 mt-0.5" /> <span>Santykių dinamiką ir suderinamumą.</span></li>
+                <li className="flex gap-3"><Sparkles className="w-4 h-4 text-brand/40 shrink-0 mt-0.5" /> <span>Vyrų ir moterų tipų sąveiką, stipriąsias bei silpnąsias sąjungos puses.</span></li>
+              </ul>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Important Info & Pricing Card */}
+        <section className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-stretch mb-24">
+          {/* Important Info */}
+          <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="relative aspect-[4/5] rounded-[40px] overflow-hidden shadow-2xl border border-white/50"
+            className="bg-stone-50 p-8 md:p-12 rounded-[40px] border border-stone-200"
           >
-            <Image 
-              src="https://images.unsplash.com/photo-1544161515-4af6b1d46b59?q=80&w=1000&auto=format&fit=crop"
-              alt="Konsultacijos aplinka"
-              fill
-              className="object-cover"
-            />
-          </motion.div>
-          
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={staggerContainer}
-            className="flex flex-col gap-8"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tighter text-gray-800">Kaip vyksta konsultacija?</h2>
-            <p className="text-gray-500 font-light leading-relaxed">
-              Tai sakralus procesas, kuriame jūs esate pagrindinis dalyvis. Konsultantas tik padeda perskaityti spalvų siunčiamą žinutę.
-            </p>
-            <div className="space-y-8">
-              <div className="flex gap-6">
-                <div className="text-3xl font-black text-brand/30 select-none">01</div>
-                <div>
-                  <h4 className="font-bold text-gray-800 mb-2">Buteliukų pasirinkimas</h4>
-                  <p className="text-gray-500 text-sm font-light">Prieš jus išsirikiuoja daugiau nei 120 buteliukų. Jūs intuityviai išsirenkate keturis, kurie jus labiausiai traukia.</p>
-                </div>
-              </div>
-              <div className="flex gap-6">
-                <div className="text-3xl font-black text-brand/30 select-none">02</div>
-                <div>
-                  <h4 className="font-bold text-gray-800 mb-2">Skaitymas (Interpretacija)</h4>
-                  <div className="space-y-3">
-                    <div className="flex items-start gap-3">
-                      <div className="w-6 h-6 rounded-lg bg-stone-100 flex items-center justify-center text-[10px] font-bold text-stone-400 shrink-0 mt-0.5">1</div>
-                      <p className="text-gray-500 text-xs font-light"><span className="font-bold text-gray-700">1-asis buteliukas:</span> jūsų sielos misija ir tikslas – kodėl jūs čia?</p>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <div className="w-6 h-6 rounded-lg bg-stone-100 flex items-center justify-center text-[10px] font-bold text-stone-400 shrink-0 mt-0.5">2</div>
-                      <p className="text-gray-500 text-xs font-light"><span className="font-bold text-gray-700">2-asis buteliukas:</span> jūsų didžiausi iššūkiai ir dovanos, kurios slepiasi už jų.</p>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <div className="w-6 h-6 rounded-lg bg-stone-100 flex items-center justify-center text-[10px] font-bold text-stone-400 shrink-0 mt-0.5">3</div>
-                      <p className="text-gray-500 text-xs font-light"><span className="font-bold text-gray-700">3-asis buteliukas:</span> „čia ir dabar“ – jūsų dabartinė būsena.</p>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <div className="w-6 h-6 rounded-lg bg-stone-100 flex items-center justify-center text-[10px] font-bold text-stone-400 shrink-0 mt-0.5">4</div>
-                      <p className="text-gray-500 text-xs font-light"><span className="font-bold text-gray-700">4-asis buteliukas:</span> ateities energija ir tai, kas ateina į jūsų gyvenimą.</p>
-                    </div>
+            <div className="flex items-center gap-3 mb-8">
+              <AlertCircle className="w-6 h-6 text-brand/60" />
+              <h2 className="text-2xl font-bold tracking-tighter text-gray-800 font-prata">Svarbi informacija</h2>
+            </div>
+            <ul className="space-y-6">
+              {[
+                { label: "Moterims", text: "Testavimas neatliekamas 3 dienos iki menstruacijų ir pirmas 3 ciklo dienas (dėl hormoninių svyravimų)." },
+                { label: "Amžius", text: "Rekomenduojama asmenims nuo 12 metų." },
+                { label: "Pasiruošimas", text: "Parą iki susitikimo nevartoti psichotropinių medžiagų, vengti aštraus maisto." },
+                { label: "Švara", text: "Į konsultaciją atvykite nesikvėpinę." },
+                { label: "Hidratacija", text: "Testavimo metu ir parą po jo rekomenduojama gerti daug vandens." }
+              ].map((info, i) => (
+                <li key={i} className="flex gap-4">
+                  <div className="w-1.5 h-1.5 rounded-full bg-brand/40 mt-2 shrink-0" />
+                  <div>
+                    <span className="font-bold text-gray-800 text-sm block mb-1">{info.label}</span>
+                    <p className="text-gray-500 text-sm font-light leading-relaxed">{info.text}</p>
                   </div>
-                </div>
-              </div>
-              <div className="flex gap-6">
-                <div className="text-3xl font-black text-brand/30 select-none">03</div>
-                <div>
-                  <h4 className="font-bold text-gray-800 mb-2">Terapinio produkto parinkimas</h4>
-                  <p className="text-gray-500 text-sm font-light">Rekomenduojamas konkretus buteliukas naudojimui namuose, bei kiti pagalbiniai produktai (pomanderiai, kvintesencijos, archangelojai).</p>
-                </div>
-              </div>
-            </div>
+                </li>
+              ))}
+            </ul>
           </motion.div>
-        </section>
 
-        {/* Pricing / Target Table */}
-        <section className="mb-24 lg:mb-32">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold tracking-tighter mb-12 text-center text-gray-800">Kam tai skirta?</h2>
-            <div className="overflow-hidden rounded-[32px] border border-gray-100 shadow-xl bg-white/50 backdrop-blur-xl">
-              <table className="w-full text-left border-collapse">
-                <thead>
-                  <tr className="bg-brand/5">
-                    <th className="p-6 md:p-10 text-[10px] uppercase tracking-widest font-black text-brand border-b border-brand/10">Ką sprendžia?</th>
-                    <th className="p-6 md:p-10 text-[10px] uppercase tracking-widest font-black text-brand border-b border-brand/10">Kuo padeda?</th>
-                  </tr>
-                </thead>
-                <tbody className="text-gray-600 font-light text-sm md:text-base">
-                  <tr>
-                    <td className="p-6 md:p-10 border-b border-gray-50 bg-white/30">Sprendimų priėmimas</td>
-                    <td className="p-6 md:p-10 border-b border-gray-50">Suteikia aiškumo ir pasitikėjimo.</td>
-                  </tr>
-                  <tr>
-                    <td className="p-6 md:p-10 border-b border-gray-50 bg-white/30">Santykių krizės</td>
-                    <td className="p-6 md:p-10 border-b border-gray-50">Padeda suprasti reakcijas, rasti pilnatvę.</td>
-                  </tr>
-                  <tr>
-                    <td className="p-6 md:p-10 border-b border-gray-50 bg-white/30">Kūrybinis blokas</td>
-                    <td className="p-6 md:p-10 border-b border-gray-50">Atveria įkvėpimą ir saviraišką.</td>
-                  </tr>
-                  <tr>
-                    <td className="p-6 md:p-10 bg-white/30">Nuovargis / Perdegimas</td>
-                    <td className="p-6 md:p-10">Harmonizuoja energetinį lauką.</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </section>
-
-
-        {/* Gallery */}
-        <div className="mb-16">
-          <h2 className="text-2xl md:text-3xl font-bold tracking-tighter mb-12 text-center text-gray-800">Produktų galerija</h2>
+          {/* Pricing Card */}
           <motion.div 
-            initial="hidden"
-            whileInView="visible"
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            variants={staggerContainer}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
+            className="relative bg-white rounded-[40px] p-8 md:p-12 shadow-2xl shadow-brand/10 border border-gray-100 flex flex-col justify-between overflow-hidden"
           >
-            {GALLERY_IMAGES.map((image) => (
-              <motion.div 
-                key={image.id}
-                variants={fadeIn}
-                className="group relative aspect-[4/3] rounded-[32px] overflow-hidden cursor-pointer shadow-lg hover:shadow-2xl transition-all duration-500 border border-white/50"
-                onClick={() => setSelectedImage(image)}
-              >
-                <Image 
-                  src={image.src}
-                  alt={image.title}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8">
-                  <span className="text-white/60 text-[9px] uppercase tracking-widest mb-2">{image.category}</span>
-                  <h3 className="text-white text-xl font-bold tracking-tight">{image.title}</h3>
-                  <div className="mt-4 w-10 h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white border border-white/30">
-                    <Maximize2 className="w-4 h-4" />
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
+             <div className="relative z-10">
+                <h3 className="text-3xl font-bold tracking-tight text-gray-800 mb-4 font-prata">Pasirinkite trukmę</h3>
+                <p className="text-gray-500 font-light mb-10 text-sm italic">„Susitikime ten, kur prasideda pokyčiai.“</p>
 
-        {/* Final CTA */}
-        <section className="text-center py-20">
-          <h2 className="text-4xl font-bold tracking-wider mb-8 font-prata">Ženkite žingsnį link savęs</h2>
-          <p className="max-w-2xl mx-auto text-gray-500 font-light mb-12 leading-relaxed italic">
-            Spalvos kalba tiesiai į mūsų pasąmonę. Leiskite joms papasakoti jūsų istoriją.<br/>
-            Ar esi pasiruošęs pamatyti savo tikrąjį potencialą ir poreikius?
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 items-center justify-center">
-            <button className="px-10 py-5 bg-brand text-white rounded-2xl font-black text-[10px] uppercase tracking-[0.2em] shadow-xl shadow-brand/20 hover:bg-brand/90 transition-all hover:scale-105 active:scale-95">
-              REGISTRUOTIS KONSULTACIJAI
-            </button>
-          </div>
+                <div className="space-y-3 mb-10">
+                  {PRICING_OPTIONS.map((option) => (
+                    <button
+                      key={option.id}
+                      onClick={() => setSelectedDuration(option)}
+                      className={`w-full group flex items-center justify-between p-5 rounded-2xl border transition-all duration-300 ${
+                        selectedDuration.id === option.id 
+                          ? 'border-brand bg-brand/5 shadow-inner' 
+                          : 'border-gray-100 bg-gray-50/50 hover:bg-white hover:border-brand/30'
+                      }`}
+                    >
+                      <div className="flex items-center gap-4">
+                        <div className={`p-3 rounded-xl transition-colors ${
+                          selectedDuration.id === option.id ? 'bg-brand text-white' : 'bg-white text-gray-400 group-hover:text-brand'
+                        }`}>
+                          <Clock className="w-5 h-5" />
+                        </div>
+                        <div className="text-left">
+                          <span className={`block font-bold text-sm tracking-wide ${selectedDuration.id === option.id ? 'text-brand' : 'text-gray-600'}`}>
+                            {option.label}
+                          </span>
+                        </div>
+                      </div>
+                      <div className="flex flex-col items-end">
+                        <span className={`text-xl font-bold ${selectedDuration.id === option.id ? 'text-brand' : 'text-gray-800'}`}>
+                          {option.price}
+                        </span>
+                      </div>
+                    </button>
+                  ))}
+                </div>
+
+                <div className="space-y-4">
+                  <button className="w-full py-5 bg-brand text-white rounded-2xl font-black text-xs uppercase tracking-[0.2em] shadow-xl shadow-brand/20 hover:bg-brand/90 transition-all hover:scale-[1.02] active:scale-95">
+                    REGISTRUOTIS KONSULTACIJAI
+                  </button>
+                  <button className="w-full py-4 bg-transparent text-gray-400 rounded-2xl font-bold text-[10px] uppercase tracking-widest hover:text-brand transition-colors">
+                    SUSISIEKTI DĖL DETALIŲ
+                  </button>
+                </div>
+             </div>
+
+             {/* Dynamic background element */}
+             <div className="absolute top-0 right-0 w-64 h-64 bg-brand/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+             <div className="absolute bottom-10 left-10 text-[10rem] font-black text-brand/[0.03] select-none pointer-events-none leading-none">
+               {selectedDuration.durationSymbol}
+             </div>
+          </motion.div>
+        </section>
+
+        {/* Footer Text */}
+        <section className="text-center max-w-2xl mx-auto py-12">
+           <p className="text-gray-500 font-light leading-relaxed italic text-sm">
+             Leiskite augalų galioms padėti jums rasti harmoningiausią kelią į save ir savo socialinį gyvenimą.
+           </p>
         </section>
       </main>
-
-      {/* Lightbox */}
-      <AnimatePresence>
-        {selectedImage && (
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-xl flex items-center justify-center p-4 md:p-12"
-            onClick={() => setSelectedImage(null)}
-          >
-            <motion.button 
-              className="absolute top-8 right-8 text-white/60 hover:text-white transition-colors"
-              onClick={() => setSelectedImage(null)}
-            >
-              <X className="w-8 h-8" />
-            </motion.button>
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.9, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              className="relative w-full max-w-5xl aspect-[4/3] md:aspect-video rounded-3xl overflow-hidden shadow-2xl"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <Image 
-                src={selectedImage.src}
-                alt={selectedImage.title}
-                fill
-                className="object-cover"
-              />
-              <div className="absolute bottom-0 left-0 w-full p-8 md:p-12 bg-gradient-to-t from-black/80 to-transparent">
-                <span className="text-white/60 text-[10px] uppercase tracking-widest mb-2 block">{selectedImage.category}</span>
-                <h2 className="text-white text-2xl md:text-4xl font-bold tracking-tight">{selectedImage.title}</h2>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
 
     </div>
   );
