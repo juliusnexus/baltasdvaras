@@ -368,9 +368,9 @@ export default function KvapuPage() {
 
                 <div className="space-y-4">
                   {/* Notice Badge */}
-                  <div className="flex items-center justify-center gap-2 py-3 mb-2 bg-brand/5 rounded-xl border border-brand/10">
-                    <MapPin className="w-4 h-4 text-brand/60" />
-                    <span className="text-[9px] font-black uppercase tracking-[0.2em] text-brand/80">Tik gyvai Baltame Dvare</span>
+                  <div className="flex items-center justify-center gap-2 py-3 mb-2 bg-brand text-white rounded-xl shadow-lg shadow-brand/10">
+                    <MapPin className="w-4 h-4" />
+                    <span className="text-[9px] font-black uppercase tracking-[0.2em]">Tik gyvai Baltame Dvare</span>
                   </div>
 
                   <button className="w-full py-5 bg-brand text-white rounded-2xl font-black text-xs uppercase tracking-[0.2em] shadow-xl shadow-brand/20 hover:bg-brand/90 transition-all hover:scale-[1.02] active:scale-95">

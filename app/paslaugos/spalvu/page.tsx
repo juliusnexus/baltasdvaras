@@ -415,7 +415,7 @@ export default function SpalvuPage() {
             </div>
             
             {/* Notice Badge */}
-            <div className="inline-flex items-center gap-3 px-6 py-3 bg-brand/5 text-brand rounded-2xl border border-brand/10">
+            <div className="inline-flex items-center gap-3 px-6 py-3 bg-brand text-white rounded-2xl shadow-xl shadow-brand/20">
               <MapPin className="w-5 h-5 shrink-0" />
               <span className="text-[10px] font-black uppercase tracking-[0.25em]">Tik gyvai Baltame Dvare</span>
             </div>
