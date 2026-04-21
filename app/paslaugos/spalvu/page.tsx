@@ -405,10 +405,14 @@ export default function SpalvuPage() {
           >
             <h2 className="text-4xl md:text-6xl font-bold tracking-wider font-prata text-brand uppercase leading-tight">Ženkite žingsnį<br/>link savęs</h2>
             <div className="w-20 h-1 bg-brand/20" />
-            <p className="text-gray-500 font-light leading-relaxed italic text-justify text-base max-w-lg">
-              Spalvos kalba tiesiai į mūsų pasąmonę. Leiskite joms papasakoti jūsų istoriją.<br/><br/>
-              Aura-Soma konsultacija padeda pamatyti savo tikrąjį potencialą ir giliausius sielos poreikius per spalvų pasirinkimą. Ar esate pasiruošę susitikti su savimi?
-            </p>
+            <div className="text-gray-700 leading-relaxed text-left text-base max-w-lg space-y-6">
+              <p className="italic font-medium text-lg text-brand/80">
+                Spalvos kalba tiesiai į mūsų pasąmonę. Leiskite joms papasakoti jūsų istoriją.
+              </p>
+              <p className="font-light">
+                Aura-Soma konsultacija padeda pamatyti savo tikrąjį potencialą ir giliausius sielos poreikius per spalvų pasirinkimą. Ar esate pasiruošę susitikti su savimi?
+              </p>
+            </div>
             
             {/* Notice Badge */}
             <div className="inline-flex items-center gap-3 px-6 py-3 bg-brand/5 text-brand rounded-2xl border border-brand/10">
