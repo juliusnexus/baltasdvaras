@@ -449,41 +449,40 @@ export default function SpalvuPage() {
                   </div>
                 </div>
 
-                {/* Session Type Selection Cards */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  {[
-                    { id: 'asmeniui', label: 'Asmeniui', icon: User },
-                    { id: 'poroms', label: 'Poroms', icon: Users }
-                  ].map((type) => {
-                    const Icon = type.icon;
-                    const isActive = sessionType === type.id;
-                    return (
-                      <div key={type.id} className="bg-white p-2 rounded-[32px] shadow-lg border border-white/50">
+                {/* Session Type Selection - Option Buttons */}
+                <div className="flex flex-col gap-5">
+                  <span className="text-[10px] font-black uppercase tracking-[0.3em] text-gray-400">Pasirinkite narius</span>
+                  <div className="flex flex-wrap justify-center gap-3">
+                    {[
+                      { id: 'asmeniui', label: 'Asmeniui' },
+                      { id: 'poroms', label: 'Poroms' }
+                    ].map((type) => {
+                      const isActive = sessionType === type.id;
+                      return (
                         <button
+                          key={type.id}
                           onClick={() => setSessionType(type.id as any)}
-                          className={`w-full flex flex-col items-center gap-4 p-8 rounded-[24px] border transition-all duration-700 relative group overflow-hidden ${
+                          className={`px-8 py-4 rounded-2xl text-[9px] font-bold uppercase tracking-[0.2em] transition-all duration-500 border ${
                             isActive 
-                              ? 'bg-brand text-white border-brand shadow-inner' 
-                              : 'bg-[#fcfcfc] border-white/40 text-gray-500 hover:bg-white'
+                              ? 'bg-brand text-white border-brand shadow-lg shadow-brand/20 scale-105' 
+                              : 'bg-white/80 border-white/60 text-gray-400 hover:bg-white hover:text-brand'
                           }`}
                         >
-                          <Icon className={`w-8 h-8 ${isActive ? 'text-white' : 'text-brand/40 group-hover:text-brand/60'} transition-all`} />
-                          <div className="flex flex-col gap-1">
-                            <span className={`text-[10px] font-black uppercase tracking-[0.2em] ${isActive ? 'text-white/80' : 'text-gray-400'}`}>{type.label}</span>
-                            <div className={`text-2xl font-bold tracking-tighter ${isActive ? 'text-white' : 'text-brand'}`}>
-                              {selectedDuration.price}
-                            </div>
-                            <div className={`text-[8px] uppercase tracking-widest font-medium ${isActive ? 'text-white/70' : 'text-gray-400'}`}>
-                              {selectedDuration.label}
-                            </div>
-                          </div>
-                          {isActive && (
-                            <motion.div layoutId="activeGlow" className="absolute inset-0 bg-gradient-to-tr from-white/20 via-transparent to-transparent pointer-events-none" />
-                          )}
+                          {type.label}
                         </button>
-                      </div>
-                    );
-                  })}
+                      );
+                    })}
+                  </div>
+                </div>
+
+                {/* Price Display */}
+                <div className="py-8 bg-brand/5 rounded-[32px] border border-brand/5">
+                  <div className="text-5xl md:text-7xl font-bold tracking-tighter text-brand leading-none">
+                    {selectedDuration.price}
+                  </div>
+                  <div className="text-[10px] uppercase tracking-[0.4em] font-black text-gray-400 mt-4">
+                    {selectedDuration.label} KONSULTACIJA
+                  </div>
                 </div>
 
                 <div className="pt-4">
