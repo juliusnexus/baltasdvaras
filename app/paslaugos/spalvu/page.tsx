@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence, Variants } from 'motion/react';
-import { ArrowLeft, Maximize2, X, CheckCircle2 } from 'lucide-react';
+import { ArrowLeft, Maximize2, X, CheckCircle2, User, Users, MapPin } from 'lucide-react';
 
 const fadeIn: Variants = {
   hidden: { opacity: 0, y: 20 },
@@ -65,11 +65,51 @@ const GALLERY_IMAGES = [
     src: '/images/aura-soma/7.jpg',
     title: 'Transformacijos esencija',
     category: 'Evoliucija'
+  },
+  {
+    id: 8,
+    src: '/images/aura-soma/8.JPG',
+    title: 'Sielos kelionė',
+    category: 'Sąmoningas pasirinkimas'
+  },
+  {
+    id: 9,
+    src: '/images/aura-soma/9.jpg',
+    title: 'Energijos srautas',
+    category: 'Vibracinė medicina'
+  },
+  {
+    id: 10,
+    src: '/images/aura-soma/10.jpg',
+    title: 'Pusiausvyros menas',
+    category: 'Holistinis gijimas'
+  },
+  {
+    id: 11,
+    src: '/images/aura-soma/11.jpg',
+    title: 'Šviesos kristalai',
+    category: 'Sielos šviesa'
+  },
+  {
+    id: 12,
+    src: '/images/aura-soma/12.jpg',
+    title: 'Spalvų harmonija',
+    category: 'Dvasinė praktika'
   }
+];
+
+const PRICING_OPTIONS = [
+  { id: '1h', label: '1 valanda', price: '40 €' },
+  { id: '1.5h', label: '1,5 valandos', price: '50 €' },
+  { id: '2h', label: '2 valandos', price: '60 €' },
 ];
 
 export default function SpalvuPage() {
   const [selectedImage, setSelectedImage] = useState<typeof GALLERY_IMAGES[0] | null>(null);
+  const [sessionType, setSessionType] = useState<'asmeniui' | 'poroms'>('asmeniui');
+  const [selectedDurationId, setSelectedDurationId] = useState('1.5h');
+
+  const selectedDuration = PRICING_OPTIONS.find(opt => opt.id === selectedDurationId) || PRICING_OPTIONS[1];
 
 
   return (
@@ -203,7 +243,7 @@ export default function SpalvuPage() {
                   </div>
                   <div>
                     <h3 className="font-bold text-gray-800 mb-1">{benefit.title}</h3>
-                    <p className="text-gray-500 text-sm font-light leading-relaxed">{benefit.desc}</p>
+                    <p className="text-gray-500 text-sm font-light leading-relaxed text-justify">{benefit.desc}</p>
                   </div>
                 </div>
               ))}
@@ -221,7 +261,7 @@ export default function SpalvuPage() {
           >
             <div className="relative w-full h-full">
               <Image 
-                src="/images/aura-soma/kaip vyksta konsultacija.JPG"
+                src="/images/aura-soma/kaip vyksta.JPG"
                 alt="Konsultacijos aplinka"
                 fill
                 className="object-cover rounded-[24px] md:rounded-[32px]"
@@ -245,7 +285,7 @@ export default function SpalvuPage() {
                 <div className="text-3xl font-black text-brand/30 select-none">01</div>
                 <div>
                   <h4 className="font-bold text-gray-800 mb-2">Buteliukų pasirinkimas</h4>
-                  <p className="text-gray-500 text-sm font-light">Prieš jus išsirikiuoja daugiau nei 120 buteliukų. Jūs intuityviai išsirenkate keturis, kurie jus labiausiai traukia.</p>
+                  <p className="text-gray-500 text-sm font-light text-justify">Prieš jus išsirikiuoja daugiau nei 120 buteliukų. Jūs intuityviai išsirenkate keturis, kurie jus labiausiai traukia.</p>
                 </div>
               </div>
               <div className="flex gap-6">
@@ -276,7 +316,7 @@ export default function SpalvuPage() {
                 <div className="text-3xl font-black text-brand/30 select-none">03</div>
                 <div>
                   <h4 className="font-bold text-gray-800 mb-2">Terapinio produkto parinkimas</h4>
-                  <p className="text-gray-500 text-sm font-light">Rekomenduojamas konkretus buteliukas naudojimui namuose, bei kiti pagalbiniai produktai (pomanderiai, kvintesencijos, archangelojai).</p>
+                  <p className="text-gray-500 text-sm font-light text-justify">Rekomenduojamas konkretus buteliukas naudojimui namuose, bei kiti pagalbiniai produktai (pomanderiai, kvintesencijos, archangelojai).</p>
                 </div>
               </div>
             </div>
@@ -298,19 +338,19 @@ export default function SpalvuPage() {
                 <tbody className="text-gray-600 font-light text-sm md:text-base">
                   <tr>
                     <td className="p-6 md:p-10 border-b border-gray-50 bg-white/30">Sprendimų priėmimas</td>
-                    <td className="p-6 md:p-10 border-b border-gray-50">Suteikia aiškumo ir pasitikėjimo.</td>
+                    <td className="p-6 md:p-10 border-b border-gray-50 text-justify">Suteikia aiškumo ir pasitikėjimo.</td>
                   </tr>
                   <tr>
                     <td className="p-6 md:p-10 border-b border-gray-50 bg-white/30">Santykių krizės</td>
-                    <td className="p-6 md:p-10 border-b border-gray-50">Padeda suprasti reakcijas, rasti pilnatvę.</td>
+                    <td className="p-6 md:p-10 border-b border-gray-50 text-justify">Padeda suprasti reakcijas, rasti pilnatvę.</td>
                   </tr>
                   <tr>
                     <td className="p-6 md:p-10 border-b border-gray-50 bg-white/30">Kūrybinis blokas</td>
-                    <td className="p-6 md:p-10 border-b border-gray-50">Atveria įkvėpimą ir saviraišką.</td>
+                    <td className="p-6 md:p-10 border-b border-gray-50 text-justify">Atveria įkvėpimą ir saviraišką.</td>
                   </tr>
                   <tr>
                     <td className="p-6 md:p-10 bg-white/30">Nuovargis / Perdegimas</td>
-                    <td className="p-6 md:p-10">Harmonizuoja energetinį lauką.</td>
+                    <td className="p-6 md:p-10 text-justify">Harmonizuoja energetinį lauką.</td>
                   </tr>
                 </tbody>
               </table>
@@ -354,18 +394,110 @@ export default function SpalvuPage() {
           </motion.div>
         </div>
 
-        {/* Final CTA */}
-        <section className="text-center py-20">
-          <h2 className="text-4xl font-bold tracking-wider mb-8 font-prata">Ženkite žingsnį link savęs</h2>
-          <p className="max-w-2xl mx-auto text-gray-500 font-light mb-12 leading-relaxed italic text-justify">
-            Spalvos kalba tiesiai į mūsų pasąmonę. Leiskite joms papasakoti jūsų istoriją.<br/>
-            Ar esi pasiruošęs pamatyti savo tikrąjį potencialą ir poreikius?
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 items-center justify-center">
-            <button className="px-10 py-5 bg-brand text-white rounded-2xl font-black text-[10px] uppercase tracking-[0.2em] shadow-xl shadow-brand/20 hover:bg-brand/90 transition-all hover:scale-105 active:scale-95">
-              REGISTRUOTIS KONSULTACIJAI
-            </button>
-          </div>
+        {/* Final CTA Section - Grid Layout */}
+        <section className="max-w-7xl mx-auto px-4 md:px-6 py-24 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          {/* Left Side: Info (div[1]) */}
+          <motion.div 
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="text-left space-y-8"
+          >
+            <h2 className="text-4xl md:text-6xl font-bold tracking-wider font-prata text-brand uppercase leading-tight">Ženkite žingsnį<br/>link savęs</h2>
+            <div className="w-20 h-1 bg-brand/20" />
+            <p className="text-gray-500 font-light leading-relaxed italic text-justify text-base max-w-lg">
+              Spalvos kalba tiesiai į mūsų pasąmonę. Leiskite joms papasakoti jūsų istoriją.<br/><br/>
+              Aura-Soma konsultacija padeda pamatyti savo tikrąjį potencialą ir giliausius sielos poreikius per spalvų pasirinkimą. Ar esate pasiruošę susitikti su savimi?
+            </p>
+            
+            {/* Notice Badge */}
+            <div className="inline-flex items-center gap-3 px-6 py-3 bg-brand/5 text-brand rounded-2xl border border-brand/10">
+              <MapPin className="w-5 h-5 shrink-0" />
+              <span className="text-[10px] font-black uppercase tracking-[0.25em]">Tik gyvai Baltame Dvare</span>
+            </div>
+          </motion.div>
+
+          {/* Right Side: Selection Card (div[2]) */}
+          <motion.div 
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="bg-white p-3 md:p-4 rounded-[48px] shadow-2xl border border-white/20 overflow-hidden"
+          >
+            <div className="relative bg-[#fcfcfc]/80 backdrop-blur-3xl rounded-[40px] p-8 md:p-12 border border-white/40 text-center">
+              <div className="relative z-10 space-y-10">
+                {/* Duration Selection */}
+                <div className="flex flex-col gap-5">
+                  <span className="text-[10px] font-black uppercase tracking-[0.3em] text-gray-400">Pasirinkite trukmę</span>
+                  <div className="flex flex-wrap justify-center gap-3">
+                    {PRICING_OPTIONS.map((opt) => {
+                      const isSelected = selectedDurationId === opt.id;
+                      return (
+                        <button
+                          key={opt.id}
+                          onClick={() => setSelectedDurationId(opt.id)}
+                          className={`px-6 py-3 rounded-2xl text-[9px] font-bold uppercase tracking-[0.2em] transition-all duration-500 border ${
+                            isSelected 
+                              ? 'bg-brand text-white border-brand shadow-lg shadow-brand/20 scale-105' 
+                              : 'bg-white/80 border-white/60 text-gray-400 hover:bg-white hover:text-brand'
+                          }`}
+                        >
+                          {opt.label}
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                {/* Session Type Selection Cards */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  {[
+                    { id: 'asmeniui', label: 'Asmeniui', icon: User },
+                    { id: 'poroms', label: 'Poroms', icon: Users }
+                  ].map((type) => {
+                    const Icon = type.icon;
+                    const isActive = sessionType === type.id;
+                    return (
+                      <div key={type.id} className="bg-white p-2 rounded-[32px] shadow-lg border border-white/50">
+                        <button
+                          onClick={() => setSessionType(type.id as any)}
+                          className={`w-full flex flex-col items-center gap-4 p-8 rounded-[24px] border transition-all duration-700 relative group overflow-hidden ${
+                            isActive 
+                              ? 'bg-brand text-white border-brand shadow-inner' 
+                              : 'bg-[#fcfcfc] border-white/40 text-gray-500 hover:bg-white'
+                          }`}
+                        >
+                          <Icon className={`w-8 h-8 ${isActive ? 'text-white' : 'text-brand/40 group-hover:text-brand/60'} transition-all`} />
+                          <div className="flex flex-col gap-1">
+                            <span className={`text-[10px] font-black uppercase tracking-[0.2em] ${isActive ? 'text-white/80' : 'text-gray-400'}`}>{type.label}</span>
+                            <div className={`text-2xl font-bold tracking-tighter ${isActive ? 'text-white' : 'text-brand'}`}>
+                              {selectedDuration.price}
+                            </div>
+                            <div className={`text-[8px] uppercase tracking-widest font-medium ${isActive ? 'text-white/70' : 'text-gray-400'}`}>
+                              {selectedDuration.label}
+                            </div>
+                          </div>
+                          {isActive && (
+                            <motion.div layoutId="activeGlow" className="absolute inset-0 bg-gradient-to-tr from-white/20 via-transparent to-transparent pointer-events-none" />
+                          )}
+                        </button>
+                      </div>
+                    );
+                  })}
+                </div>
+
+                <div className="pt-4">
+                  <button className="w-full py-6 bg-black text-white rounded-[24px] font-black text-xs uppercase tracking-[0.3em] shadow-xl shadow-black/20 hover:bg-brand transition-all hover:scale-[1.02] active:scale-95 group">
+                    REGISTRUOTIS KONSULTACIJAI
+                  </button>
+                </div>
+              </div>
+
+              {/* Dynamic background elements */}
+              <div className="absolute top-0 right-0 w-64 h-64 bg-brand/5 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+              <div className="absolute bottom-0 left-0 w-64 h-64 bg-brand/5 rounded-full blur-[80px] translate-y-1/2 -translate-x-1/2 pointer-events-none" />
+            </div>
+          </motion.div>
         </section>
       </main>
 
