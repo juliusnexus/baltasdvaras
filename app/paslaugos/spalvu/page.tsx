@@ -261,7 +261,7 @@ export default function SpalvuPage() {
           >
             <div className="relative w-full h-full">
               <Image 
-                src="/images/aura-soma/kaip vyksta.JPG"
+                src="/images/aura-soma/baltas dvaras naujas.jpg"
                 alt="Konsultacijos aplinka"
                 fill
                 className="object-cover rounded-[24px] md:rounded-[32px]"
