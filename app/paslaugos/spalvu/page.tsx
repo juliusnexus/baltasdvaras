@@ -480,9 +480,6 @@ export default function SpalvuPage() {
                   <div className="text-5xl md:text-7xl font-bold tracking-tighter text-brand leading-none">
                     {selectedDuration.price}
                   </div>
-                  <div className="text-[10px] uppercase tracking-[0.4em] font-black text-gray-400 mt-4">
-                    {selectedDuration.label} KONSULTACIJA
-                  </div>
                 </div>
 
                 <div className="pt-4">
