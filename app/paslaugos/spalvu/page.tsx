@@ -68,7 +68,7 @@ const GALLERY_IMAGES = [
   },
   {
     id: 8,
-    src: '/images/aura-soma/8.JPG',
+    src: '/images/aura-soma/8.jpg',
     title: 'Sielos kelionė',
     category: 'Sąmoningas pasirinkimas'
   },
