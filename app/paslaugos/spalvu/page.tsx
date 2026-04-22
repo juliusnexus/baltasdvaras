@@ -204,14 +204,15 @@ export default function SpalvuPage() {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-            className="bg-white/40 backdrop-blur-xl p-3 md:p-4 rounded-[32px] md:rounded-[40px] shadow-2xl border border-white/20 overflow-hidden relative aspect-[4/5] lg:aspect-square"
+            className="bg-white/40 backdrop-blur-xl p-3 md:p-4 rounded-[32px] md:rounded-[40px] shadow-2xl border border-white/20 overflow-hidden relative"
           >
-            <div className="relative w-full h-full">
+            <div className="relative w-full">
               <Image 
                 src="/images/aura-soma/titulinis.jpg"
                 alt="Aura-Soma buteliukai"
-                fill
-                className="object-cover rounded-[24px] md:rounded-[32px]"
+                width={800}
+                height={600}
+                className="w-full h-auto object-contain rounded-[24px] md:rounded-[32px]"
               />
               <div className="absolute inset-0 bg-gradient-to-tr from-brand/10 to-transparent pointer-events-none rounded-[24px] md:rounded-[32px]" />
             </div>
@@ -257,14 +258,15 @@ export default function SpalvuPage() {
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="bg-white/40 backdrop-blur-xl p-3 md:p-4 rounded-[32px] md:rounded-[40px] shadow-2xl border border-white/20 overflow-hidden relative aspect-[4/5]"
+            className="bg-white/40 backdrop-blur-xl p-3 md:p-4 rounded-[32px] md:rounded-[40px] shadow-2xl border border-white/20 overflow-hidden relative"
           >
-            <div className="relative w-full h-full">
+            <div className="relative w-full">
               <Image 
                 src="/images/aura-soma/baltas dvaras naujas.jpg"
                 alt="Konsultacijos aplinka"
-                fill
-                className="object-cover rounded-[24px] md:rounded-[32px]"
+                width={800}
+                height={600}
+                className="w-full h-auto object-contain rounded-[24px] md:rounded-[32px]"
               />
             </div>
           </motion.div>
@@ -528,7 +530,7 @@ export default function SpalvuPage() {
                 src={selectedImage.src}
                 alt={selectedImage.title}
                 fill
-                className="object-cover"
+                className="object-contain"
               />
               <div className="absolute bottom-0 left-0 w-full p-8 md:p-12 bg-gradient-to-t from-black/80 to-transparent">
                 <span className="text-white/60 text-[10px] uppercase tracking-widest mb-2 block">{selectedImage.category}</span>

@@ -16,15 +16,22 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: 'My Google AI Studio App',
-  description: 'My Google AI Studio App',
+  title: 'Baltas Dvaras | Astrologinės konsultacijos',
+  description: 'Atraskite savo asmeninį žvaigždėlapį ir potencialą per profesionalią astrologinę analizę Baltame Dvare.',
+  keywords: ['astrologija', 'horoskopai', 'astrologinė konsultacija', 'žvaigždėlapis', 'Baltas Dvaras'],
+  authors: [{ name: 'Baltas Dvaras' }],
+  openGraph: {
+    title: 'Baltas Dvaras | Astrologinės konsultacijos',
+    description: 'Atraskite savo asmeninį žvaigždėlapį ir potencialą per profesionalią astrologinę analizę Baltame Dvare.',
+    type: 'website',
+  },
 };
 
 import Footer from './_components/Footer';
 
 export default function RootLayout({children}: {children: React.ReactNode}) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${prata.variable} ${montserrat.variable}`}>
+    <html lang="lt" suppressHydrationWarning className={`${prata.variable} ${montserrat.variable}`}>
       <body suppressHydrationWarning>
         {children}
         <Footer />
