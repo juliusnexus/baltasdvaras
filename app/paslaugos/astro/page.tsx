@@ -94,10 +94,10 @@ export default function AstroPage() {
               Astro konsultacija: Tavo asmeninis žvaigždėlapis
             </motion.h1>
             <motion.div variants={fadeIn} className="space-y-6">
-              <blockquote className="border-l-4 border-brand/20 pl-6 italic text-gray-600 text-lg md:text-xl font-light leading-relaxed">
+              <div className="text-gray-600 text-base md:text-lg font-light leading-relaxed text-center">
                 &ldquo;Mes gimstame tam tikru momentu, tam tikroje vietoje ir, kaip ir gero vyno derlius, turime tų metų ir to sezono savybių, kuriais išvydome šviesą.&rdquo;
-                <footer className="mt-2 text-sm font-bold text-gray-400 not-italic">— Carl Jung</footer>
-              </blockquote>
+                <footer className="mt-2 text-sm font-bold text-gray-400 italic font-prata">&mdash; Carl Jung</footer>
+              </div>
               
               <div className="space-y-6">
                 <p className="text-gray-600 text-base md:text-lg font-light leading-relaxed text-justify">

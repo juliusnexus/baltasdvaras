@@ -170,10 +170,10 @@ export default function SpalvuPage() {
               Spalvų kalba tavo sielai
             </motion.h1>
             <motion.div variants={fadeIn} className="space-y-6">
-              <blockquote className="border-l-4 border-brand/20 pl-6 italic text-gray-600 text-lg md:text-xl font-light leading-relaxed">
+              <div className="text-gray-600 text-base md:text-lg font-light leading-relaxed text-center">
                 &ldquo;Mes esame spalvos, kurias pasirenkame, ir jos atspindi mūsų tikruosius poreikius.&rdquo;
-                <footer className="mt-2 text-sm font-bold text-gray-400 not-italic">— Vicky Wall, sistemos įkūrėja.</footer>
-              </blockquote>
+                <footer className="mt-2 text-sm font-bold text-gray-400 italic font-prata">&mdash; Vicky Wall, sistemos įkūrėja.</footer>
+              </div>
               
               <p className="text-gray-600 text-base md:text-lg font-light leading-relaxed text-justify">
                 „Aura-Soma“ – tai unikali, liberali savęs pažinimo sistema, jungianti spalvų, augalų ir kristalų energijas. Tai ne tik gražūs dvispalviai buteliukai; tai veidrodis, padedantis suprasti save, suvokti savo gyvenimo kryptį ir atstatyti vidinę pusiausvyrą.

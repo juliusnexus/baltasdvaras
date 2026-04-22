@@ -92,10 +92,10 @@ export default function KvapuPage() {
               Kelionė į pasąmonę per uoslę
             </motion.h1>
             <motion.div variants={fadeIn} className="space-y-6">
-              <blockquote className="border-l-4 border-brand/20 pl-6 italic text-gray-600 text-lg md:text-xl font-light leading-relaxed">
+              <div className="text-gray-600 text-base md:text-lg font-light leading-relaxed text-center">
                 &ldquo;Kvapo įtaiga stipresnė už žodžius, reginius, jausmus ir valią. Kvapo įtaigai neįmanoma atsispirti, jis patenka į mus kaip oras į plaučius, jis užlieja mus, tiesiog užtvindo ir niekas negali nuo jo apsiginti.&rdquo;
-                <footer className="mt-2 text-sm font-bold text-gray-400 not-italic">— Patrick Süskind</footer>
-              </blockquote>
+                <footer className="mt-2 text-sm font-bold text-gray-400 italic font-prata">&mdash; Patrick S&uuml;skind</footer>
+              </div>
               <div className="text-gray-600 text-base md:text-lg font-light leading-relaxed text-justify space-y-4">
                 <p>
                   Ar žinojote, kad kvapas yra trumpiausias kelias į jūsų emocijas? Kol protas kuria loginius paaiškinimus, jūsų uoslė jau žino tiesą. Mes esame simbiozėje su augalais, todėl eterinių aliejų molekulės mūsų ląstelėms yra savos ir atpažįstamos.
@@ -108,7 +108,7 @@ export default function KvapuPage() {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-            className="bg-white/40 backdrop-blur-xl p-3 md:p-4 rounded-[32px] md:rounded-[40px] shadow-2xl border border-white/20 overflow-hidden relative aspect-[4/5] lg:aspect-square"
+            className="bg-white p-4 md:p-6 rounded-[40px] md:rounded-[56px] shadow-2xl border border-gray-100 overflow-hidden relative aspect-[4/3]"
           >
             <div className="relative w-full h-full">
               <Image 
@@ -130,11 +130,11 @@ export default function KvapuPage() {
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="order-2 lg:order-1 bg-white/40 backdrop-blur-xl p-3 md:p-4 rounded-[32px] md:rounded-[40px] shadow-2xl border border-white/20 overflow-hidden relative aspect-[4/5]"
+              className="order-2 lg:order-1 bg-white p-3 md:p-4 rounded-[32px] md:rounded-[40px] shadow-2xl border border-gray-100 overflow-hidden relative aspect-[3/2]"
             >
               <div className="relative w-full h-full">
                 <Image 
-                  src="https://images.unsplash.com/photo-1544161515-4af6b1d46b59?q=80&w=1000&auto=format&fit=crop"
+                  src="/images/aura-soma/kaip vyksta.jpg"
                   alt="Kvapų testavimo procesas"
                   fill
                   className="object-cover rounded-[24px] md:rounded-[32px]"
@@ -277,7 +277,8 @@ export default function KvapuPage() {
               <AlertCircle className="w-6 h-6 text-brand/60" />
               <h2 className="text-2xl font-bold tracking-tighter text-gray-800 font-prata">Svarbi informacija</h2>
             </div>
-            <ul className="space-y-6">
+            <ul className="space-y-6 pl-9">
+              {/* Bullet Points List */}
               {[
                 { label: "Moterims", text: "Testavimas neatliekamas 3 dienos iki menstruacijų ir pirmas 3 ciklo dienas (dėl hormoninių svyravimų)." },
                 { label: "Amžius", text: "Rekomenduojama asmenims nuo 12 metų." },
@@ -285,11 +286,13 @@ export default function KvapuPage() {
                 { label: "Švara", text: "Į konsultaciją atvykite nesikvėpinę." },
                 { label: "Hidratacija", text: "Testavimo metu ir parą po jo rekomenduojama gerti daug vandens." }
               ].map((info, i) => (
-                <li key={i} className="flex gap-4">
-                  <div className="w-1.5 h-1.5 rounded-full bg-brand/40 mt-2 shrink-0" />
+                <li key={i} className="flex gap-4 group">
+                  <div className="mt-1 w-5 h-5 rounded-lg bg-brand/10 flex items-center justify-center text-brand/60 shrink-0 group-hover:scale-110 transition-transform duration-300">
+                    <Sparkles className="w-3 h-3" />
+                  </div>
                   <div>
-                    <span className="font-bold text-gray-800 text-sm block mb-1">{info.label}</span>
-                    <p className="text-gray-500 text-sm font-light leading-relaxed">{info.text}</p>
+                    <span className="font-bold text-gray-800 text-sm tracking-tight block mb-1 uppercase text-[10px]">{info.label}</span>
+                    <p className="text-gray-500 text-sm font-light leading-relaxed text-justify">{info.text}</p>
                   </div>
                 </li>
               ))}
