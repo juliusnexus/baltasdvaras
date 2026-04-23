@@ -102,11 +102,11 @@ export default function TaroPage() {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-            className="bg-white p-4 md:p-6 rounded-[40px] md:rounded-[56px] shadow-2xl border border-gray-100 overflow-hidden relative aspect-[4/3]"
+            className="bg-white p-4 md:p-6 rounded-[40px] md:rounded-[56px] shadow-2xl border border-gray-100 overflow-hidden relative aspect-[3/4]"
           >
             <div className="relative w-full h-full">
               <Image 
-                src="/images/taro/hero.png"
+                src="/images/taro/main taro.jpg"
                 alt="Taro kortų konsultacija"
                 fill
                 className="object-cover rounded-[24px] md:rounded-[32px]"
@@ -124,11 +124,11 @@ export default function TaroPage() {
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="order-2 lg:order-1 bg-white p-3 md:p-4 rounded-[32px] md:rounded-[40px] shadow-2xl border border-gray-100 overflow-hidden relative aspect-[3/2]"
+              className="order-2 lg:order-1 bg-white p-3 md:p-4 rounded-[32px] md:rounded-[40px] shadow-2xl border border-gray-100 overflow-hidden relative aspect-[3/4]"
             >
               <div className="relative w-full h-full">
                 <Image 
-                  src="/images/taro/process.png"
+                  src="/images/taro/sub taro.jpg"
                   alt="Taro skaitymo procesas"
                   fill
                   className="object-cover rounded-[24px] md:rounded-[32px]"
