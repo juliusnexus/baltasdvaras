@@ -67,8 +67,8 @@ export default function PsichosocialinePoruPage() {
   const [isExpanded, setIsExpanded] = useState(false);
 
 
-  const fullText = "Psichosocialinė porų konsultacija – tai saugi ir profesionali erdvė, skirta jūsų ryšiui stiprinti, konfliktams spręsti ir gilesniam vienas kito supratimui ugdyti. Mes kartu tyrinėjame jūsų bendravimo modelius, mokomės išgirsti ne tik žodžius, bet ir už jų slypinčius poreikius bei emocijas. Šis procesas padeda atkurti pasitikėjimą, intymumą ir rasti naujus kelius į darnų sugyvenimą. Konsultacijų metu kuriame aplinką, kurioje abu partneriai jaučiasi išgirsti ir vertinami, žingsnis po žingsnio kartu judant link stipresnės ir sąmoningesnės sąjungos.";
-  const shortText = "Psichosocialinė porų konsultacija – tai saugi ir profesionali erdvė, skirta jūsų ryšiui stiprinti, konfliktams spręsti ir gilesniam vienas kito supratimui ugdyti.";
+  const fullText = "Psichosocialinė poros konsultacija – tai saugi ir profesionali erdvė, skirta jūsų ryšiui stiprinti, konfliktams spręsti ir gilesniam vienas kito supratimui ugdyti. Mes kartu tyrinėjame jūsų bendravimo modelius, mokomės išgirsti ne tik žodžius, bet ir už jų slypinčius poreikius bei emocijas. Šis procesas padeda atkurti pasitikėjimą, intymumą ir rasti naujus kelius į darnų sugyvenimą. Konsultacijų metu kuriame aplinką, kurioje abu partneriai jaučiasi išgirsti ir vertinami, žingsnis po žingsnio kartu judant link stipresnės ir sąmoningesnės sąjungos.";
+  const shortText = "Psichosocialinė poros konsultacija – tai saugi ir profesionali erdvė, skirta jūsų ryšiui stiprinti, konfliktams spręsti ir gilesniam vienas kito supratimui ugdyti.";
 
   return (
     <div className="min-h-screen bg-[#fcfcfc] text-brand font-montserrat tracking-wider selection:bg-brand/20 selection:text-brand overflow-x-hidden">

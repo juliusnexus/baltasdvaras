@@ -78,14 +78,14 @@ Išsilavinimas – socialinio darbo medicinoje bakalauras, psichosocialinis kons
           order: 1,
         },
         {
-          title: '"Psichosocialinė porų konsultacija"',
+          title: '"Psichosocialinė poros konsultacija"',
           description: '60 min. trukmės analizė ir sprendimų paieška',
           price: 'Investicija: 40 €',
           buttonText: 'Užsakyti',
           order: 2,
         },
         {
-          title: '"Asmeninė taro konsultacija"',
+          title: '"Taro konsultacija"',
           description: '60min. trukmės analizė ir sprendimų paieška',
           price: 'Investicija: 40 €',
           buttonText: 'Užsakyti',
@@ -136,7 +136,7 @@ Išsilavinimas – socialinio darbo medicinoje bakalauras, psichosocialinis kons
     });
 
     const individualiosNode = await prisma.navItem.create({
-      data: { label: 'Individualios konsultacijos', parentId: servicesNode.id, order: 1 }
+      data: { label: 'Konsultacijos', parentId: servicesNode.id, order: 1 }
     });
 
     await prisma.navItem.createMany({
@@ -146,7 +146,7 @@ Išsilavinimas – socialinio darbo medicinoje bakalauras, psichosocialinis kons
         { label: 'Kvapų', href: '/paslaugos/kvapu', parentId: individualiosNode.id, order: 3 },
         { label: 'Taro', href: '/paslaugos/taro', parentId: individualiosNode.id, order: 4 },
         { label: 'Astro', href: '/paslaugos/astro', parentId: individualiosNode.id, order: 5 },
-        { label: 'Psichosocialinė porų', href: '/paslaugos/poru', parentId: individualiosNode.id, order: 6 },
+        { label: 'Psichosocialinė poros', href: '/paslaugos/poru', parentId: individualiosNode.id, order: 6 },
       ]
     });
 
@@ -163,18 +163,18 @@ Išsilavinimas – socialinio darbo medicinoje bakalauras, psichosocialinis kons
     });
 
     const grupiniaiNode = await prisma.navItem.create({
-      data: { label: 'Grupiniai užsiėmimai', parentId: servicesNode.id, order: 3 }
+      data: { label: 'Grupės', parentId: servicesNode.id, order: 3 }
     });
 
     await prisma.navItem.createMany({
       data: [
-        { label: 'Sielos', href: '/paslaugos/grupiniai/sielos', parentId: grupiniaiNode.id, order: 1 },
+        { label: 'Sielos koliažas', href: '/paslaugos/grupiniai/sielos', parentId: grupiniaiNode.id, order: 1 },
         { label: 'Svajonių Koliažas', href: '/paslaugos/grupiniai/koliazas', parentId: grupiniaiNode.id, order: 2 },
       ]
     });
 
     const edukacijosNode = await prisma.navItem.create({
-      data: { label: 'Rekreacinės edukacijos', parentId: servicesNode.id, order: 4 }
+      data: { label: 'Rekreacijos', parentId: servicesNode.id, order: 4 }
     });
 
     await prisma.navItem.createMany({

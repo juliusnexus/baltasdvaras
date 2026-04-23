@@ -729,8 +729,8 @@ export default function HomePageClient({
             .map((plan) => {
             // Robustness Fix: Override details for specific plans
             const isIndividual = plan.title === '"Psichosocialinė asmens konsultacija"';
-            const isCouples = plan.title === '"Psichosocialinė porų konsultacija"';
-            const isTaro = plan.title === '"Asmeninė taro konsultacija"';
+            const isCouples = plan.title === '"Psichosocialinė poros konsultacija"';
+            const isTaro = plan.title === '"Taro konsultacija"';
             
             const currentOpt = isIndividual ? currentIndividualOption : isCouples ? currentCouplesOption : null;
             const durOptions = isIndividual ? INDIVIDUAL_DURATION_OPTIONS : isCouples ? COUPLES_DURATION_OPTIONS : [];
