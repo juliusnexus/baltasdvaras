@@ -106,7 +106,7 @@ export default function TaroPage() {
           >
             <div className="relative w-full h-full">
               <Image 
-                src="/images/taro/main-taro.jpg"
+                src="/images/taro/sub-taro.jpg"
                 alt="Taro kortų konsultacija"
                 fill
                 className="object-cover rounded-[24px] md:rounded-[32px]"
@@ -128,7 +128,7 @@ export default function TaroPage() {
             >
               <div className="relative w-full h-full">
                 <Image 
-                  src="/images/taro/sub-taro.jpg"
+                  src="/images/taro/main-taro.jpg"
                   alt="Taro skaitymo procesas"
                   fill
                   className="object-cover rounded-[24px] md:rounded-[32px]"
