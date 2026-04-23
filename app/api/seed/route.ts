@@ -169,7 +169,7 @@ Išsilavinimas – socialinio darbo medicinoje bakalauras, psichosocialinis kons
     await prisma.navItem.createMany({
       data: [
         { label: 'Sielos koliažas', href: '/paslaugos/grupiniai/sielos', parentId: grupiniaiNode.id, order: 1 },
-        { label: 'Svajonių Koliažas', href: '/paslaugos/grupiniai/koliazas', parentId: grupiniaiNode.id, order: 2 },
+        { label: 'Svajonių koliažas', href: '/paslaugos/grupiniai/koliazas', parentId: grupiniaiNode.id, order: 2 },
       ]
     });
 
