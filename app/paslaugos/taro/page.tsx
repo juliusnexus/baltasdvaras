@@ -233,8 +233,7 @@ export default function TaroPage() {
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand/5 text-brand text-[8px] font-black uppercase tracking-widest mb-6">
                   Individuali sesija
                 </div>
-                <h3 className="text-3xl font-bold tracking-tight text-gray-800 mb-2 font-prata">Rezervuokite laiką</h3>
-                <p className="text-gray-500 font-light mb-10 text-sm italic">„Atrask atsakymus, kurie slepiasi.“</p>
+                <p className="text-xl md:text-2xl font-bold tracking-tight text-brand mb-12 italic font-prata">„Atrask atsakymus, kurie slepiasi.“</p>
 
                 <div className="py-10 bg-gray-50 rounded-[32px] border border-gray-100 mb-10">
                   <div className="flex flex-col items-center gap-2">
