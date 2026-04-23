@@ -85,7 +85,7 @@ export default function AstroPage() {
               className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand/10 text-brand text-[9px] font-bold tracking-[0.2em] w-fit uppercase"
             >
               <Stars className="w-3 h-3" />
-              Astrologinė konsultacija
+              Astro konsultacija
             </motion.div>
             <motion.h1 
               variants={fadeIn}

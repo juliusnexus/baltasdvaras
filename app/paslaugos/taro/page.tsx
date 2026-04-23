@@ -227,15 +227,15 @@ export default function TaroPage() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="relative bg-white rounded-[40px] p-8 md:p-12 shadow-2xl shadow-brand/10 border border-gray-100 overflow-hidden text-center"
+            className="relative bg-brand/5 backdrop-blur-xl rounded-[40px] p-8 md:p-12 shadow-xl shadow-brand/5 border border-brand/20 overflow-hidden text-center"
           >
-             <div className="relative z-10">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand/5 text-brand text-[8px] font-black uppercase tracking-widest mb-6">
-                  Individuali sesija
+              <div className="relative z-10 flex flex-col h-full">
+                <div>
+                  <h3 className="text-xl md:text-2xl font-bold italic mb-3 md:mb-4 text-brand">"Taro konsultacija"</h3>
+                  <p className="text-[10px] md:text-xs mb-6 md:mb-8 text-[#4A6B4B]">60min. trukmės analizė ir sprendimų paieška</p>
                 </div>
-                <p className="text-xl md:text-2xl font-bold tracking-tight text-brand mb-12 italic font-prata">„Atrask atsakymus, kurie slepiasi.“</p>
 
-                <div className="py-10 bg-gray-50 rounded-[32px] border border-gray-100 mb-10">
+                <div className="py-10 bg-white/60 rounded-[32px] border border-white/40 mb-10">
                   <div className="flex flex-col items-center gap-2">
                     <div className="flex items-center gap-2 text-brand">
                       <Clock className="w-5 h-5" />
@@ -245,17 +245,18 @@ export default function TaroPage() {
                   </div>
                 </div>
 
-                <div className="space-y-4">
-
-
-                  <button className="w-full py-5 bg-brand text-white rounded-2xl font-black text-xs uppercase tracking-[0.2em] shadow-xl shadow-brand/20 hover:bg-brand/90 transition-all hover:scale-[1.02] active:scale-95">
-                    REGISTRUOTIS KONSULTACIJAI
+                <div className="mt-auto space-y-4">
+                  <button 
+                    onClick={() => setIsModalOpen(true)}
+                    className="w-full py-5 bg-brand text-white rounded-2xl font-black text-xs uppercase tracking-[0.2em] shadow-xl shadow-brand/20 hover:bg-brand/90 transition-all hover:scale-[1.02] active:scale-95"
+                  >
+                    UŽSAKYTI
                   </button>
                   <button className="w-full py-4 bg-transparent text-gray-400 rounded-2xl font-bold text-[10px] uppercase tracking-widest hover:text-brand transition-colors">
                     SUSISIEKTI DĖL DETALIŲ
                   </button>
                 </div>
-             </div>
+              </div>
 
              {/* Dynamic background element */}
              <div className="absolute top-0 right-0 w-64 h-64 bg-brand/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />

@@ -4,7 +4,7 @@ import React, { useState, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence, Variants } from 'motion/react';
-import { Facebook, Instagram } from 'lucide-react';
+import { Facebook, Instagram, Clock } from 'lucide-react';
 
 // --- Animacijų nustatymai ---
 const fadeIn: Variants = {
@@ -746,41 +746,79 @@ export default function HomePageClient({
               savingsText: null,
             } : plan;
 
-            // Strip "Investicija: " if it already exists in the string to avoid doubling it in the UI
             const cleanPrice = displayPlan.price.replace(/^Investicija:\s*/, '');
 
             return (
-              <motion.div key={displayPlan.id} variants={fadeIn} className={`p-8 md:p-10 rounded-[32px] md:rounded-[40px] flex flex-col justify-between transition-shadow relative overflow-hidden ${true ? 'bg-brand/5 backdrop-blur-xl border border-brand/20 shadow-xl shadow-brand/5 hover:shadow-brand/10' : 'border border-stone-200 bg-stone-50/50 backdrop-blur-xl shadow-sm hover:shadow-md'}`}>
+              <motion.div 
+                key={displayPlan.id} 
+                variants={fadeIn} 
+                className={`p-8 md:p-10 rounded-[32px] md:rounded-[40px] flex flex-col justify-between transition-shadow relative overflow-hidden bg-brand/5 backdrop-blur-xl border border-brand/20 shadow-xl shadow-brand/5 hover:shadow-brand/10 text-center`}
+              >
                  {displayPlan.savingsText && (
                     <div className="absolute top-6 right-6 md:top-8 md:right-8 bg-brand/20 text-brand text-[8px] md:text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest">{displayPlan.savingsText}</div>
                  )}
-                <div>
-                  <h3 className={`text-xl md:text-2xl font-bold italic mb-3 md:mb-4 text-brand`}>{displayPlan.title}</h3>
-                  
-                  {(isIndividual || isCouples) && (
-                    <div className="flex flex-wrap gap-2 mb-6">
-                      {durOptions.map((opt) => (
-                        <button
-                          key={opt.id}
-                          onClick={() => setDurId(opt.id)}
-                          className={`px-3 py-1.5 rounded-full text-[9px] font-bold uppercase tracking-widest transition-all ${
-                            activeDurId === opt.id 
-                              ? 'bg-brand text-white shadow-lg shadow-brand/20' 
-                              : 'bg-white/50 text-brand/60 hover:bg-white border border-brand/10'
-                          }`}
-                        >
-                          {opt.label}
-                        </button>
-                      ))}
+                
+                {isTaro ? (
+                  <div className="relative z-10 flex flex-col h-full">
+                    <div>
+                      <h3 className={`text-xl md:text-2xl font-bold italic mb-3 md:mb-4 text-brand`}>{displayPlan.title}</h3>
+                      <p className={`text-[10px] md:text-xs mb-6 md:mb-8 text-[#4A6B4B]`}>{displayPlan.description}</p>
                     </div>
-                  )}
+                    
+                    <div className="py-10 bg-white/60 rounded-[32px] border border-white/40 mb-10">
+                      <div className="flex flex-col items-center gap-2">
+                        <div className="flex items-center gap-2 text-brand">
+                          <Clock className="w-5 h-5" />
+                          <span className="font-bold text-lg uppercase tracking-widest">1 VALANDA</span>
+                        </div>
+                        <div className="text-6xl font-bold tracking-tighter text-gray-800">{cleanPrice}</div>
+                      </div>
+                    </div>
 
-                  <p className={`text-[10px] md:text-xs mb-6 md:mb-8 text-[#4A6B4B]`}>{displayPlan.description}</p>
-                  <div className={`text-xl md:text-2xl font-bold tracking-tighter mb-2 text-brand`}>Investicija: {cleanPrice}</div>
-                </div>
-                <button className={`w-full py-4 rounded-2xl font-bold text-[9px] md:text-[10px] uppercase tracking-widest transition-all hover:scale-[1.02] active:scale-[0.98] md:py-5 bg-brand text-white hover:bg-brand/90 shadow-lg shadow-brand/20`} suppressHydrationWarning>
-                  {displayPlan.buttonText}
-                </button>
+                    <div className="mt-auto space-y-4">
+                      <button className="w-full py-5 bg-brand text-white rounded-2xl font-black text-xs uppercase tracking-[0.2em] shadow-xl shadow-brand/20 hover:bg-brand/90 transition-all hover:scale-[1.02] active:scale-95">
+                        UŽSAKYTI
+                      </button>
+                      <button className="w-full py-4 bg-transparent text-gray-400 rounded-2xl font-bold text-[10px] uppercase tracking-widest hover:text-brand transition-colors">
+                        SUSISIEKTI DĖL DETALIŲ
+                      </button>
+                    </div>
+
+                    <div className="absolute top-0 right-0 w-64 h-64 bg-brand/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+                    <div className="absolute bottom-10 left-10 text-[10rem] font-black text-brand/[0.03] select-none pointer-events-none leading-none">1h</div>
+                  </div>
+                ) : (
+                  <div>
+                    <h3 className={`text-xl md:text-2xl font-bold italic mb-3 md:mb-4 text-brand`}>{displayPlan.title}</h3>
+                    
+                    {(isIndividual || isCouples) && (
+                      <div className="flex flex-wrap gap-2 mb-6">
+                        {durOptions.map((opt) => (
+                          <button
+                            key={opt.id}
+                            onClick={() => setDurId(opt.id)}
+                            className={`px-3 py-1.5 rounded-full text-[9px] font-bold uppercase tracking-widest transition-all ${
+                              activeDurId === opt.id 
+                                ? 'bg-brand text-white shadow-lg shadow-brand/20' 
+                                : 'bg-white/50 text-brand/60 hover:bg-white border border-brand/10'
+                            }`}
+                          >
+                            {opt.label}
+                          </button>
+                        ))}
+                      </div>
+                    )}
+
+                    <p className={`text-[10px] md:text-xs mb-6 md:mb-8 text-[#4A6B4B]`}>{displayPlan.description}</p>
+                    <div className={`text-xl md:text-2xl font-bold tracking-tighter mb-2 text-brand`}>Investicija: {cleanPrice}</div>
+                    
+                    <div className="mt-8">
+                      <button className="w-full py-4 bg-brand text-white rounded-2xl font-black text-[10px] uppercase tracking-widest shadow-lg shadow-brand/20 hover:bg-brand/90 transition-all hover:scale-[1.02] active:scale-95">
+                        {displayPlan.buttonText}
+                      </button>
+                    </div>
+                  </div>
+                )}
               </motion.div>
             );
           })}

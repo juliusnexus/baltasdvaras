@@ -92,6 +92,13 @@ Išsilavinimas – socialinio darbo medicinoje bakalauras, psichosocialinis kons
           order: 3,
         },
         {
+          title: '"Astro konsultacija"',
+          description: 'Vienos temos analizė per astrologinę prizmę',
+          price: 'Investicija: 40 €',
+          buttonText: 'Užsakyti',
+          order: 4,
+        },
+        {
           title: 'Pilna kelionė',
           description: '5 nuoseklios sesijos (rekomenduojama)',
           price: '200€',
