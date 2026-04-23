@@ -247,7 +247,6 @@ export default function TaroPage() {
 
                 <div className="mt-auto space-y-4">
                   <button 
-                    onClick={() => setIsModalOpen(true)}
                     className="w-full py-5 bg-brand text-white rounded-2xl font-black text-xs uppercase tracking-[0.2em] shadow-xl shadow-brand/20 hover:bg-brand/90 transition-all hover:scale-[1.02] active:scale-95"
                   >
                     UŽSAKYTI
