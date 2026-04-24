@@ -229,36 +229,21 @@ export default function TaroPage() {
             viewport={{ once: true }}
             className="relative bg-brand/5 backdrop-blur-xl rounded-[40px] p-8 md:p-12 shadow-xl shadow-brand/5 border border-brand/20 overflow-hidden text-center"
           >
-              <div className="relative z-10 flex flex-col h-full">
+              <div className="flex flex-col h-full justify-between relative z-10">
                 <div>
                   <h3 className="text-xl md:text-2xl font-bold italic mb-3 md:mb-4 text-brand">"Taro konsultacija"</h3>
                   <p className="text-[10px] md:text-xs mb-6 md:mb-8 text-[#4A6B4B]">60min. trukmės analizė ir sprendimų paieška</p>
                 </div>
-
-                <div className="py-10 bg-white/60 rounded-[32px] border border-white/40 mb-10">
-                  <div className="flex flex-col items-center gap-2">
-                    <div className="flex items-center gap-2 text-brand">
-                      <Clock className="w-5 h-5" />
-                      <span className="font-bold text-lg uppercase tracking-widest">1 VALANDA</span>
-                    </div>
-                    <div className="text-6xl font-bold tracking-tighter text-gray-800">40 €</div>
+                <div>
+                  <div className="text-xl md:text-2xl font-bold tracking-tighter mb-2 text-brand">Investicija: 40 €</div>
+                  
+                  <div className="mt-8">
+                    <button className="w-full py-4 bg-brand text-white rounded-2xl font-black text-[10px] uppercase tracking-widest shadow-lg shadow-brand/20 hover:bg-brand/90 transition-all hover:scale-[1.02] active:scale-95">
+                      UŽSAKYTI
+                    </button>
                   </div>
                 </div>
-
-                <div className="mt-auto">
-                  <button 
-                    className="w-full py-5 bg-brand text-white rounded-2xl font-black text-xs uppercase tracking-[0.2em] shadow-xl shadow-brand/20 hover:bg-brand/90 transition-all hover:scale-[1.02] active:scale-95"
-                  >
-                    UŽSAKYTI
-                  </button>
-                </div>
               </div>
-
-             {/* Dynamic background element */}
-             <div className="absolute top-0 right-0 w-64 h-64 bg-brand/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
-             <div className="absolute bottom-10 left-10 text-[10rem] font-black text-brand/[0.03] select-none pointer-events-none leading-none">
-               1h
-             </div>
           </motion.div>
         </section>
 
