@@ -331,7 +331,7 @@ export default function HomePageClient({
                     <Link
                       href={item.href}
                       onClick={() => setIsMenuOpen(false)}
-                      className="text-xs font-bold tracking-[0.2em] text-gray-500 hover:text-brand text-left"
+                      className="text-lg font-bold tracking-[0.2em] text-gray-500 hover:text-brand text-left"
                     >
                       {item.label}
                     </Link>
@@ -345,7 +345,7 @@ export default function HomePageClient({
                           setIsMenuOpen(false);
                         }
                       }} 
-                      className="text-xs font-bold tracking-[0.2em] text-gray-500 hover:text-brand text-left flex items-center justify-between"
+                      className="text-lg font-bold tracking-[0.2em] text-gray-500 hover:text-brand text-left flex items-center justify-between"
                       suppressHydrationWarning
                     >
                       {item.label}
@@ -372,7 +372,7 @@ export default function HomePageClient({
                               <Link 
                                 href={child.href}
                                 onClick={() => setIsMenuOpen(false)}
-                                className="text-[10px] tracking-widest text-gray-400 text-left block"
+                                className="text-[15px] tracking-widest text-gray-400 text-left block"
                               >
                                 {child.label}
                               </Link>
@@ -386,7 +386,7 @@ export default function HomePageClient({
                                     setIsMenuOpen(false);
                                   }
                                 }}
-                                className="text-[10px] tracking-widest text-gray-400 text-left flex items-center justify-between w-full"
+                                className="text-[15px] tracking-widest text-gray-400 text-left flex items-center justify-between w-full"
                                 suppressHydrationWarning
                               >
                                 {child.label}
@@ -413,7 +413,7 @@ export default function HomePageClient({
                                         key={grandchild.id}
                                         href={grandchild.href}
                                         onClick={() => setIsMenuOpen(false)}
-                                        className="text-[8px] tracking-widest text-gray-400 text-left block"
+                                        className="text-xs tracking-widest text-gray-400 text-left block"
                                       >
                                         {grandchild.label}
                                       </Link>
@@ -421,7 +421,7 @@ export default function HomePageClient({
                                       <button 
                                         key={grandchild.id}
                                         onClick={() => { scrollToSection(grandchild.targetId); setIsMenuOpen(false); }}
-                                        className="text-[8px] tracking-widest text-gray-400 text-left block w-full"
+                                        className="text-xs tracking-widest text-gray-400 text-left block w-full"
                                         suppressHydrationWarning
                                       >
                                         {grandchild.label}
