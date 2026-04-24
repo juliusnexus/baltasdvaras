@@ -775,12 +775,9 @@ export default function HomePageClient({
                       </div>
                     </div>
 
-                    <div className="mt-auto space-y-4">
+                    <div className="mt-auto">
                       <button className="w-full py-5 bg-brand text-white rounded-2xl font-black text-xs uppercase tracking-[0.2em] shadow-xl shadow-brand/20 hover:bg-brand/90 transition-all hover:scale-[1.02] active:scale-95">
                         UŽSAKYTI
-                      </button>
-                      <button className="w-full py-4 bg-transparent text-gray-400 rounded-2xl font-bold text-[10px] uppercase tracking-widest hover:text-brand transition-colors">
-                        SUSISIEKTI DĖL DETALIŲ
                       </button>
                     </div>
 
