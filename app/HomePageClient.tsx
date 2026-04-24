@@ -186,7 +186,7 @@ export default function HomePageClient({
 
       {/* Navigacija */}
       <nav className="fixed w-full z-[60] px-6 lg:px-12 py-4 lg:py-6 flex justify-between items-center bg-white/60 backdrop-blur-xl border-b border-white/20">
-        <div className="text-lg lg:text-xl font-bold tracking-tighter flex items-center gap-2 lg:gap-3 text-gray-500">
+        <Link href="/" className="text-lg lg:text-xl font-bold tracking-tighter flex items-center gap-2 lg:gap-3 text-gray-500 hover:opacity-80 transition-opacity">
           <Image 
             src="https://i.postimg.cc/gjvvVWt6/baltas-dvaras-logo.png" 
             alt="Baltas Dvaras Logo" 
@@ -196,7 +196,7 @@ export default function HomePageClient({
             referrerPolicy="no-referrer"
           />
           Baltas Dvaras
-        </div>
+        </Link>
 
         {/* Desktop Menu */}
         <div className="hidden lg:flex gap-8 items-center text-[10px] font-bold tracking-[0.2em] text-gray-500">

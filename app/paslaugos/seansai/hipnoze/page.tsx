@@ -92,7 +92,7 @@ export default function HipnozePage() {
           <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
           <span className="text-[10px] font-bold tracking-[0.2em]">Grįžti į pradžią</span>
         </Link>
-        <div className="text-lg lg:text-xl font-bold tracking-tighter flex items-center gap-2 lg:gap-3 text-gray-500">
+        <Link href="/" className="text-lg lg:text-xl font-bold tracking-tighter flex items-center gap-2 lg:gap-3 text-gray-500 hover:opacity-80 transition-opacity">
           <Image 
             src="https://i.postimg.cc/gjvvVWt6/baltas-dvaras-logo.png" 
             alt="Baltas Dvaras Logo" 
@@ -102,7 +102,7 @@ export default function HipnozePage() {
             referrerPolicy="no-referrer"
           />
           Baltas Dvaras
-        </div>
+        </Link>
         <div className="w-24 hidden lg:block"></div>
       </nav>
 
