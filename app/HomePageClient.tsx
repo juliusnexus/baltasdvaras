@@ -674,7 +674,12 @@ export default function HomePageClient({
                 scale: 1,
                 opacity: 0
               }}
-              transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+              transition={{ 
+                type: 'spring', 
+                damping: 30, 
+                stiffness: 450,
+                mass: 0.8
+              }}
               className="fixed z-[101] bg-white/95 backdrop-blur-3xl p-6 md:p-10 rounded-[32px] md:rounded-[40px] border border-white shadow-2xl flex flex-col items-center text-center"
             >
               <button 

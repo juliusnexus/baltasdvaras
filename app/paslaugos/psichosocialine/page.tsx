@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence, Variants } from 'motion/react';
-import { ArrowLeft, Maximize2, X, CheckCircle2 } from 'lucide-react';
+import { ArrowLeft, Clock, CheckCircle2, AlertCircle, Sparkles, User, Users, MapPin, Target, Zap, Shield, Compass } from 'lucide-react';
 
 const fadeIn: Variants = {
   hidden: { opacity: 0, y: 20 },
@@ -23,52 +23,14 @@ const staggerContainer: Variants = {
   }
 };
 
-const GALLERY_IMAGES = [
-  {
-    id: 1,
-    src: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=1000&auto=format&fit=crop',
-    title: 'Individualus pokalbis',
-    category: 'Konsultacija'
-  },
-  {
-    id: 2,
-    src: 'https://images.unsplash.com/photo-1527689368864-3a821dbccc34?q=80&w=1000&auto=format&fit=crop',
-    title: 'Saugumo erdvė',
-    category: 'Aplinka'
-  },
-  {
-    id: 3,
-    src: 'https://images.unsplash.com/photo-1544027993-37dbfe43562a?q=80&w=1000&auto=format&fit=crop',
-    title: 'Emocinis balansas',
-    category: 'Savišvieta'
-  },
-  {
-    id: 4,
-    src: 'https://images.unsplash.com/photo-1516302752625-fbbad369eb41?q=80&w=1000&auto=format&fit=crop',
-    title: 'Sąmoningumo praktika',
-    category: 'Metodika'
-  },
-  {
-    id: 5,
-    src: 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=1000&auto=format&fit=crop',
-    title: 'Refleksija',
-    category: 'Procesas'
-  },
-  {
-    id: 6,
-    src: 'https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?q=80&w=1000&auto=format&fit=crop',
-    title: 'Atradimų kelias',
-    category: 'Rezultatas'
-  }
+const PRICING_OPTIONS = [
+  { id: '1h', label: '1 valanda', price: '40 €', durationSymbol: '1h' },
+  { id: '1.5h', label: '1,5 valandos', price: '50 €', durationSymbol: '1.5h' },
+  { id: '2h', label: '2 valandos', price: '60 €', durationSymbol: '2h' },
 ];
 
 export default function PsichosocialinePage() {
-  const [selectedImage, setSelectedImage] = useState<typeof GALLERY_IMAGES[0] | null>(null);
-  const [isExpanded, setIsExpanded] = useState(false);
-
-
-  const fullText = "Tai kelionė į save, kurioje saugioje ir palaikančioje aplinkoje tyrinėjame jūsų vidinį pasaulį, atrandame stiprybes ir mokomės naujų būdų susidoroti su gyvenimo iššūkiais. Šis procesas padeda giliau suprasti savo emocijas, elgesio modelius ir rasti vidinę ramybę net ir sudėtingiausiose gyvenimo situacijose. Konsultacijų metu mes kartu kuriame erdvę, kurioje galite būti savimi, be baimės būti teisiamas, ir žingsnis po žingsnio judėti link pilnavertiškesnio gyvenimo.";
-  const shortText = "Tai kelionė į save, kurioje saugioje ir palaikančioje aplinkoje tyrinėjame jūsų vidinį pasaulį, atrandame stiprybes ir mokomės naujų būdų susidoroti su gyvenimo iššūkiais.";
+  const [selectedDuration, setSelectedDuration] = useState(PRICING_OPTIONS[0]);
 
   return (
     <div className="min-h-screen bg-[#fcfcfc] text-brand font-montserrat tracking-wider selection:bg-brand/20 selection:text-brand overflow-x-hidden">
@@ -108,7 +70,7 @@ export default function PsichosocialinePage() {
 
       <main className="relative z-10 pt-32 pb-24 px-6 lg:px-12 max-w-7xl mx-auto">
         
-        {/* Intro Section: Text Left, Image Right */}
+        {/* Intro Section */}
         <section className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center mb-24 lg:mb-32">
           <motion.div 
             initial="hidden"
@@ -120,57 +82,21 @@ export default function PsichosocialinePage() {
               variants={fadeIn}
               className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand/10 text-brand text-[9px] font-bold tracking-[0.2em] w-fit"
             >
-              SOCIALINĖ PAGALBA
+              PSICHOSOCIALINĖ PAGALBA
             </motion.div>
             <motion.h1 
               variants={fadeIn}
-              className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-custom-gradient leading-[0.9]"
+              className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-custom-gradient leading-[1.0] font-prata"
             >
-              Psichosocialinė asmens konsultacija
+              Sielos ir pasaulio architektūra
             </motion.h1>
             <motion.div variants={fadeIn} className="space-y-6">
-              <div className="relative">
-                <p className="text-gray-600 text-base md:text-lg font-light leading-relaxed italic transition-all duration-500">
-                  &ldquo;{isExpanded ? fullText : shortText}&rdquo;
-                  {!isExpanded && (
-                    <button 
-                      onClick={() => setIsExpanded(true)}
-                      className="ml-2 text-brand font-bold text-sm hover:underline cursor-pointer inline-block"
-                    >
-                      skaityti daugiau
-                    </button>
-                  )}
-                </p>
-                <AnimatePresence>
-                  {isExpanded && (
-                    <motion.button
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      onClick={() => setIsExpanded(false)}
-                      className="mt-2 text-brand font-bold text-sm hover:underline cursor-pointer block"
-                    >
-                      Skaityti mažiau
-                    </motion.button>
-                  )}
-                </AnimatePresence>
-              </div>
-              <div className="space-y-4">
-                {[
-                  "Emocinis palaikymas ir savęs pažinimas",
-                  "Santykių su savimi ir kitais gerinimas",
-                  "Streso ir nerimo valdymo technikos",
-                  "Asmeninis augimas ir transformacija"
-                ].map((item, i) => (
-                  <div key={i} className="flex items-center gap-3 text-gray-500">
-                    <CheckCircle2 className="w-5 h-5 text-brand/60" />
-                    <span className="text-sm md:text-base font-medium">{item}</span>
-                  </div>
-                ))}
-              </div>
-              <button className="mt-4 px-8 py-4 bg-black text-white rounded-2xl font-bold text-[10px] tracking-widest hover:bg-brand transition-all hover:scale-105 active:scale-95 shadow-xl shadow-black/10">
-                REGISTRUOTIS KONSULTACIJAI
-              </button>
+              <p className="text-gray-600 text-base md:text-lg font-light leading-relaxed text-justify italic">
+                Mes nesame izoliuotos salos. Kiekvienas mūsų išgyvenimas, emocija ar elgesio modelis yra susipynęs su aplinka, kurioje gyvename: šeima, darbu, kultūra ir santykiais. Mes dažnai bandome spręsti savo sunkumus „vakume“ – manome, kad liūdesys, nerimas ar pasimetimas yra tik mūsų vidinis gedimas. Tačiau tiesa yra gilesnė: žmogus yra gyva sistema, kuri nuolat šoka dialoge su savo aplinka.
+              </p>
+              <p className="text-gray-500 text-sm md:text-base font-light leading-relaxed text-justify">
+                Psichosocialinė konsultacija – tai erdvė, kurioje mes žiūrime ne tik į tai, kas vyksta tavo viduje, bet ir į tai, kaip tavo vidinis pasaulis „susikalba“ su išore. Tai ne tik pokalbis. Tai saugi, konfidenciali ir strateginė sesija tavo emocinei gerovei ir socialiniam komfortui atstatyti.
+              </p>
             </motion.div>
           </motion.div>
 
@@ -191,86 +117,188 @@ export default function PsichosocialinePage() {
           </motion.div>
         </section>
 
-        {/* Gallery Section */}
-        <div className="mb-16">
-          <h2 className="text-2xl md:text-3xl font-bold tracking-tighter mb-12 text-center text-gray-800">Darbo akimirkos ir erdvė</h2>
+        {/* Giluminis požiūris */}
+        <section className="mb-32">
           <motion.div 
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={staggerContainer}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
+            className="text-center mb-16"
           >
-            {GALLERY_IMAGES.map((image) => (
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tighter text-brand font-prata italic mb-4">Giluminis požiūris</h2>
+            <p className="text-gray-500 font-light text-base tracking-wide">Kur susitinka tavo „Aš“ ir „Mes“?</p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                title: "Vidinė dinamika (Psicho)",
+                desc: "Tavo įsitikinimai, vertybės, vaikystės šešėliai ir emociniai atsakai. Kodėl tavo psichika renkasi būtent tokią reakciją? Kokie vidiniai balsai tave stabdo, o kokie – veda į priekį?",
+                icon: User
+              },
+              {
+                title: "Išorinė erdvė (Socio)",
+                desc: "Tavo santykiai, šeimos sistema, darbas ir visuomenės lūkesčiai. Kaip aplinka formuoja tavo pasirinkimus ir kur tu prarandi savo autentiškumą bandydamas įtikti kitiems?",
+                icon: Users
+              },
+              {
+                title: "Sąveikos laukas (Sinergio)",
+                desc: "Kaip tavo vidinė būsena kuria tavo išorinę realybę? Mes ieškome „mazgų“ – kaip vidinis nesaugumo jausmas virsta konfliktais ar įtampa.",
+                icon: Zap
+              }
+            ].map((item, i) => (
               <motion.div 
-                key={image.id}
-                variants={fadeIn}
-                className="group relative aspect-[4/3] rounded-[32px] overflow-hidden cursor-pointer shadow-lg hover:shadow-2xl transition-all duration-500 border border-white/50"
-                onClick={() => setSelectedImage(image)}
+                key={i}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="bg-white/40 backdrop-blur-xl p-8 rounded-[32px] border border-white shadow-xl hover:translate-y-[-5px] transition-all duration-500"
               >
-                <Image 
-                  src={image.src}
-                  alt={image.title}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
-                  referrerPolicy="no-referrer"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8">
-                  <span className="text-white/60 text-[9px] uppercase tracking-widest mb-2">{image.category}</span>
-                  <h3 className="text-white text-xl font-bold tracking-tight">{image.title}</h3>
-                  <div className="mt-4 w-10 h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white border border-white/30">
-                    <Maximize2 className="w-4 h-4" />
-                  </div>
+                <div className="w-12 h-12 rounded-2xl bg-brand/10 flex items-center justify-center text-brand mb-6">
+                  <item.icon className="w-6 h-6" />
                 </div>
+                <h3 className="text-lg font-bold text-gray-800 mb-4">{item.title}</h3>
+                <p className="text-gray-500 text-sm font-light leading-relaxed text-justify">{item.desc}</p>
               </motion.div>
             ))}
-          </motion.div>
-        </div>
-      </main>
+          </div>
+        </section>
 
-      {/* Lightbox */}
-      <AnimatePresence>
-        {selectedImage && (
+        {/* Kam skirta */}
+        <section className="mb-32">
+          <div className="bg-stone-50 rounded-[48px] p-8 md:p-16 border border-stone-200">
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tighter text-brand font-prata italic mb-12 text-center">Kam skirta ši konsultacija?</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {[
+                { title: "Santykiai", text: "jautiesi įstrigęs pasikartojančiuose santykių modeliuose, patiri nuolatinius konfliktus su aplinkiniais (artimaisiais) ir ieškai būdų kurti sveikesnį, autentišką ryšį." },
+                { title: "Veikla", text: "patiri nuolatinį spaudimą, jauti perdegimo požymius, praradai motyvaciją arba nesugebi nubrėžti ribos tarp vaidmens ir asmeninės personos." },
+                { title: "Kryžkelės", text: "esi ties krizės riba, po netekties, keičiantis karjerai ar išgyveni vidurio amžiaus“ egzistencinę krizę ir t.t., kai senos prasmės nebeveikia, o naujų dar nėra." },
+                { title: "Jautrumas", text: "stipriai sugeri aplinkos emocijas, jautiesi socialiai pavargęs, sunkiai apginti savo asmeninę erdvę socialiniame triukšme." },
+                { title: "Nuovargis, beprasmybė", text: "sunku rasti bendrą kalbą su aplinkiniais, jautiesi vienišas arba „ne savo vietoje“, „tarsi filme“." },
+                { title: "Balansas", text: "nori suderinti asmeninius poreikius su socialiniais vaidmenimis (tėvystė, partnerystė, profesija ir pan.)." },
+                { title: "Vientisumas", text: "jei jauti prarają tarp to, kas esi viduje, ir to, kokį tave mato pasaulis. Norintiems nusiimti primestines socialines kaukes ir pradėti gyventi iš savo tikrojo „Aš“." }
+              ].map((item, i) => (
+                <div key={i} className="flex gap-4 group">
+                  <div className="mt-1 w-6 h-6 rounded-lg bg-brand/10 flex items-center justify-center text-brand shrink-0 group-hover:bg-brand group-hover:text-white transition-all duration-300">
+                    <CheckCircle2 className="w-3.5 h-3.5" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-gray-800 text-xs tracking-widest uppercase mb-2">{item.title}</h4>
+                    <p className="text-gray-500 text-xs font-light leading-relaxed text-justify">{item.text}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Ką pasieksime */}
+        <section className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-stretch mb-32">
           <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-xl flex items-center justify-center p-4 md:p-12"
-            onClick={() => setSelectedImage(null)}
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="flex flex-col justify-center"
           >
-            <motion.button 
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              className="absolute top-8 right-8 text-white/60 hover:text-white transition-colors"
-              onClick={() => setSelectedImage(null)}
-            >
-              <X className="w-8 h-8" />
-            </motion.button>
-
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.9, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              className="relative w-full max-w-5xl aspect-[4/3] md:aspect-video rounded-3xl overflow-hidden shadow-2xl"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <Image 
-                src={selectedImage.src}
-                alt={selectedImage.title}
-                fill
-                className="object-cover"
-                referrerPolicy="no-referrer"
-              />
-              <div className="absolute bottom-0 left-0 w-full p-8 md:p-12 bg-gradient-to-t from-black/80 to-transparent">
-                <span className="text-white/60 text-[10px] uppercase tracking-widest mb-2 block">{selectedImage.category}</span>
-                <h2 className="text-white text-2xl md:text-4xl font-bold tracking-tight">{selectedImage.title}</h2>
-              </div>
-            </motion.div>
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tighter text-brand font-prata italic mb-8">Ką mes pasieksime šiame procese?</h2>
+            <p className="text-gray-500 font-light mb-8 italic">Mes netaisome tavęs kaip sugedusio prietaiso, o padedame tau evoliucionuoti:</p>
+            <div className="space-y-6">
+              {[
+                { title: "Iššifruosime elgesio kodus", desc: "Suprasi, kodėl vėl ir vėl patenki į tas pačias situacijas.", icon: Compass },
+                { title: "Atstatysime asmenines ribas", desc: "Išmoksi sakyti „ne“ tam, kas tave sekina, nesijaučiant kaltam.", icon: Shield },
+                { title: "Aktyvuosime resursus", desc: "Identifikuosime tavo paslėptus talentus ir išorinius palaikymo šaltinius.", icon: Zap },
+                { title: "Emocinis atsparumas", desc: "Sukursime tavo asmeninį įrankių rinkinį, skirtą išlikti ramybėje net ir didžiausiose gyvenimo audrose.", icon: Target }
+              ].map((item, i) => (
+                <div key={i} className="flex items-start gap-5">
+                  <div className="p-3 rounded-2xl bg-white shadow-lg border border-gray-100 text-brand shrink-0">
+                    <item.icon className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-gray-800 text-sm mb-1">{item.title}</h4>
+                    <p className="text-gray-500 text-xs font-light">{item.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </motion.div>
-        )}
-      </AnimatePresence>
 
+          {/* Pricing Card */}
+          <motion.div 
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="relative bg-white rounded-[40px] p-8 md:p-12 shadow-2xl shadow-brand/10 border border-gray-100 flex flex-col justify-between overflow-hidden"
+          >
+             <div className="relative z-10">
+                <h3 className="text-3xl font-bold tracking-tight text-gray-800 mb-2 font-prata italic">Rezervuokite laiką</h3>
+                <p className="text-gray-500 font-light mb-10 text-sm italic">„Susitikime ten, kur prasideda pokyčiai.“</p>
 
+                <div className="space-y-3 mb-12">
+                  <div className="text-[9px] font-black uppercase tracking-[0.3em] text-gray-400 mb-4 text-left">Pasirinkite sesijos trukmę</div>
+                  {PRICING_OPTIONS.map((option) => (
+                    <button
+                      key={option.id}
+                      onClick={() => setSelectedDuration(option)}
+                      className={`w-full group flex items-center justify-between p-5 rounded-2xl border transition-all duration-300 ${
+                        selectedDuration.id === option.id 
+                          ? 'border-brand bg-brand/5 shadow-inner' 
+                          : 'border-gray-100 bg-gray-50/50 hover:bg-white hover:border-brand/30'
+                      }`}
+                    >
+                      <div className="flex items-center gap-4">
+                        <div className={`p-3 rounded-xl transition-colors ${
+                          selectedDuration.id === option.id ? 'bg-brand text-white' : 'bg-white text-gray-400 group-hover:text-brand'
+                        }`}>
+                          <Clock className="w-5 h-5" />
+                        </div>
+                        <div className="text-left">
+                          <span className={`block font-bold text-sm tracking-wide ${selectedDuration.id === option.id ? 'text-brand' : 'text-gray-600'}`}>
+                            {option.label}
+                          </span>
+                        </div>
+                      </div>
+                      <div className="flex flex-col items-end">
+                        <span className={`text-xl font-bold ${selectedDuration.id === option.id ? 'text-brand' : 'text-gray-800'}`}>
+                          {option.price}
+                        </span>
+                      </div>
+                    </button>
+                  ))}
+                </div>
+
+                <div className="space-y-4">
+
+                  <button className="w-full py-5 bg-black text-white rounded-2xl font-black text-xs uppercase tracking-[0.2em] shadow-xl shadow-black/10 hover:bg-brand transition-all hover:scale-[1.02] active:scale-95">
+                    UŽSAKYTI KONSULTACIJĄ
+                  </button>
+                </div>
+             </div>
+
+             <div className="absolute top-0 right-0 w-64 h-64 bg-brand/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+             <div className="absolute bottom-10 left-10 text-[10rem] font-black text-brand/[0.03] select-none pointer-events-none leading-none">
+               {selectedDuration.durationSymbol}
+             </div>
+          </motion.div>
+        </section>
+
+        {/* Closing paragraph */}
+        <section className="text-center max-w-4xl mx-auto py-12">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="bg-white/60 backdrop-blur-md p-8 md:p-12 rounded-[40px] border border-white shadow-lg"
+          >
+            <h3 className="text-xl md:text-2xl font-bold text-brand font-prata italic mb-6">Nuo įžvalgos iki veiksmo</h3>
+            <p className="text-gray-600 text-sm md:text-base font-light leading-relaxed text-justify">
+              Mano darbe susipina empatiškas išklausymas, sisteminė analizė ir praktinė sociopsichologija. Konsultacijos pabaigoje turėsi ne tik geresnę savijautą, bet ir aiškų supratimą, kokį naują žingsnį žengti rytoj, kad tavo autentiškiausias gyvenimo scenarijus pildytųsi sklandžiai.
+            </p>
+          </motion.div>
+        </section>
+
+      </main>
     </div>
   );
 }
