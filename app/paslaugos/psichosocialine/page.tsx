@@ -232,8 +232,7 @@ export default function PsichosocialinePage() {
             className="relative bg-white rounded-[40px] p-8 md:p-12 shadow-2xl shadow-brand/10 border border-gray-100 flex flex-col justify-between overflow-hidden"
           >
              <div className="relative z-10">
-                <h3 className="text-3xl font-bold tracking-tight text-gray-800 mb-2 font-prata italic">Rezervuokite laiką</h3>
-                <p className="text-gray-500 font-light mb-10 text-sm italic">„Susitikime ten, kur prasideda pokyčiai.“</p>
+                <p className="text-2xl md:text-3xl font-bold tracking-tight text-brand mb-10 font-prata italic">„Susitikime ten, kur prasideda pokyčiai.“</p>
 
                 <div className="space-y-3 mb-12">
                   <div className="text-[9px] font-black uppercase tracking-[0.3em] text-gray-400 mb-4 text-left">Pasirinkite sesijos trukmę</div>

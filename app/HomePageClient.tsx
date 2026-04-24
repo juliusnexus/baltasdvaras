@@ -199,7 +199,7 @@ export default function HomePageClient({
         </Link>
 
         {/* Desktop Menu */}
-        <div className="hidden lg:flex gap-8 items-center text-[10px] font-bold tracking-[0.2em] text-gray-500">
+        <div className="hidden lg:flex gap-8 items-center text-xs font-bold tracking-[0.2em] text-gray-500">
           {navItems.map((item) => (
             <div 
               key={item.id} 
@@ -243,14 +243,14 @@ export default function HomePageClient({
                       {child.href && (!child.children || child.children.length === 0) ? (
                         <Link 
                           href={child.href}
-                          className="text-left hover:text-brand transition-colors text-[9px] tracking-widest block"
+                          className="text-left hover:text-brand transition-colors text-[10px] tracking-widest block"
                         >
                           {child.label}
                         </Link>
                       ) : (
                         <button 
                           onClick={() => !child.children && scrollToSection(child.targetId)}
-                          className="w-full text-left hover:text-brand transition-colors text-[9px] tracking-widest flex items-center justify-between"
+                          className="w-full text-left hover:text-brand transition-colors text-[10px] tracking-widest flex items-center justify-between"
                           suppressHydrationWarning
                         >
                           {child.label}
@@ -273,7 +273,7 @@ export default function HomePageClient({
                                 <Link 
                                   key={grandchild.id}
                                   href={grandchild.href}
-                                  className="text-left hover:text-brand transition-colors text-[9px] tracking-widest block"
+                                  className="text-left hover:text-brand transition-colors text-[10px] tracking-widest block"
                                 >
                                   {grandchild.label}
                                 </Link>
@@ -281,7 +281,7 @@ export default function HomePageClient({
                                 <button 
                                   key={grandchild.id}
                                   onClick={() => scrollToSection(grandchild.targetId)}
-                                  className="text-left hover:text-brand transition-colors text-[9px] tracking-widest block w-full"
+                                  className="text-left hover:text-brand transition-colors text-[10px] tracking-widest block w-full"
                                   suppressHydrationWarning
                                 >
                                   {grandchild.label}
@@ -331,7 +331,7 @@ export default function HomePageClient({
                     <Link
                       href={item.href}
                       onClick={() => setIsMenuOpen(false)}
-                      className="text-[10px] font-bold tracking-[0.2em] text-gray-500 hover:text-brand text-left"
+                      className="text-xs font-bold tracking-[0.2em] text-gray-500 hover:text-brand text-left"
                     >
                       {item.label}
                     </Link>
@@ -345,7 +345,7 @@ export default function HomePageClient({
                           setIsMenuOpen(false);
                         }
                       }} 
-                      className="text-[10px] font-bold tracking-[0.2em] text-gray-500 hover:text-brand text-left flex items-center justify-between"
+                      className="text-xs font-bold tracking-[0.2em] text-gray-500 hover:text-brand text-left flex items-center justify-between"
                       suppressHydrationWarning
                     >
                       {item.label}
@@ -372,7 +372,7 @@ export default function HomePageClient({
                               <Link 
                                 href={child.href}
                                 onClick={() => setIsMenuOpen(false)}
-                                className="text-[9px] tracking-widest text-gray-400 text-left block"
+                                className="text-[10px] tracking-widest text-gray-400 text-left block"
                               >
                                 {child.label}
                               </Link>
@@ -386,7 +386,7 @@ export default function HomePageClient({
                                     setIsMenuOpen(false);
                                   }
                                 }}
-                                className="text-[9px] tracking-widest text-gray-400 text-left flex items-center justify-between w-full"
+                                className="text-[10px] tracking-widest text-gray-400 text-left flex items-center justify-between w-full"
                                 suppressHydrationWarning
                               >
                                 {child.label}
