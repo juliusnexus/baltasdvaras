@@ -4,7 +4,7 @@ import React, { useState, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence, Variants } from 'motion/react';
-import { Facebook, Instagram, Clock } from 'lucide-react';
+import { Facebook, Clock } from 'lucide-react';
 
 // --- Animacijų nustatymai ---
 const fadeIn: Variants = {

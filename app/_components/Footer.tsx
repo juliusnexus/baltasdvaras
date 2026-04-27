@@ -33,21 +33,6 @@ export default function Footer() {
             <rect x="2" y="4" width="20" height="16" rx="2"></rect>
           </svg>
         </button>
-
-        {/* Instagram Link */}
-        <a 
-          href="https://www.instagram.com/baltas_dvaras_daiva/" 
-          target="_blank" 
-          rel="noopener noreferrer" 
-          className="p-3 rounded-full bg-white shadow-sm border border-gray-100 text-gray-400 hover:text-brand hover:shadow-md hover:scale-110 transition-all duration-300 group" 
-          aria-label="Visit Instagram"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-instagram w-5 h-5 group-hover:-rotate-6 transition-transform" aria-hidden="true">
-            <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
-            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-            <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
-          </svg>
-        </a>
       </div>
 
       <div className="text-center">
